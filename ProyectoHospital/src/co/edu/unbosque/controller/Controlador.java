@@ -34,6 +34,10 @@ public class Controlador implements ActionListener {
 	private boolean inicioSesionD = false;
 	private boolean registroD = false;
 	private boolean menuPpalD = false;
+	private boolean confirmarCambioTurno = false;
+	private boolean mostrarReporteSemanalD = false;
+	private boolean mostrarReporteMensualD = false;
+	private boolean reprogramarCitaP2 = false;
 
 	public Controlador() {
 		vf = new ViewFacade();
@@ -192,6 +196,30 @@ public class Controlador implements ActionListener {
 		
 		vf.getPrincipal().getPanelMenuPrincipalDirectorMedico().getBtnVolverDME().addActionListener(this);
 		vf.getPrincipal().getPanelMenuPrincipalDirectorMedico().getBtnVolverDME().setActionCommand("volver al menu desde menu principal director medico");
+		
+		vf.getPrincipal().getPanelMenuPrincipalDirectorMedico().getBtnConfirmarCambioTurno().addActionListener(this);
+		vf.getPrincipal().getPanelMenuPrincipalDirectorMedico().getBtnConfirmarCambioTurno().setActionCommand("confirmar cambio turno");
+		
+		vf.getPrincipal().getPanelConfirmarCambioTurnoDirector().getBtnVolverCtt().addActionListener(this);
+		vf.getPrincipal().getPanelConfirmarCambioTurnoDirector().getBtnVolverCtt().setActionCommand("volver de confirmar cambio turno a menu principal director");
+		
+		vf.getPrincipal().getPanelMenuPrincipalDirectorMedico().getBtnMostrarReporteSemanal().addActionListener(this);
+		vf.getPrincipal().getPanelMenuPrincipalDirectorMedico().getBtnMostrarReporteSemanal().setActionCommand("mostrar reporte semanal director");
+		
+		vf.getPrincipal().getPanelMostrarReporteSemanalDirector().getBtnVolverMsd().addActionListener(this);
+		vf.getPrincipal().getPanelMostrarReporteSemanalDirector().getBtnVolverMsd().setActionCommand("volver de mostrar reporte semanal a menu principal director");
+		
+		vf.getPrincipal().getPanelMenuPrincipalDirectorMedico().getBtnMostrarReporteMensual().addActionListener(this);
+		vf.getPrincipal().getPanelMenuPrincipalDirectorMedico().getBtnMostrarReporteMensual().setActionCommand("mostrar reporte mensual director");
+		
+		vf.getPrincipal().getPanelMostrarReporteMensualDirector().getBtnVolverRmd().addActionListener(this);
+		vf.getPrincipal().getPanelMostrarReporteMensualDirector().getBtnVolverRmd().setActionCommand("volver de mostrar reporte mensual a menu principal director");
+		
+		vf.getPrincipal().getPanelReprogramarCitaPaciente().getBtnContinuar().addActionListener(this);
+		vf.getPrincipal().getPanelReprogramarCitaPaciente().getBtnContinuar().setActionCommand("continuar a reprogramar cita paciente");
+		
+		vf.getPrincipal().getPanelContinuarReprogramarCitaPaciente().getBtnVolverCrp().addActionListener(this);
+		vf.getPrincipal().getPanelContinuarReprogramarCitaPaciente().getBtnVolverCrp().setActionCommand("volver de reprogramar cita 2 a reprogramar cita 1");
 		
 		vf.getPrincipal().getPanelRegistroPaciente().getNombre().setVisible(true);
 		vf.getPrincipal().getPanelRegistroPaciente().getNumeroDocumento().setVisible(true);
@@ -498,6 +526,36 @@ public class Controlador implements ActionListener {
 			reprogramarCitaP = true;
 
 			break;
+			
+		case "continuar a reprogramar cita paciente":
+
+			vf.getPrincipal().setTitle("MENU PRINCIPAL");
+
+			vf.getPrincipal().getPanelReprogramarCitaPaciente().getImagenReprogramarCitaP().setVisible(false);
+			vf.getPrincipal().getPanelContinuarReprogramarCitaPaciente().getImagenReprogramarCita2().setVisible(true);
+
+			vf.getPrincipal().mostrarPanelContinuarReprogramarCitaPaciente();
+
+			reprogramarCitaP = false;
+			reprogramarCitaP2 = true;
+
+			break;
+			
+		case "volver de reprogramar cita 2 a reprogramar cita 1":
+
+			vf.getPrincipal().setTitle("MENU PRINCIPAL");
+
+			vf.getPrincipal().getPanelContinuarReprogramarCitaPaciente().getImagenReprogramarCita2().setVisible(false);
+			vf.getPrincipal().getPanelReprogramarCitaPaciente().getImagenReprogramarCitaP().setVisible(true);
+
+			vf.getPrincipal().mostrarPanelReprogramarCitaPaciente();
+
+			reprogramarCitaP2 = false;
+			reprogramarCitaP = true;
+
+			break;	
+			
+			
 
 		case "volver de reprogramar cita paciente a menu principal paciente":
 
@@ -861,6 +919,90 @@ public class Controlador implements ActionListener {
 			menuPpal = true;
 
 			break;
+			
+		case "confirmar cambio turno":
+
+			vf.getPrincipal().setTitle("MENU PRINCIPAL");
+
+			vf.getPrincipal().getPanelMenuPrincipalDirectorMedico().getImagenMenuPpalD().setVisible(false);
+			vf.getPrincipal().getPanelConfirmarCambioTurnoDirector().getImagenConfirmarCambioTurno().setVisible(true);
+
+			vf.getPrincipal().mostrarPanelConfirmarCambioTurnoDirector();
+
+			menuPpalD = false;
+			confirmarCambioTurno = true;
+
+			break;	
+			
+		case "volver de confirmar cambio turno a menu principal director":
+
+			vf.getPrincipal().setTitle("MENU PRINCIPAL");
+
+			vf.getPrincipal().getPanelConfirmarCambioTurnoDirector().getImagenConfirmarCambioTurno().setVisible(false);
+			vf.getPrincipal().getPanelMenuPrincipalDirectorMedico().getImagenMenuPpalD().setVisible(true);
+
+			vf.getPrincipal().mostrarPanelMenuPrincipalDirectorMedico();
+
+			confirmarCambioTurno= false;
+			menuPpalD = true;
+
+			break;	
+			
+		case "mostrar reporte semanal director":
+
+			vf.getPrincipal().setTitle("MENU PRINCIPAL");
+
+			vf.getPrincipal().getPanelMenuPrincipalDirectorMedico().getImagenMenuPpalD().setVisible(false);
+			vf.getPrincipal().getPanelMostrarReporteSemanalDirector().getImagenMostrarReporteSemanalD().setVisible(true);
+
+			vf.getPrincipal().mostrarPanelMostrarReporteSemanalDirector();
+
+			menuPpalD = false;
+			mostrarReporteSemanalD = true;
+
+			break;	
+			
+		case "volver de mostrar reporte semanal a menu principal director":
+
+			vf.getPrincipal().setTitle("MENU PRINCIPAL");
+
+			vf.getPrincipal().getPanelMostrarReporteSemanalDirector().getImagenMostrarReporteSemanalD().setVisible(false);
+			vf.getPrincipal().getPanelMenuPrincipalDirectorMedico().getImagenMenuPpalD().setVisible(true);
+
+			vf.getPrincipal().mostrarPanelMenuPrincipalDirectorMedico();
+
+			mostrarReporteSemanalD= false;
+			menuPpalD = true;
+
+			break;	
+			
+		case "mostrar reporte mensual director":
+
+			vf.getPrincipal().setTitle("MENU PRINCIPAL");
+
+			vf.getPrincipal().getPanelMenuPrincipalDirectorMedico().getImagenMenuPpalD().setVisible(false);
+			vf.getPrincipal().getPanelMostrarReporteMensualDirector().getImagenMostrarReporteMensualD().setVisible(true);
+
+			vf.getPrincipal().mostrarPanelMostrarReporteMensualDirector();
+
+			menuPpalD = false;
+			mostrarReporteMensualD = true;
+
+			break;
+			
+		case "volver de mostrar reporte mensual a menu principal director":
+
+			vf.getPrincipal().setTitle("MENU PRINCIPAL");
+
+			vf.getPrincipal().getPanelMostrarReporteMensualDirector().getImagenMostrarReporteMensualD().setVisible(false);
+			vf.getPrincipal().getPanelMenuPrincipalDirectorMedico().getImagenMenuPpalD().setVisible(true);
+
+			vf.getPrincipal().mostrarPanelMenuPrincipalDirectorMedico();
+
+			mostrarReporteMensualD= false;
+			menuPpalD = true;
+
+			break;	
 
 		}
 	}

@@ -25,7 +25,7 @@ public class PanelMenuPrincipalDirectorMedico extends JPanel {
 
         
         btnConfirmarCambioTurno = new JButton("confirmar cambio de turno");
-        btnConfirmarCambioTurno.setBounds(145, 435, 220, 170); // Posición ajustada
+        btnConfirmarCambioTurno.setBounds(145, 435, 220, 200); // Posición ajustada
         btnConfirmarCambioTurno.setOpaque(false);
         btnConfirmarCambioTurno.setActionCommand("realizar cambio de turno");
 
@@ -47,7 +47,7 @@ public class PanelMenuPrincipalDirectorMedico extends JPanel {
         btnAsignarTurno.setActionCommand("VOLVER");
         
         btnVolverDME = new JButton("Volver");
-        btnVolverDME.setBounds(690, 280, 150, 65); // Posición ajustada
+        btnVolverDME.setBounds(610, 280, 150, 65); // Posición ajustada
         btnVolverDME.setOpaque(false);
         btnVolverDME.setActionCommand("VOLVER");
         
