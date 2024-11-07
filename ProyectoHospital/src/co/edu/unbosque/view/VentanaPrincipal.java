@@ -29,6 +29,10 @@ public class VentanaPrincipal extends JFrame {
     private PanelMenuDirectorMedico panelMenuD;
     private PanelInicioSesionDirectorMedico panelInicioSesionD;
     private PanelRegistroDirectorMedico panelRegistroDm;
+    private PanelConfirmarCambioTurnoDirector panelConfirmarCambioTurnoD;
+    private PanelMostrarReporteSemanalDirector panelMostrarReporteSemanalD;
+    private PanelMostrarReporteMensualDirector panelMostrarReporteMensualD;
+    private PanelContinuarReprogramarCitaPaciente panelReprogramarCitaPaciente2;
 
     public VentanaPrincipal() {
         setLocation(70, 70);
@@ -66,6 +70,10 @@ public class VentanaPrincipal extends JFrame {
         panelMenuD = new PanelMenuDirectorMedico();
         panelInicioSesionD = new PanelInicioSesionDirectorMedico();
         panelRegistroDm = new PanelRegistroDirectorMedico();
+        panelConfirmarCambioTurnoD = new PanelConfirmarCambioTurnoDirector();
+        panelMostrarReporteSemanalD = new PanelMostrarReporteSemanalDirector();
+        panelMostrarReporteMensualD = new PanelMostrarReporteMensualDirector();
+        panelReprogramarCitaPaciente2 = new PanelContinuarReprogramarCitaPaciente();
         
     }
     
@@ -339,5 +347,52 @@ public class VentanaPrincipal extends JFrame {
     public PanelRegistroDirectorMedico getPanelRegistroDirectorMedico() {
         return panelRegistroDm;
     }
+    
+    public void mostrarPanelConfirmarCambioTurnoDirector() {
+        setContentPane(panelConfirmarCambioTurnoD);
+		revalidate();
+		repaint();
+    }
+    
 
+
+    public PanelConfirmarCambioTurnoDirector getPanelConfirmarCambioTurnoDirector() {
+        return panelConfirmarCambioTurnoD;
+    }
+    
+    public void mostrarPanelMostrarReporteSemanalDirector() {
+        setContentPane(panelMostrarReporteSemanalD);
+		revalidate();
+		repaint();
+    }
+    
+
+
+    public PanelMostrarReporteSemanalDirector getPanelMostrarReporteSemanalDirector() {
+        return panelMostrarReporteSemanalD;
+    }
+    
+    public void mostrarPanelMostrarReporteMensualDirector() {
+        setContentPane(panelMostrarReporteMensualD);
+		revalidate();
+		repaint();
+    }
+    
+
+
+    public PanelMostrarReporteMensualDirector getPanelMostrarReporteMensualDirector() {
+        return panelMostrarReporteMensualD;
+    }
+    
+    public void mostrarPanelContinuarReprogramarCitaPaciente() {
+        setContentPane( panelReprogramarCitaPaciente2);
+		revalidate();
+		repaint();
+    }
+    
+
+
+    public PanelContinuarReprogramarCitaPaciente getPanelContinuarReprogramarCitaPaciente() {
+        return  panelReprogramarCitaPaciente2;
+    }
 }

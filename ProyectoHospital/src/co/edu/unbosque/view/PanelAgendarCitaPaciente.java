@@ -15,7 +15,7 @@ import javax.swing.border.Border;
 
 	public class PanelAgendarCitaPaciente extends JPanel {
 
-		private JButton btnVolverCc;
+		private JButton btnVolverCc, btnAgregarCita;
 		private JLabel imagenAgendarCitaP;
 
 	    public PanelAgendarCitaPaciente() {
@@ -34,6 +34,11 @@ import javax.swing.border.Border;
 	        btnVolverCc.setBounds(240, 530, 170, 100); 
 	        btnVolverCc.setOpaque(true);
 	        btnVolverCc.setActionCommand("VOLVER");
+	        
+	        btnAgregarCita = new JButton("agregar cita");
+	        btnAgregarCita.setBounds(950, 530, 170, 100); 
+	        btnAgregarCita.setOpaque(true);
+	        btnAgregarCita.setActionCommand("VOLVER");
 
 
 	       
@@ -50,6 +55,7 @@ import javax.swing.border.Border;
 	        
 	       
 	        add(btnVolverCc);
+	        add(btnAgregarCita);
 	        add(imagenAgendarCitaP);
 	        
 	       
@@ -65,6 +71,14 @@ import javax.swing.border.Border;
 			this.btnVolverCc = btnVolverCc;
 		}
 
+		public JButton getBtnAgregarCita() {
+			return btnAgregarCita;
+		}
+
+		public void setBtnAgregarCita(JButton btnAgregarCita) {
+			this.btnAgregarCita = btnAgregarCita;
+		}
+
 		public JLabel getImagenAgendarCitaP() {
 			return imagenAgendarCitaP;
 		}
@@ -73,6 +87,5 @@ import javax.swing.border.Border;
 			this.imagenAgendarCitaP = imagenAgendarCitaP;
 		}
 
-
-		
+	
 }

@@ -26,13 +26,13 @@ public class PanelMenuDirectorMedico extends JPanel {
 
         // Botón "Iniciar sesión"
         btnIniciarSesionD = new JButton("Iniciar Sesión");
-        btnIniciarSesionD.setBounds(205, 520, 310, 50); // Posición ajustada
+        btnIniciarSesionD.setBounds(190, 510, 330, 80); // Posición ajustada
         btnIniciarSesionD.setOpaque(false);
         btnIniciarSesionD.setActionCommand("INICIARSESION");
 
         // Botón "Registrarse"
         btnRegistrarseD = new JButton("Registrarse");
-        btnRegistrarseD.setBounds(800, 520, 320, 50); // Posición ajustada
+        btnRegistrarseD.setBounds(785, 500, 330, 80); // Posición ajustada
         btnRegistrarseD.setOpaque(false);
         btnRegistrarseD.setActionCommand("REGISTRARSE");
 

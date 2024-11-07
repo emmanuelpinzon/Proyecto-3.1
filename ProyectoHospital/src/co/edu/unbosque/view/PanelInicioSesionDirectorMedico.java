@@ -33,11 +33,11 @@ import javax.swing.border.Border;
 			
 			
 			numeroDocumentoD = new JTextField();
-			numeroDocumentoD.setBounds(450, 507, 300, 55);
+			numeroDocumentoD.setBounds(220, 507, 300, 55);
 			numeroDocumentoD.setOpaque(true);
 
 			contraseñaD = new JPasswordField();
-			contraseñaD.setBounds(840, 507, 300, 55);
+			contraseñaD.setBounds(780, 507, 300, 55);
 			contraseñaD.setOpaque(true);
 			
 
@@ -46,13 +46,13 @@ import javax.swing.border.Border;
 	        // Botón "Registrarse"
 			
 	        btnIniciarSesionD = new JButton("Iniciar Sesion");
-	        btnIniciarSesionD.setBounds(720, 610, 140, 50); // Posición ajustada
+	        btnIniciarSesionD.setBounds(690, 590, 190, 70); // Posición ajustada
 	        btnIniciarSesionD.setOpaque(true);
 	        btnIniciarSesionD.setActionCommand("INICIAR SESION");
 
 	        // Botón "Volver"
 	        btnVolverD = new JButton("Volver");
-	        btnVolverD.setBounds(450, 610, 150, 50); // Posición ajustada
+	        btnVolverD.setBounds(450, 590, 170, 70); // Posición ajustada
 	        btnVolverD.setOpaque(true);
 	        btnVolverD.setActionCommand("VOLVER");
 	        
