@@ -1,3 +1,4 @@
+
 package co.edu.unbosque.view;
 
 import java.awt.Image;
