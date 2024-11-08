@@ -28,10 +28,10 @@ public class EspecialistaDAO implements CRUDOperation<EspecialistaDTO, Especiali
     public String ShowAll() {
         String rta = "";
         if (listaEspecialistas.isEmpty()) {
-            return "No hay panes dulces en la lista.";
+            return "No hay especialistas en la lista.";
         } else {
-            for (Especialista panDulce : listaEspecialistas) {
-                rta += panDulce;
+            for (Especialista especialista : listaEspecialistas) {
+                rta += especialista;
             }
             return rta;
         }

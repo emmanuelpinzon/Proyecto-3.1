@@ -3,12 +3,18 @@ package co.edu.unbosque.controller;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.JComboBox;
+
+import co.edu.unbosque.model.ModelFacade;
+import co.edu.unbosque.model.PacienteDTO;
 import co.edu.unbosque.view.ViewFacade;
 
 public class Controlador implements ActionListener {
 
 	private ViewFacade vf;
+	private ModelFacade mf;
 
+	
 	private boolean paciente = false;
 	private boolean especialista = false;
 	private boolean registroP = false;
@@ -41,6 +47,7 @@ public class Controlador implements ActionListener {
 
 	public Controlador() {
 		vf = new ViewFacade();
+		mf = new ModelFacade();
 		vf.getPrincipal().mostrarMenuPrincipal();
 		vf.getCon().mostrarMensajeEmergente("Bienvenido a Bosque Health");
 
@@ -60,8 +67,15 @@ public class Controlador implements ActionListener {
 		vf.getPrincipal().getPanelMenuE().getbtnIniciarSesionEs().addActionListener(this);
 		vf.getPrincipal().getPanelMenuE().getbtnIniciarSesionEs().setActionCommand("iniciar sesion especialista");
 
+
+		
 		vf.getPrincipal().getPanelMenuPpal().getbtnRegistrarse().addActionListener(this);
 		vf.getPrincipal().getPanelMenuPpal().getbtnRegistrarse().setActionCommand("registrarse");
+		
+		vf.getPrincipal().getPanelRegistroPaciente().getBtnRegistrarP().addActionListener(this);
+		vf.getPrincipal().getPanelRegistroPaciente().getBtnRegistrarP().setActionCommand("hola");
+		
+
 
 		vf.getPrincipal().getPanelMenuE().getbtnRegistrarseE().addActionListener(this);
 		vf.getPrincipal().getPanelMenuE().getbtnRegistrarseE().setActionCommand("registrar especialista");
@@ -224,7 +238,10 @@ public class Controlador implements ActionListener {
 		vf.getPrincipal().getPanelRegistroPaciente().getNombre().setVisible(true);
 		vf.getPrincipal().getPanelRegistroPaciente().getNumeroDocumento().setVisible(true);
 		vf.getPrincipal().getPanelRegistroPaciente().getCorreo().setVisible(true);
+		vf.getPrincipal().getPanelRegistroPaciente().getJcbGenero().setVisible(true);
 		vf.getPrincipal().getPanelRegistroPaciente().getContraseña().setVisible(true);
+		vf.getPrincipal().getPanelRegistroPaciente().getBtnRegistrarP().setVisible(true);
+		
 
 		vf.getPrincipal().getPanelRegistroEspecialista().getNombre().setVisible(true);
 		vf.getPrincipal().getPanelRegistroEspecialista().getNumeroDocumento().setVisible(true);
@@ -283,6 +300,24 @@ public class Controlador implements ActionListener {
 			registroP = true;
 
 			break;
+		case"hola":
+			
+			String nombre = vf.getPrincipal().getPanelRegistroPaciente().getNombre().getText();
+			
+			String correo = vf.getPrincipal().getPanelRegistroPaciente().getCorreo().getText();
+			
+			String cedula = vf.getPrincipal().getPanelRegistroPaciente().getNumeroDocumento().getText();
+			int cedula1 = vf.getCon().readInt(cedula);
+			
+			String contrasena= vf.getPrincipal().getPanelRegistroPaciente().getContraseña().getText();
+			int contrasena1 = vf.getCon().readInt(contrasena);
+			
+			String genero = (String) vf.getPrincipal().getPanelRegistroPaciente().getJcbGenero().getSelectedItem();
+			
+			mf.getPdao().add(new PacienteDTO(nombre, cedula1, correo, contrasena1, genero));
+			vf.getCon().mostrarMensajeEmergente("se ha registrado exitosamente");
+			
+			break;
 
 		case "registrar especialista":
 			vf.getPrincipal().setTitle("REGISTRAR ESPECIALISTA");
@@ -316,6 +351,7 @@ public class Controlador implements ActionListener {
 			inicioSesionP = true;
 
 			break;
+		
 
 		case "iniciar sesion especialista":
 			vf.getPrincipal().setTitle("INICIAR SESION ESPECIALISTA");
@@ -493,6 +529,7 @@ public class Controlador implements ActionListener {
 			vf.getPrincipal().getPanelAgendarCitaPaciente().getImagenAgendarCitaP().setVisible(true);
 
 			vf.getPrincipal().mostrarPanelAgendarCitaPaciente();
+			
 
 			menuPpalP = false;
 			agendarCitaP = true;

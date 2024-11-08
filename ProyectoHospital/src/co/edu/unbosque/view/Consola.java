@@ -30,9 +30,7 @@ public class Consola {
 	 * @return el valor entero leído
 	 */
 	public int readInt(String entrada) {
-		int numero = Integer.parseInt(entrada);
-
-		return numero;
+		return sc.nextInt();
 	}
 
 	/**
