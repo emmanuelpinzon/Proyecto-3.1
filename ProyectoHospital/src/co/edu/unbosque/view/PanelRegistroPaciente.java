@@ -67,7 +67,7 @@ public class PanelRegistroPaciente extends JPanel {
         btnRegistrarP = new JButton("Registrar");
         btnRegistrarP.setBounds(640, 600, 200, 50); // Posición ajustada
         btnRegistrarP.setOpaque(true);
-        btnRegistrarP.setActionCommand("REGISTRAR");
+        btnRegistrarP.setActionCommand("REGISTRAR PACIENTE");
 
         // Botón "Volver"
         btnVolverP1 = new JButton("Volver");
