@@ -2,9 +2,12 @@ package co.edu.unbosque.controller;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 import javax.swing.JComboBox;
 
+import co.edu.unbosque.model.CitaDTO;
 import co.edu.unbosque.model.ModelFacade;
 import co.edu.unbosque.model.PacienteDTO;
 import co.edu.unbosque.view.ViewFacade;
@@ -73,7 +76,7 @@ public class Controlador implements ActionListener {
 		vf.getPrincipal().getPanelMenuPpal().getbtnRegistrarse().setActionCommand("registrarse");
 		
 		vf.getPrincipal().getPanelRegistroPaciente().getBtnRegistrarP().addActionListener(this);
-		vf.getPrincipal().getPanelRegistroPaciente().getBtnRegistrarP().setActionCommand("hola");
+		vf.getPrincipal().getPanelRegistroPaciente().getBtnRegistrarP().setActionCommand("REGISTRAR");
 		
 
 
@@ -123,6 +126,9 @@ public class Controlador implements ActionListener {
 
 		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnAgendarCita().addActionListener(this);
 		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnAgendarCita().setActionCommand("agendar cita paciente");
+		
+		   vf.getPrincipal().getPanelAgendarCitaPaciente().getBtnAgregarCita().addActionListener(this);
+		   vf.getPrincipal().getPanelAgendarCitaPaciente().getBtnAgregarCita(). setActionCommand("agregar cita");;
 
 		vf.getPrincipal().getPanelAgendarCitaPaciente().getBtnVolverCc().addActionListener(this);
 		vf.getPrincipal().getPanelAgendarCitaPaciente().getBtnVolverCc().setActionCommand("volver de agendar cita paciente a menu principal paciente");
@@ -300,7 +306,7 @@ public class Controlador implements ActionListener {
 			registroP = true;
 
 			break;
-		case"hola":
+		case"REGISTRAR":
 			
 			String nombre = vf.getPrincipal().getPanelRegistroPaciente().getNombre().getText();
 			
@@ -539,6 +545,27 @@ public class Controlador implements ActionListener {
 			menuPpalP = false;
 			agendarCitaP = true;
 
+			break;
+		case "agregar cita":
+			vf.getPrincipal().getPanelAgendarCitaPaciente().getImagenAgendarCitaP().setVisible(true);
+			 java.util.Date fechaSeleccionada = vf.getPrincipal().getPanelAgendarCitaPaciente().getFechaCita().getDate();
+            SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
+            String fecha = formatoFecha.format(fechaSeleccionada);
+            
+            String hora = (String) vf.getPrincipal().getPanelAgendarCitaPaciente().getJcbHora().getSelectedItem();
+            
+            String tipoEspecialista = (String) vf.getPrincipal().getPanelAgendarCitaPaciente().getJcbtipoEspecialista().getSelectedItem();
+            
+            if (tipoEspecialista == null || fechaSeleccionada == null || hora == null) {
+                vf.getCon().mostrarMensajeEmergente("\"Todos los campos son obligatorios.");
+                return;
+            }
+
+           
+           mf.getCdao().add(new CitaDTO(fechaSeleccionada, hora, tipoEspecialista));
+
+            vf.getCon().mostrarMensajeEmergente("cita agendada");
+         
 			break;
 
 		case "volver de agendar cita paciente a menu principal paciente":

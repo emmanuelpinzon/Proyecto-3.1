@@ -2,6 +2,8 @@ package co.edu.unbosque.model.persistence;
 
 import java.util.ArrayList;
 
+import co.edu.unbosque.model.Cita;
+import co.edu.unbosque.model.CitaDTO;
 import co.edu.unbosque.model.Especialista;
 import co.edu.unbosque.model.EspecialistaDTO;
 import co.edu.unbosque.model.Paciente;
@@ -61,6 +63,33 @@ public static ArrayList<Especialista>listaEspecialistaDTOToEspecialista(ArrayLis
 	ArrayList<Especialista>entityList = new ArrayList<>();
 	for (EspecialistaDTO ed : dtoList) {
 		entityList.add(new Especialista(ed.getNombre(), ed.getCedula(),ed.getCorreo(),ed.getContraseña(),ed.getTipoEspecialista()));
+	}
+	return entityList;
+}
+public static Cita CitaDTOToCita(CitaDTO dto) {
+	Cita entity;
+	entity= new Cita(dto.getFecha(), dto.getHora(), dto.getTipoEspecialista());
+	return entity;
+}
+public static CitaDTO CitaToCitaDTO(Cita entity) {
+	CitaDTO  dto;
+	dto= new CitaDTO(entity.getFecha(), entity.getHora(), entity.getTipoEspecialista());
+	return dto;
+}
+public static ArrayList<CitaDTO> listaCitaToCitaDTO(ArrayList<Cita>listaEntity){
+	ArrayList<CitaDTO>dtoList = new ArrayList<>();
+	for (Cita c : listaEntity) {
+		dtoList.add(new CitaDTO(c.getFecha(),c.getHora(),c.getTipoEspecialista()));
+		
+	}
+
+	return dtoList;
+}
+
+public static ArrayList<Cita>listaCitaDTOToCita(ArrayList<CitaDTO>dtoList){
+	ArrayList<Cita>entityList = new ArrayList<>();
+	for (CitaDTO cd : dtoList) {
+		entityList.add(new Cita(cd.getFecha(),cd.getHora(),cd.getTipoEspecialista()));
 	}
 	return entityList;
 }
