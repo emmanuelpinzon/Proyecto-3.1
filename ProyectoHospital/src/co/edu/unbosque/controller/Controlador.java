@@ -527,6 +527,11 @@ public class Controlador implements ActionListener {
 
 			vf.getPrincipal().getPanelMenuPrincipalPaciente().getImagenMenuPpalP().setVisible(false);
 			vf.getPrincipal().getPanelAgendarCitaPaciente().getImagenAgendarCitaP().setVisible(true);
+			vf.getPrincipal().getPanelAgendarCitaPaciente().getJcbtipoEspecialista().setVisible(true);
+			vf.getPrincipal().getPanelAgendarCitaPaciente().getJcbHora().setVisible(true);
+			vf.getPrincipal().getPanelAgendarCitaPaciente().getFechaCita().setVisible(true);
+			vf.getPrincipal().getPanelAgendarCitaPaciente().getBtnAgregarCita().setVisible(true);
+			
 
 			vf.getPrincipal().mostrarPanelAgendarCitaPaciente();
 			
