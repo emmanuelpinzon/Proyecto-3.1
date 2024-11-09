@@ -82,7 +82,7 @@ public class Controlador implements ActionListener {
 		vf.getPrincipal().getPanelMenuPpal().getbtnRegistrarse().setActionCommand("REGISTRARSE");
 
 		vf.getPrincipal().getPanelRegistroPaciente().getBtnRegistrarP().addActionListener(this);
-		vf.getPrincipal().getPanelRegistroPaciente().getBtnRegistrarP().setActionCommand("REGISTRAR");
+		vf.getPrincipal().getPanelRegistroPaciente().getBtnRegistrarP().setActionCommand("REGISTRAR PACIENTE");
 
 		vf.getPrincipal().getPanelMenuE().getbtnRegistrarseE().addActionListener(this);
 		vf.getPrincipal().getPanelMenuE().getbtnRegistrarseE().setActionCommand("REGISTRARSE");
@@ -346,7 +346,7 @@ public class Controlador implements ActionListener {
 				vf.getPrincipal().getPanelRegistroPaciente().getCorreo().setVisible(true);
 				vf.getPrincipal().getPanelRegistroPaciente().getContraseña().setVisible(true);
 				vf.getPrincipal().getPanelRegistroPaciente().getJcbGenero().setVisible(true);
-				vf.getPrincipal().getPanelRegistroPaciente().getBtnRegistrarP().setVisible(true);
+				
 
 				vf.getPrincipal().getPanelRegistroPaciente().getImagenRegistroP().setVisible(true);
 
@@ -423,8 +423,9 @@ public class Controlador implements ActionListener {
 			}
 			break;
 		
-		case "REGISTRAR":
-			if (paciente) {
+		case "REGISTRAR PACIENTE":
+			
+			
 				String nombre = vf.getPrincipal().getPanelRegistroPaciente().getNombre().getText();
 				String correo = vf.getPrincipal().getPanelRegistroPaciente().getCorreo().getText();
 				String cedula1 = vf.getPrincipal().getPanelRegistroPaciente().getNumeroDocumento().getText();
@@ -438,18 +439,19 @@ public class Controlador implements ActionListener {
 				        return;
 				}
 				
-				if (mf.getPdao().add(new PacienteDTO(nombre, cedula,  genero, contrasena, genero))) {
+				if (mf.getPdao().add(new PacienteDTO(nombre, cedula,  correo, contrasena, genero))) {
 					vf.getCon().mostrarMensajeEmergente("se ha registrado exitosamente");
 					vf.getPrincipal().getPanelRegistroPaciente().getNombre().setText("");
 		            vf.getPrincipal().getPanelRegistroPaciente().getCorreo().setText("");
 		            vf.getPrincipal().getPanelRegistroPaciente().getNumeroDocumento().setText("");
 		            vf.getPrincipal().getPanelRegistroPaciente().getContraseña().setText("");
 		            vf.getPrincipal().getPanelRegistroPaciente().getJcbGenero().setSelectedIndex(-1); 
+		            vf.getPrincipal().getPanelRegistroPaciente().getBtnRegistrarP().setVisible(true);
 		            vf.getPrincipal().getPanelRegistroPaciente().setVisible(true);
 				} else {
 					 vf.getCon().mostrarMensajeEmergente("Ya está registrado");
 				}
-				}
+				
 			
 			break;
 		case "INICIARSESION":
@@ -526,51 +528,71 @@ public class Controlador implements ActionListener {
 			break;
 			
 		case "CANCELARCITA":
-		    String idStr = vf.getCon().leerInputEliminar("Ingrese el ID de la cita a cancelar:");
-		    
-		    if (idStr == null || idStr.trim().isEmpty()) {
-		        vf.getCon().mostrarError("Debe ingresar un ID válido");
-		        break;
-		    }
-		    
-		    try {
-		        int idCita = Integer.parseInt(idStr);
-		        ArrayList<CitaDTO> todasLasCitas = mf.getCdao().getAll();
-		        CitaDTO citaAEliminar = null;
-		        
-		        for(CitaDTO cita : todasLasCitas) {
-		            if(cita.getId() == idCita) {
-		                citaAEliminar = cita;
-		                break;
-		            }
-		        }
-		        
-		        if(citaAEliminar != null) {
-		            // Mostrar mensaje de confirmación
-		            int confirmar = JOptionPane.showConfirmDialog(null, 
-		                "¿Está seguro que desea cancelar esta cita?\n" +
-		                "ID: " + citaAEliminar.getId() + "\n" +
-		                "Fecha: " + citaAEliminar.getFecha() + "\n" +
-		                "Hora: " + citaAEliminar.getHora() + "\n" +
-		                "Especialista: " + citaAEliminar.getTipoEspecialista(),
-		                "Confirmar cancelación",
-		                JOptionPane.YES_NO_OPTION,
-		                JOptionPane.WARNING_MESSAGE);
-		                
-		            if(confirmar == JOptionPane.YES_OPTION) {
-		                if(mf.getCdao().delete(citaAEliminar)) {
-		                    vf.getCon().mostrarMensajeEmergente("La cita ha sido cancelada exitosamente");
-		                } else {
-		                    vf.getCon().mostrarError("Hubo un error al intentar cancelar la cita");
-		                }
-		            }
-		        } else {
-		            vf.getCon().mostrarAlerta("No se encontró ninguna cita con el ID: " + idCita);
-		        }
-		        
-		    } catch(NumberFormatException e1) {
-		        vf.getCon().mostrarError("El ID debe ser un número entero válido");
-		    }
+			
+			// Mostrar todas las citas disponibles con sus detalles antes de pedir el ID
+			ArrayList<CitaDTO> todasLasCitas = mf.getCdao().getAll();
+			if (todasLasCitas.isEmpty()) {
+			    vf.getCon().mostrarAlerta("No hay citas disponibles para cancelar.");
+			    break;
+			}
+
+			// Mostrar las citas disponibles
+			StringBuilder citasDisponibles = new StringBuilder("Citas disponibles para cancelar:\n");
+			for (CitaDTO cita : todasLasCitas) {
+			    citasDisponibles.append("ID: ").append(cita.getId())
+			                    .append(" | Fecha: ").append(cita.getFecha())
+			                    .append(" | Hora: ").append(cita.getHora())
+			                    .append(" | Especialista: ").append(cita.getTipoEspecialista())
+			                    .append("\n");
+			}
+			vf.getCon().mostrarMensajeEmergente(citasDisponibles.toString());
+
+			// Solicitar el ID de la cita a cancelar
+			String idStr = vf.getCon().leerInputEliminar("Ingrese el ID de la cita a cancelar:");
+
+			if (idStr == null || idStr.trim().isEmpty()) {
+			    vf.getCon().mostrarError("Debe ingresar un ID válido");
+			    break;
+			}
+
+			try {
+			    int idCita = Integer.parseInt(idStr);
+			    CitaDTO citaAEliminar = null;
+
+			    for(CitaDTO cita : todasLasCitas) {
+			        if(cita.getId() == idCita) {
+			            citaAEliminar = cita;
+			            break;
+			        }
+			    }
+
+			    if(citaAEliminar != null) {
+			        // Mostrar mensaje de confirmación con los detalles de la cita seleccionada
+			        int confirmar = JOptionPane.showConfirmDialog(null, 
+			            "¿Está seguro que desea cancelar esta cita?\n" +
+			            "ID: " + citaAEliminar.getId() + "\n" +
+			            "Fecha: " + citaAEliminar.getFecha() + "\n" +
+			            "Hora: " + citaAEliminar.getHora() + "\n" +
+			            "Especialista: " + citaAEliminar.getTipoEspecialista(),
+			            "Confirmar cancelación",
+			            JOptionPane.YES_NO_OPTION,
+			            JOptionPane.WARNING_MESSAGE);
+
+			        if(confirmar == JOptionPane.YES_OPTION) {
+			            if(mf.getCdao().delete(citaAEliminar)) {
+			                vf.getCon().mostrarMensajeEmergente("La cita ha sido cancelada exitosamente");
+			            } else {
+			                vf.getCon().mostrarError("Hubo un error al intentar cancelar la cita");
+			            }
+			        }
+			    } else {
+			        vf.getCon().mostrarAlerta("No se encontró ninguna cita con el ID: " + idCita);
+			    }
+
+			} catch(NumberFormatException e1) {
+			    vf.getCon().mostrarError("El ID debe ser un número entero válido");
+			}
+
 		    break;
 		case "mostrar citas y examenes programados paciente":
 			
@@ -624,6 +646,7 @@ public class Controlador implements ActionListener {
 			menuPpalP = true;
 
 			break;
+			
 		}
 	}
 }

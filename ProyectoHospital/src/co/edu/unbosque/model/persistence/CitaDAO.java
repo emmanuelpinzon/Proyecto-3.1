@@ -13,10 +13,25 @@ public class CitaDAO implements CRUDOperation<CitaDTO, Cita> {
     private ArrayList<Cita> listaCitas;
     private final String FILE_NAME = "citas.csv";
     private final String SERIAL_NAME = "citas.dat";
-
+    private int currentMaxId = 0;
     public CitaDAO() {
         FileHandler.checkFolder();
         readSerialized();
+        updateMaxId();
+    }
+    private void updateMaxId() {
+        int maxId = 0;
+        for (Cita cita : listaCitas) {
+            if (cita.getId() > maxId) {
+                maxId = cita.getId();
+            }
+        }
+        currentMaxId = maxId;
+    }
+
+    public int generateNewId() {
+        currentMaxId++; // Incrementamos el valor del ID
+        return currentMaxId;
     }
 
     @Override
@@ -43,15 +58,17 @@ public class CitaDAO implements CRUDOperation<CitaDTO, Cita> {
     }
 
     public boolean deleteById(int id) {
+        // Buscar la cita por su ID
         Cita found = findById(id);
-        if (found != null) {
-            listaCitas.remove(found);
-            writeFile();
-            writeSerialized();
-            return true;
+        if (found != null) {  // Si la cita fue encontrada
+            listaCitas.remove(found);  // Eliminar la cita de la lista
+            writeFile();  // Actualizar el archivo con la lista de citas modificada
+            writeSerialized();  // Actualizar la versión serializada
+            return true;  // Devolver true si la cita fue eliminada correctamente
         }
-        return false;
+        return false;  // Si no se encuentra la cita, devolver false
     }
+
 
     @Override
     public String ShowAllNames() {
@@ -70,20 +87,11 @@ public class CitaDAO implements CRUDOperation<CitaDTO, Cita> {
     public ArrayList<CitaDTO> getAll() {
         return DataMapper.listaCitaToCitaDTO(listaCitas);
     }
-    public int generateNewId() {
-        int maxId = 0;
-        for (Cita cita : listaCitas) {
-            if (cita.getId() > maxId) {
-                maxId = cita.getId();
-            }
-        }
-        return maxId + 1;
-    }
 
     @Override
     public boolean add(CitaDTO newData) {
         Cita newCita = DataMapper.CitaDTOToCita(newData);
-        newCita.setId(generateNewId());
+        newCita.setId(generateNewId());  // Asignamos un nuevo ID basado en currentMaxId
         if (find(newCita) == null) {
             listaCitas.add(newCita);
             writeFile();
@@ -93,6 +101,7 @@ public class CitaDAO implements CRUDOperation<CitaDTO, Cita> {
             return false;
         }
     }
+
 
     @Override
     public boolean delete(CitaDTO toDelete) {
@@ -161,4 +170,6 @@ public class CitaDAO implements CRUDOperation<CitaDTO, Cita> {
             listaCitas = (ArrayList<Cita>) content;
         }
     }
+
+
 }
