@@ -42,7 +42,7 @@ import javax.swing.border.Border;
 	        btnCancelarCita = new JButton("cancelar cita");
 	        btnCancelarCita.setBounds(950, 520, 170, 110); 
 	        btnCancelarCita.setOpaque(true);
-	        btnCancelarCita.setActionCommand("VOLVER");
+	        btnCancelarCita.setActionCommand("CANCELARCITA");
 
 	       
 	        

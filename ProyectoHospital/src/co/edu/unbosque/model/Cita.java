@@ -1,8 +1,14 @@
 package co.edu.unbosque.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Cita {
+public class Cita implements Serializable{
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private int id;
 private Date fecha;
 private String hora;
 private String tipoEspecialista;
@@ -11,12 +17,26 @@ public Cita() {
 	// TODO Auto-generated constructor stub
 }
 
-public Cita(Date fecha, String hora, String tipoEspecialista) {
+
+
+public Cita( Date fecha, String hora, String tipoEspecialista) {
 	super();
+	
 	this.fecha = fecha;
 	this.hora = hora;
 	this.tipoEspecialista = tipoEspecialista;
 }
+
+
+public int getId() {
+	return id;
+}
+
+public void setId(int id) {
+	this.id = id;
+}
+
+
 
 public Date getFecha() {
 	return fecha;
@@ -44,7 +64,16 @@ public void setTipoEspecialista(String tipoEspecialista) {
 
 @Override
 public String toString() {
-	return "\n fecha: " + fecha + " \n hora: " + hora + "\n tipoEspecialista: " + tipoEspecialista + "\n";
+    return String.format(
+        "---------------------------\n" +
+        "    Cita: \n" +
+        "---------------------------\n" +
+        "Fecha: %s\n" +
+        "Hora: %s\n" +
+        "Especialista: %s\n" +
+        "---------------------------\n",
+        fecha, hora, tipoEspecialista
+    );
 }
 
 }

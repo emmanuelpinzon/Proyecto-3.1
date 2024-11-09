@@ -4,8 +4,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 
 import co.edu.unbosque.model.CitaDTO;
 import co.edu.unbosque.model.EspecialistaDTO;
@@ -86,13 +88,13 @@ public class Controlador implements ActionListener {
 		vf.getPrincipal().getPanelMenuE().getbtnRegistrarseE().setActionCommand("REGISTRARSE");
 
 		vf.getPrincipal().getPanelRegistroEspecialista().getBtnRegistrarE().addActionListener(this);
-		vf.getPrincipal().getPanelRegistroEspecialista().getBtnRegistrarE().setActionCommand("REGISTRAR");
+		vf.getPrincipal().getPanelRegistroEspecialista().getBtnRegistrarE().setActionCommand("Registrar");
 
 		vf.getPrincipal().getPanelMenuDirectorMedico().getBtnRegistrarseD().addActionListener(this);
 		vf.getPrincipal().getPanelMenuDirectorMedico().getBtnRegistrarseD().setActionCommand("REGISTRARSE");
 
 		vf.getPrincipal().getPanelRegistroDirectorMedico().getBtnRegistrarDM().addActionListener(this);
-		vf.getPrincipal().getPanelRegistroDirectorMedico().getBtnRegistrarDM().setActionCommand("REGISTRAR");
+		vf.getPrincipal().getPanelRegistroDirectorMedico().getBtnRegistrarDM().setActionCommand("Registrar");
 
 		vf.getPrincipal().getPanelMenuPpal().getbtnVolver().addActionListener(this);
 		vf.getPrincipal().getPanelMenuPpal().getbtnVolver().setActionCommand("volver al menu principal desde paciente");
@@ -146,6 +148,12 @@ public class Controlador implements ActionListener {
 		vf.getPrincipal().getPanelAgendarCitaPaciente().getBtnAgregarCita().setActionCommand("agregar cita");
 		;
 
+		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnCancelarCita().addActionListener(this);
+		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnCancelarCita().setActionCommand("cancelar cita paciente");
+		
+		vf.getPrincipal().getPanelCancelarCitaPaciente().getBtnCancelarCita().addActionListener(this);
+		vf.getPrincipal().getPanelCancelarCitaPaciente().getBtnCancelarCita().setActionCommand("CANCELARCITA");
+		
 		vf.getPrincipal().getPanelAgendarCitaPaciente().getBtnVolverCc().addActionListener(this);
 		vf.getPrincipal().getPanelAgendarCitaPaciente().getBtnVolverCc()
 				.setActionCommand("volver de agendar cita paciente a menu principal paciente");
@@ -158,9 +166,7 @@ public class Controlador implements ActionListener {
 		vf.getPrincipal().getPanelReprogramarCitaPaciente().getBtnVolverRr()
 				.setActionCommand("volver de reprogramar cita paciente a menu principal paciente");
 
-		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnCancelarCita().addActionListener(this);
-		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnCancelarCita()
-				.setActionCommand("cancelar cita paciente");
+
 
 		vf.getPrincipal().getPanelCancelarCitaPaciente().getBtnVolverCa().addActionListener(this);
 		vf.getPrincipal().getPanelCancelarCitaPaciente().getBtnVolverCa()
@@ -187,8 +193,7 @@ public class Controlador implements ActionListener {
 				.setActionCommand("volver de aceptar cambio de turno a menu principal");
 
 		vf.getPrincipal().getPanelMenuPrincipalEspecialista().getBtnMostrarCitasProgramadas().addActionListener(this);
-		vf.getPrincipal().getPanelMenuPrincipalEspecialista().getBtnMostrarCitasProgramadas()
-				.setActionCommand("mostrar citas programadas");
+		vf.getPrincipal().getPanelMenuPrincipalEspecialista().getBtnMostrarCitasProgramadas().setActionCommand("mostrar citas programadas");
 
 		vf.getPrincipal().getPanelMostrarCitasProgramadas().getBtnVolverMc().addActionListener(this);
 		vf.getPrincipal().getPanelMostrarCitasProgramadas().getBtnVolverMc()
@@ -289,7 +294,7 @@ public class Controlador implements ActionListener {
 		vf.getPrincipal().getPanelRegistroEspecialista().getNumeroDocumento().setVisible(true);
 		vf.getPrincipal().getPanelRegistroEspecialista().getCorreo().setVisible(true);
 		vf.getPrincipal().getPanelRegistroEspecialista().getContraseña().setVisible(true);
-		vf.getPrincipal().getPanelRegistroEspecialista().getTipoEspecialidad().setVisible(true);
+		vf.getPrincipal().getPanelRegistroEspecialista().getJcbTipoEspecialidad().setVisible(true);
 
 		vf.getPrincipal().getPanelRegistroDirectorMedico().getNombreD().setVisible(true);
 		vf.getPrincipal().getPanelRegistroDirectorMedico().getNumeroDocumentoD().setVisible(true);
@@ -341,6 +346,7 @@ public class Controlador implements ActionListener {
 				vf.getPrincipal().getPanelRegistroPaciente().getCorreo().setVisible(true);
 				vf.getPrincipal().getPanelRegistroPaciente().getContraseña().setVisible(true);
 				vf.getPrincipal().getPanelRegistroPaciente().getJcbGenero().setVisible(true);
+				vf.getPrincipal().getPanelRegistroPaciente().getBtnRegistrarP().setVisible(true);
 
 				vf.getPrincipal().getPanelRegistroPaciente().getImagenRegistroP().setVisible(true);
 
@@ -355,7 +361,7 @@ public class Controlador implements ActionListener {
 				vf.getPrincipal().getPanelRegistroEspecialista().getNumeroDocumento().setVisible(true);
 				vf.getPrincipal().getPanelRegistroEspecialista().getCorreo().setVisible(true);
 				vf.getPrincipal().getPanelRegistroEspecialista().getContraseña().setVisible(true);
-				vf.getPrincipal().getPanelRegistroEspecialista().getTipoEspecialidad().setVisible(true);
+				vf.getPrincipal().getPanelRegistroEspecialista().getJcbTipoEspecialidad().setVisible(true);
 
 				vf.getPrincipal().getPanelRegistroEspecialista().getImagenRegistroE().setVisible(true);
 
@@ -416,43 +422,162 @@ public class Controlador implements ActionListener {
 				inicioSesionD = true;
 			}
 			break;
+		
 		case "REGISTRAR":
 			if (paciente) {
 				String nombre = vf.getPrincipal().getPanelRegistroPaciente().getNombre().getText();
-
 				String correo = vf.getPrincipal().getPanelRegistroPaciente().getCorreo().getText();
-
 				String cedula1 = vf.getPrincipal().getPanelRegistroPaciente().getNumeroDocumento().getText();
-				int cedula = vf.getCon().readInt(cedula1);
-
 				String contrasena1 = vf.getPrincipal().getPanelRegistroPaciente().getContraseña().getText();
-				int contrasena = vf.getCon().readInt(contrasena1);
-
 				String genero = (String) vf.getPrincipal().getPanelRegistroPaciente().getJcbGenero().getSelectedItem();
-
-				mf.getPdao().add(new PacienteDTO(nombre, cedula, correo, contrasena, genero));
-				vf.getCon().mostrarMensajeEmergente("se ha registrado exitosamente");
-			}
-			if (especialista) {
-				String nombre = vf.getPrincipal().getPanelRegistroEspecialista().getNombre().getText();
-
-				String correo1 = vf.getPrincipal().getPanelRegistroEspecialista().getCorreo().getText();
-
-				String cedula = vf.getPrincipal().getPanelRegistroEspecialista().getNumeroDocumento().getText();
-				int cedula2 = vf.getCon().readInt(cedula);
-
-				String contrasena = vf.getPrincipal().getPanelRegistroEspecialista().getContraseña().getText();
-				int contrasena2 = vf.getCon().readInt(contrasena);
-
-				String tipoEspecialista = (String) vf.getPrincipal().getPanelRegistroEspecialista()
-						.getTipoEspecialidad().getSelectedText();
-				mf.getEdao().add(new EspecialistaDTO(nombre, cedula2, correo1, contrasena2, tipoEspecialista));
-				vf.getCon().mostrarMensajeEmergente("se ha registrado exitosamente");
-			}
-if(directorMedico) {
-	
-}
+				int contrasena = vf.getCon().readInt(contrasena1);
+				int cedula = vf.getCon().readInt(cedula1);
+				
+				if(nombre.isEmpty() || correo.isEmpty() || cedula1.isEmpty() || contrasena1.isEmpty() || genero == null) {
+					 vf.getCon().mostrarMensajeEmergente("Todos los campos son obligatorios.");
+				        return;
+				}
+				
+				if (mf.getPdao().add(new PacienteDTO(nombre, cedula,  genero, contrasena, genero))) {
+					vf.getCon().mostrarMensajeEmergente("se ha registrado exitosamente");
+					vf.getPrincipal().getPanelRegistroPaciente().getNombre().setText("");
+		            vf.getPrincipal().getPanelRegistroPaciente().getCorreo().setText("");
+		            vf.getPrincipal().getPanelRegistroPaciente().getNumeroDocumento().setText("");
+		            vf.getPrincipal().getPanelRegistroPaciente().getContraseña().setText("");
+		            vf.getPrincipal().getPanelRegistroPaciente().getJcbGenero().setSelectedIndex(-1); 
+		            vf.getPrincipal().getPanelRegistroPaciente().setVisible(true);
+				} else {
+					 vf.getCon().mostrarMensajeEmergente("Ya está registrado");
+				}
+				}
+			
 			break;
+		case "INICIARSESION":
+			if (paciente) {
+				String documentoIngresado = vf.getPrincipal().getPanelInicioSesionP().getNumeroDocumento().getText();
+				int documentoInt = vf.getCon().readInt(documentoIngresado);
+			    String contrasenaIngresada = vf.getPrincipal().getPanelInicioSesionP().getContraseña().getText();
+			    int contrasenaInt = vf.getCon().readInt(contrasenaIngresada);
+			    
+				if (mf.getPdao().authenticatePatient(documentoInt, contrasenaInt)) {
+			        vf.getCon().mostrarMensajeEmergente("Inicio de sesión exitoso");
+			        
+			    } else {
+			        vf.getCon().mostrarMensajeEmergente("Correo o contraseña incorrectos");
+			    }
+			}
+		
+
+		case "agendar cita paciente":
+
+			vf.getPrincipal().setTitle("MENU PRINCIPAL");
+
+			vf.getPrincipal().getPanelMenuPrincipalPaciente().getImagenMenuPpalP().setVisible(false);
+			vf.getPrincipal().getPanelAgendarCitaPaciente().getImagenAgendarCitaP().setVisible(true);
+			vf.getPrincipal().getPanelAgendarCitaPaciente().getJcbtipoEspecialista().setVisible(true);
+			vf.getPrincipal().getPanelAgendarCitaPaciente().getJcbHora().setVisible(true);
+			vf.getPrincipal().getPanelAgendarCitaPaciente().getFechaCita().setVisible(true);
+			vf.getPrincipal().getPanelAgendarCitaPaciente().getBtnAgregarCita().setVisible(true);
+
+			vf.getPrincipal().mostrarPanelAgendarCitaPaciente();
+
+			menuPpalP = false;
+			agendarCitaP = true;
+
+			break;
+		case "agregar cita":
+			vf.getPrincipal().getPanelAgendarCitaPaciente().getImagenAgendarCitaP().setVisible(true);
+			// En tu controlador o donde manejes la lógica de agendar cita
+			java.util.Date fechaSeleccionada = vf.getPrincipal().getPanelAgendarCitaPaciente().getFechaCita().getDate();
+			SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
+			String fecha = formatoFecha.format(fechaSeleccionada);
+
+			String hora = (String) vf.getPrincipal().getPanelAgendarCitaPaciente().getJcbHora().getSelectedItem();
+
+			String tipoEspecialista = (String) vf.getPrincipal().getPanelAgendarCitaPaciente().getJcbtipoEspecialista()
+			        .getSelectedItem();
+
+			if (tipoEspecialista == null || fechaSeleccionada == null || hora == null) {
+			    vf.getCon().mostrarMensajeEmergente("Todos los campos son obligatorios.");
+			    return;
+			}
+
+			// Crear nueva cita con constructor sin ID
+			CitaDTO nuevaCita = new CitaDTO(fechaSeleccionada, hora, tipoEspecialista);
+			int idGenerado = mf.getCdao().generateNewId(); // Obtener nuevo ID
+			nuevaCita.setId(idGenerado);
+
+			if (mf.getCdao().add(nuevaCita)) {
+			    vf.getCon().mostrarMensajeEmergente("Cita agendada con éxito. ID de la cita: " + idGenerado);
+			} else {
+			    vf.getCon().mostrarMensajeEmergente("No se pudo agendar la cita");
+			}
+			break;
+		case "cancelar cita paciente":
+			vf.getPrincipal().setTitle("MENU PRINCIPAL");
+
+			vf.getPrincipal().getPanelMenuPrincipalPaciente().getImagenMenuPpalP().setVisible(false);
+			vf.getPrincipal().getPanelCancelarCitaPaciente().getImagenCancelarCitaP().setVisible(true);
+
+			vf.getPrincipal().mostrarPanelCancelarCitaPaciente();
+
+			menuPpalP = false;
+			cancelarCitaP = true;
+			break;
+			
+		case "CANCELARCITA":
+		    String idStr = vf.getCon().leerInputEliminar("Ingrese el ID de la cita a cancelar:");
+		    
+		    if (idStr == null || idStr.trim().isEmpty()) {
+		        vf.getCon().mostrarError("Debe ingresar un ID válido");
+		        break;
+		    }
+		    
+		    try {
+		        int idCita = Integer.parseInt(idStr);
+		        ArrayList<CitaDTO> todasLasCitas = mf.getCdao().getAll();
+		        CitaDTO citaAEliminar = null;
+		        
+		        for(CitaDTO cita : todasLasCitas) {
+		            if(cita.getId() == idCita) {
+		                citaAEliminar = cita;
+		                break;
+		            }
+		        }
+		        
+		        if(citaAEliminar != null) {
+		            // Mostrar mensaje de confirmación
+		            int confirmar = JOptionPane.showConfirmDialog(null, 
+		                "¿Está seguro que desea cancelar esta cita?\n" +
+		                "ID: " + citaAEliminar.getId() + "\n" +
+		                "Fecha: " + citaAEliminar.getFecha() + "\n" +
+		                "Hora: " + citaAEliminar.getHora() + "\n" +
+		                "Especialista: " + citaAEliminar.getTipoEspecialista(),
+		                "Confirmar cancelación",
+		                JOptionPane.YES_NO_OPTION,
+		                JOptionPane.WARNING_MESSAGE);
+		                
+		            if(confirmar == JOptionPane.YES_OPTION) {
+		                if(mf.getCdao().delete(citaAEliminar)) {
+		                    vf.getCon().mostrarMensajeEmergente("La cita ha sido cancelada exitosamente");
+		                } else {
+		                    vf.getCon().mostrarError("Hubo un error al intentar cancelar la cita");
+		                }
+		            }
+		        } else {
+		            vf.getCon().mostrarAlerta("No se encontró ninguna cita con el ID: " + idCita);
+		        }
+		        
+		    } catch(NumberFormatException e1) {
+		        vf.getCon().mostrarError("El ID debe ser un número entero válido");
+		    }
+		    break;
+		case "mostrar citas y examenes programados paciente":
+			
+			vf.getCon().mostrarMensajeEmergenteConScroll(mf.getCdao().ShowAll());
+
+			break;
+		
 		case "volver al menu paciente desde registro":
 
 			vf.getPrincipal().setTitle("MENU PRINCIPAL");
@@ -466,6 +591,7 @@ if(directorMedico) {
 			menuP = true;
 
 			break;
+
 		case "menu principal de paciente":
 
 			vf.getPrincipal().setTitle("MENU PRINCIPAL");
@@ -485,46 +611,18 @@ if(directorMedico) {
 			menuPpalP = true;
 
 			break;
-		case "agendar cita paciente":
+		case "volver de agendar cita paciente a menu principal paciente":
 
 			vf.getPrincipal().setTitle("MENU PRINCIPAL");
 
-			vf.getPrincipal().getPanelMenuPrincipalPaciente().getImagenMenuPpalP().setVisible(false);
-			vf.getPrincipal().getPanelAgendarCitaPaciente().getImagenAgendarCitaP().setVisible(true);
-			vf.getPrincipal().getPanelAgendarCitaPaciente().getJcbtipoEspecialista().setVisible(true);
-			vf.getPrincipal().getPanelAgendarCitaPaciente().getJcbHora().setVisible(true);
-			vf.getPrincipal().getPanelAgendarCitaPaciente().getFechaCita().setVisible(true);
-			vf.getPrincipal().getPanelAgendarCitaPaciente().getBtnAgregarCita().setVisible(true);
-			
+			vf.getPrincipal().getPanelAgendarCitaPaciente().getImagenAgendarCitaP().setVisible(false);
+			vf.getPrincipal().getPanelMenuPrincipalPaciente().getImagenMenuPpalP().setVisible(true);
 
-			vf.getPrincipal().mostrarPanelAgendarCitaPaciente();
-			
+			vf.getPrincipal().mostrarPanelMenuPrincipalPaciente();
 
-			menuPpalP = false;
-			agendarCitaP = true;
+			agendarCitaP = false;
+			menuPpalP = true;
 
-			break;
-		case "agregar cita":
-			vf.getPrincipal().getPanelAgendarCitaPaciente().getImagenAgendarCitaP().setVisible(true);
-			 java.util.Date fechaSeleccionada = vf.getPrincipal().getPanelAgendarCitaPaciente().getFechaCita().getDate();
-            SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
-            String fecha = formatoFecha.format(fechaSeleccionada);
-            
-            String hora = (String) vf.getPrincipal().getPanelAgendarCitaPaciente().getJcbHora().getSelectedItem();
-            
-            String tipoEspecialista = (String) vf.getPrincipal().getPanelAgendarCitaPaciente().getJcbtipoEspecialista().getSelectedItem();
-            
-            if (tipoEspecialista == null || fechaSeleccionada == null || hora == null) {
-                vf.getCon().mostrarMensajeEmergente("\"Todos los campos son obligatorios.");
-                return;
-            }
-
-           
-           mf.getCdao().add(new CitaDTO(fechaSeleccionada, hora, tipoEspecialista));
-
-            vf.getCon().mostrarMensajeEmergente("cita agendada");
-            
-         
 			break;
 		}
 	}

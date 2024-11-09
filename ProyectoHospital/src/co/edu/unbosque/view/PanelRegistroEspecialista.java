@@ -2,10 +2,6 @@ package co.edu.unbosque.view;
 
 import java.awt.Image;
 
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.*;
 import java.awt.*;
@@ -14,7 +10,8 @@ import java.awt.*;
 public class PanelRegistroEspecialista extends JPanel {
 
 	
-	private JTextField nombre, numeroDocumento, correo, contraseña, tipoEspecialidad;
+	private JTextField nombre, numeroDocumento, correo, contraseña;
+	private JComboBox<String> jcbTipoEspecialidad;
     private JButton  btnRegistrarE, btnVolverEs;
     private JLabel imagenRegistroE;
     
@@ -45,11 +42,15 @@ public class PanelRegistroEspecialista extends JPanel {
 		contraseña.setBounds(930, 507, 300, 55);
 		contraseña.setOpaque(true);
 		
-		tipoEspecialidad = new JPasswordField();
-		tipoEspecialidad.setBounds(530, 520, 260, 55);
-		tipoEspecialidad.setOpaque(true);
 
-    
+
+		String[] especialidad = {"Cirugía", "Oncología", "Dermatología", "Neumología", "Cardiología", "Medicina Interna" };
+		DefaultComboBoxModel<String> modelo = new DefaultComboBoxModel<>(especialidad);
+
+		jcbTipoEspecialidad = new JComboBox<>(modelo);
+		jcbTipoEspecialidad.setBounds(530, 520, 260, 55);
+		jcbTipoEspecialidad.setFont(new Font("Arial", Font.PLAIN, 16));
+		
 
         // Botón "Registrarse"
 		
@@ -78,7 +79,7 @@ public class PanelRegistroEspecialista extends JPanel {
        	add(numeroDocumento);
        	add(correo);
        	add(contraseña);
-       	add(tipoEspecialidad);
+       	add(jcbTipoEspecialidad);
         add(btnRegistrarE);
         add(btnVolverEs);
         
@@ -86,14 +87,7 @@ public class PanelRegistroEspecialista extends JPanel {
         add(imagenRegistroE);
         
         
-        setComponentZOrder(nombre, 0);
-        setComponentZOrder(numeroDocumento, 1);
-        setComponentZOrder(correo, 2);
-        setComponentZOrder(contraseña, 3);
-        setComponentZOrder(tipoEspecialidad, 4);
-        setComponentZOrder(btnRegistrarE, 5);
-        setComponentZOrder(btnVolverEs, 6);
-        setComponentZOrder(imagenRegistroE, 7);
+
            }
 
 
@@ -137,13 +131,15 @@ public class PanelRegistroEspecialista extends JPanel {
 	}
 
 
-	public JTextField getTipoEspecialidad() {
-		return tipoEspecialidad;
+
+
+	public JComboBox<String> getJcbTipoEspecialidad() {
+		return jcbTipoEspecialidad;
 	}
 
 
-	public void setTipoEspecialidad(JTextField tipoEspecialidad) {
-		this.tipoEspecialidad = tipoEspecialidad;
+	public void setJcbTipoEspecialidad(JComboBox<String> jcbTipoEspecialidad) {
+		this.jcbTipoEspecialidad = jcbTipoEspecialidad;
 	}
 
 

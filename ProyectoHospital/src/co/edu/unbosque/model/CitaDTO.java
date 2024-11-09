@@ -3,20 +3,31 @@ package co.edu.unbosque.model;
 import java.util.Date;
 
 public class CitaDTO {
+	private int id;
 	private Date fecha;
 	private String hora;
 	private String tipoEspecialista;
-	
+
 	public CitaDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public CitaDTO(Date fecha, String hora, String tipoEspecialista) {
+	public CitaDTO( Date fecha, String hora, String tipoEspecialista) {
 		super();
+
 		this.fecha = fecha;
 		this.hora = hora;
 		this.tipoEspecialista = tipoEspecialista;
 	}
+
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	public Date getFecha() {
 		return fecha;
 	}
@@ -43,7 +54,16 @@ public class CitaDTO {
 
 	@Override
 	public String toString() {
-		return "\n fecha: " + fecha + " \n hora: " + hora + "\n tipoEspecialista: " + tipoEspecialista + "\n";
+	    return String.format(
+	        "---------------------------\n" +
+	        "    Cita: \n" +
+	        "---------------------------\n" +
+	        "Fecha: %s\n" +
+	        "Hora: %s\n" +
+	        "Especialista: %s\n" +
+	        "---------------------------\n",
+	        fecha, hora, tipoEspecialista
+	    );
 	}
 
 }

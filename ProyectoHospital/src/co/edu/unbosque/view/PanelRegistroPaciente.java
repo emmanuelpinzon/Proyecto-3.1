@@ -13,7 +13,6 @@ import java.awt.*;
 
 public class PanelRegistroPaciente extends JPanel {
 
-	
 	private JTextField nombre, numeroDocumento, correo, contraseña;
 	private JComboBox<String> jcbGenero;
     private JButton  btnRegistrarP, btnVolverP1;
@@ -30,15 +29,15 @@ public class PanelRegistroPaciente extends JPanel {
     
         
        
-		nombre= new JTextField("nombre");
+		nombre= new JTextField();
 		nombre.setBounds(155, 345, 300, 60);
 		nombre.setOpaque(true);
 		
-		numeroDocumento = new JTextField("cedula");
+		numeroDocumento = new JTextField();
 		numeroDocumento.setBounds(160, 507, 300, 55);
 		numeroDocumento.setOpaque(true);
 
-		correo = new JTextField("correo");
+		correo = new JTextField();
 		correo.setBounds(780, 345, 300, 62);
 		correo.setOpaque(true);
 		
@@ -52,22 +51,14 @@ public class PanelRegistroPaciente extends JPanel {
 		jcbGenero = new JComboBox<>(modelo);
 		jcbGenero.setBounds(500, 500, 280, 50);
 		jcbGenero.setFont(new Font("Arial", Font.PLAIN, 16));
-		add(jcbGenero);
-
-		
-
-		setVisible(true);
 
 	
-
-    
-
         // Botón "Registrarse"
 		
         btnRegistrarP = new JButton("Registrar");
         btnRegistrarP.setBounds(640, 600, 200, 50); // Posición ajustada
         btnRegistrarP.setOpaque(true);
-        btnRegistrarP.setActionCommand("REGISTRAR");
+        btnRegistrarP.setActionCommand("Registrar");
 
         // Botón "Volver"
         btnVolverP1 = new JButton("Volver");
@@ -94,16 +85,8 @@ public class PanelRegistroPaciente extends JPanel {
         add(btnVolverP1);
         
         add(imagenRegistroP);
-        
-        
-        setComponentZOrder(nombre, 0);
-        setComponentZOrder(numeroDocumento, 1);
-        setComponentZOrder(correo, 2);
-        setComponentZOrder(contraseña, 3);
-        setComponentZOrder(jcbGenero, 4);
-        setComponentZOrder(btnRegistrarP, 5);
-        setComponentZOrder(btnVolverP1, 6);
-        setComponentZOrder(imagenRegistroP, 7);
+        setVisible(true);
+
            }
 
 

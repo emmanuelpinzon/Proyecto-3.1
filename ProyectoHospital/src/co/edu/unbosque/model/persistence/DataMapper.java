@@ -69,11 +69,13 @@ public static ArrayList<Especialista>listaEspecialistaDTOToEspecialista(ArrayLis
 public static Cita CitaDTOToCita(CitaDTO dto) {
 	Cita entity;
 	entity= new Cita(dto.getFecha(), dto.getHora(), dto.getTipoEspecialista());
+	 entity.setId(dto.getId());
 	return entity;
 }
 public static CitaDTO CitaToCitaDTO(Cita entity) {
 	CitaDTO  dto;
 	dto= new CitaDTO(entity.getFecha(), entity.getHora(), entity.getTipoEspecialista());
+	dto.setId(entity.getId());
 	return dto;
 }
 public static ArrayList<CitaDTO> listaCitaToCitaDTO(ArrayList<Cita>listaEntity){

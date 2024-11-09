@@ -18,7 +18,15 @@ public class PacienteDAO implements CRUDOperation<PacienteDTO, Paciente> {
 	        readSerialized();
 		}
 
-	    
+	    public boolean authenticatePatient(int cedula, int contrasena) {
+	        for (Paciente paciente : listaPacientes) {
+	            
+	            if (paciente.getCedula()==cedula && paciente.getContraseña() == contrasena) {
+	                return true; 
+	            }
+	        }
+	        return false;
+	    }
 
 	    @Override
 	    public String ShowAll() {
@@ -82,9 +90,9 @@ public class PacienteDAO implements CRUDOperation<PacienteDTO, Paciente> {
 	    public Paciente find(Paciente toFind) {
 	        Paciente found = null;
 	        if (!listaPacientes.isEmpty()) {
-	            for (Paciente especialista : listaPacientes) {
-	                if (especialista.getNombre().toLowerCase().equals(toFind.getNombre().toLowerCase())) {
-	                    found = especialista;
+	            for (Paciente paciente : listaPacientes) {
+	                if (paciente.getNombre().toLowerCase().equals(toFind.getNombre().toLowerCase())) {
+	                    found = paciente;
 	                    return found;
 	                }
 	            }
@@ -111,12 +119,12 @@ public class PacienteDAO implements CRUDOperation<PacienteDTO, Paciente> {
 	     */
 	    public void writeFile() {
 	        String content = "";
-	        for (Paciente especialista : listaPacientes) {
-	            content += especialista.getNombre() + "; ";
-	            content += especialista.getCedula() + "; ";
-	            content += especialista.getCorreo() + "; ";
-	            content += especialista.getContraseña() + "; ";
-	            content += especialista.getGenero() ;
+	        for (Paciente paciente: listaPacientes) {
+	            content += paciente.getNombre() + "; ";
+	            content += paciente.getCedula() + "; ";
+	            content += paciente.getCorreo() + "; ";
+	            content += paciente.getContraseña() + "; ";
+	            content += paciente.getGenero() ;
 	            content += "\n";
 	        }
 	        FileHandler.writeFile(FILE_NAME, content);

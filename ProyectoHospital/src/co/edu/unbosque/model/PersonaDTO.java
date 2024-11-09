@@ -1,6 +1,9 @@
 package co.edu.unbosque.model;
 
+import java.io.Serializable;
+
 public class PersonaDTO {
+
 	private String nombre;
 	private int cedula;
 	private String correo;

@@ -35,8 +35,8 @@ import com.toedter.calendar.JDateChooser;
 	    
 	        
 	       
-			String[] genero = { "Cirugía", "Oncología", "Dermatología", "Neumología", "Cardiología", "Medicina Interna" };
-			DefaultComboBoxModel<String> modelo = new DefaultComboBoxModel<>(genero);
+			String[] especialidad = { "Cirugía", "Oncología", "Dermatología", "Neumología", "Cardiología", "Medicina Interna" };
+			DefaultComboBoxModel<String> modelo = new DefaultComboBoxModel<>(especialidad);
 
 			jcbtipoEspecialista = new JComboBox<>(modelo);
 			jcbtipoEspecialista.setBounds(500, 550, 280, 50);
@@ -53,6 +53,7 @@ import com.toedter.calendar.JDateChooser;
 	        fechaCita = new JDateChooser();
 	        fechaCita.setBounds(300, 350, 280, 50);
 	        fechaCita.setDateFormatString("dd-MM-yyyy"); 
+	        
 
 
 	        

@@ -31,6 +31,27 @@ public class CitaDAO implements CRUDOperation<CitaDTO, Cita> {
             return rta;
         }
     }
+    public Cita findById(int id) {
+        if (!listaCitas.isEmpty()) {
+            for (Cita cita : listaCitas) {
+                if (cita.getId() == id) {
+                    return cita;
+                }
+            }
+        }
+        return null;
+    }
+
+    public boolean deleteById(int id) {
+        Cita found = findById(id);
+        if (found != null) {
+            listaCitas.remove(found);
+            writeFile();
+            writeSerialized();
+            return true;
+        }
+        return false;
+    }
 
     @Override
     public String ShowAllNames() {
@@ -49,11 +70,22 @@ public class CitaDAO implements CRUDOperation<CitaDTO, Cita> {
     public ArrayList<CitaDTO> getAll() {
         return DataMapper.listaCitaToCitaDTO(listaCitas);
     }
+    public int generateNewId() {
+        int maxId = 0;
+        for (Cita cita : listaCitas) {
+            if (cita.getId() > maxId) {
+                maxId = cita.getId();
+            }
+        }
+        return maxId + 1;
+    }
 
     @Override
     public boolean add(CitaDTO newData) {
-        if (find(DataMapper.CitaDTOToCita(newData)) == null) {
-            listaCitas.add(DataMapper.CitaDTOToCita(newData));
+        Cita newCita = DataMapper.CitaDTOToCita(newData);
+        newCita.setId(generateNewId());
+        if (find(newCita) == null) {
+            listaCitas.add(newCita);
             writeFile();
             writeSerialized();
             return true;
@@ -108,7 +140,7 @@ public class CitaDAO implements CRUDOperation<CitaDTO, Cita> {
     public void writeFile() {
         String content = "";
         for (Cita cita : listaCitas) {
-
+        	content += cita.getId() + "; ";
             content += cita.getFecha() + "; ";
             content += cita.getHora() + "; ";
             content += cita.getTipoEspecialista() ;
