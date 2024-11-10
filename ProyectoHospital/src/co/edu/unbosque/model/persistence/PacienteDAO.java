@@ -18,16 +18,18 @@ public class PacienteDAO implements CRUDOperation<PacienteDTO, Paciente> {
 	        readSerialized();
 		}
 
-	    public boolean authenticatePatient(int cedula, int contrasena) {
+	    public Paciente authenticatePatient(int cedula, int contrasena) {
+	        readSerialized(); // Carga la lista de pacientes desde el archivo serializado
 	        for (Paciente paciente : listaPacientes) {
-	            
-	            if (paciente.getCedula()==cedula && paciente.getContraseña() == contrasena) {
-	                return true; 
+	            if (paciente.getCedula() == cedula && paciente.getContraseña() == contrasena) {
+	                return paciente; // Devuelve el paciente autenticado
 	            }
 	        }
-	        return false;
+	        return null; // Retorna null si no encuentra al paciente
 	    }
 
+
+	    
 	    @Override
 	    public String ShowAll() {
 	        String rta = "";

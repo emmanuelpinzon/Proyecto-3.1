@@ -10,8 +10,10 @@ import javax.swing.JComboBox;
 import javax.swing.JOptionPane;
 
 import co.edu.unbosque.model.CitaDTO;
+import co.edu.unbosque.model.Especialista;
 import co.edu.unbosque.model.EspecialistaDTO;
 import co.edu.unbosque.model.ModelFacade;
+import co.edu.unbosque.model.Paciente;
 import co.edu.unbosque.model.PacienteDTO;
 import co.edu.unbosque.util.exception.ExceptionChecker;
 import co.edu.unbosque.util.exception.InvalidEmailException;
@@ -23,6 +25,8 @@ public class Controlador implements ActionListener {
 
 	private ViewFacade vf;
 	private ModelFacade mf;
+	private Paciente pacienteActual;
+	private Especialista especialistaActual;
 
 	private boolean paciente = false;
 	private boolean especialista = false;
@@ -101,7 +105,7 @@ public class Controlador implements ActionListener {
 		vf.getPrincipal().getPanelMenuDirectorMedico().getBtnRegistrarseD().setActionCommand("REGISTRARSE");
 
 		vf.getPrincipal().getPanelRegistroDirectorMedico().getBtnRegistrarDM().addActionListener(this);
-		vf.getPrincipal().getPanelRegistroDirectorMedico().getBtnRegistrarDM().setActionCommand("Registrar");
+		vf.getPrincipal().getPanelRegistroDirectorMedico().getBtnRegistrarDM().setActionCommand("REGISTRARDM");
 
 		vf.getPrincipal().getPanelMenuPpal().getbtnVolver().addActionListener(this);
 		vf.getPrincipal().getPanelMenuPpal().getbtnVolver().setActionCommand("volver al menu principal desde paciente");
@@ -134,7 +138,7 @@ public class Controlador implements ActionListener {
 
 		vf.getPrincipal().getPanelInicioSesionE().getBtnIniciarSesionE().addActionListener(this);
 		vf.getPrincipal().getPanelInicioSesionE().getBtnIniciarSesionE()
-				.setActionCommand("INICIARSESIONE");
+				.setActionCommand("INICIARSESION");
 
 		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnVolverPP().addActionListener(this);
 		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnVolverPP()
@@ -244,7 +248,7 @@ public class Controlador implements ActionListener {
 
 		vf.getPrincipal().getPanelRegistroDirectorMedico().getBtnRegistrarDM().addActionListener(this);
 		vf.getPrincipal().getPanelRegistroDirectorMedico().getBtnRegistrarDM()
-				.setActionCommand("menu principal de director medico");
+				.setActionCommand("REGISTRAR DIRECTOR");
 
 		vf.getPrincipal().getPanelInicioSesionDirectorMedico().getBtnIniciarSesionD().addActionListener(this);
 		vf.getPrincipal().getPanelInicioSesionDirectorMedico().getBtnIniciarSesionD()
@@ -354,16 +358,17 @@ public class Controlador implements ActionListener {
 				vf.getPrincipal().getPanelRegistroPaciente().getImagenRegistroP().setVisible(true);
 
 				vf.getPrincipal().mostrarPanelRegistroPaciente();
-
-				registroP = true;
+				
 				vf.getPrincipal().getPanelRegistroPaciente().getNombre().setText("");
 	            vf.getPrincipal().getPanelRegistroPaciente().getCorreo().setText("");
 	            vf.getPrincipal().getPanelRegistroPaciente().getNumeroDocumento().setText("");
 	            vf.getPrincipal().getPanelRegistroPaciente().getContraseña().setText("");
 	            vf.getPrincipal().getPanelRegistroPaciente().getJcbGenero().setSelectedIndex(-1); 
+	            
+	            registroP = true;
 
 			}
-			if (especialista == true) {
+			 if (especialista == true) {
 				vf.getPrincipal().setTitle("REGISTRAR ESPECIALISTA");
 
 				vf.getPrincipal().getPanelRegistroEspecialista().getNombre().setVisible(true);
@@ -375,10 +380,16 @@ public class Controlador implements ActionListener {
 				vf.getPrincipal().getPanelRegistroEspecialista().getImagenRegistroE().setVisible(true);
 
 				vf.getPrincipal().mostrarPanelRegistroEspecialista();
+				
+				vf.getPrincipal().getPanelRegistroEspecialista().getNombre().setText("");
+				vf.getPrincipal().getPanelRegistroEspecialista().getCorreo().setText("");
+				vf.getPrincipal().getPanelRegistroEspecialista().getNumeroDocumento().setText("");
+				vf.getPrincipal().getPanelRegistroEspecialista().getContraseña().setText("");
+				vf.getPrincipal().getPanelRegistroEspecialista().getJcbTipoEspecialidad().setSelectedIndex(-1);
 
 				registroE = true;
 			}
-			if (directorMedico == true) {
+			 if (directorMedico == true) {
 				vf.getPrincipal().setTitle("REGISTRAR DIRECTOR MEDICO");
 
 				vf.getPrincipal().getPanelRegistroDirectorMedico().getNombreD().setVisible(true);
@@ -389,6 +400,12 @@ public class Controlador implements ActionListener {
 				vf.getPrincipal().getPanelRegistroDirectorMedico().getImagenRegistroDM().setVisible(true);
 
 				vf.getPrincipal().mostrarPanelRegistroDirectorMedico();
+				
+				vf.getPrincipal().getPanelRegistroDirectorMedico().getNombreD().setText("");
+				vf.getPrincipal().getPanelRegistroDirectorMedico().getNumeroDocumentoD().setText("");
+				vf.getPrincipal().getPanelRegistroDirectorMedico().getCorreoD().setText("");
+				vf.getPrincipal().getPanelRegistroDirectorMedico().getContraseñaD().setText("");
+				
 
 				registroD = true;
 			}
@@ -406,7 +423,7 @@ public class Controlador implements ActionListener {
 
 				inicioSesionP = true;
 			}
-			if (especialista == true) {
+			else if (especialista == true) {
 				vf.getPrincipal().setTitle("INICIAR SESION ESPECIALISTA");
 
 				vf.getPrincipal().getPanelInicioSesionE().getNumeroDocumento().setVisible(true);
@@ -418,7 +435,7 @@ public class Controlador implements ActionListener {
 
 				inicioSesionE = true;
 			}
-			if (directorMedico == true) {
+			else if (directorMedico == true) {
 				vf.getPrincipal().setTitle("INICIAR SESION DIRECTOR");
 
 				vf.getPrincipal().getPanelInicioSesionDirectorMedico().getNumeroDocumentoD().setVisible(true);
@@ -458,12 +475,9 @@ public class Controlador implements ActionListener {
 				mf.getPdao().add(new PacienteDTO(nombre, cedula,  correo, contrasena, genero));
 				vf.getCon().mostrarMensajeEmergente("registrado exitsamente");
 
-				
-
 			}
 			
-			if(especialista==true) {
-				System.out.println("hola");
+			 if(especialista==true) {
 				String nombre1 = vf.getPrincipal().getPanelRegistroEspecialista().getNombre().getText();
 				ExceptionChecker.checkName(nombre1);
 				String correo2 = vf.getPrincipal().getPanelRegistroEspecialista().getCorreo().getText();
@@ -483,10 +497,32 @@ public class Controlador implements ActionListener {
 				}
 				mf.getEdao().add(new EspecialistaDTO(nombre1, cedula3, correo2, contrasena3, tipoEspecialista));
 					vf.getCon().mostrarMensajeEmergente("se ha registrado exitosamente");
-					
-
 			
 			}
+			
+			 if(directorMedico ==true) {
+				
+				String nombre3 = vf.getPrincipal().getPanelRegistroDirectorMedico().getNombreD().getText();
+				ExceptionChecker.checkName(nombre3);
+				String correo4 = vf.getPrincipal().getPanelRegistroDirectorMedico().getCorreoD().getText();
+				ExceptionChecker.checkEmail(correo4);
+				String cedula3 = vf.getPrincipal().getPanelRegistroDirectorMedico().getNumeroDocumentoD().getText();
+				System.out.println("exception checker");
+				String contrasena3 = vf.getPrincipal().getPanelRegistroDirectorMedico().getContraseñaD().getText();
+				int contrasena4 =Integer.parseInt(contrasena3); 
+				ExceptionChecker.checkNegativeNumber(contrasena4);
+				int cedula4 = Integer.parseInt(cedula3);
+				ExceptionChecker.checkNegativeNumber(cedula4);
+				
+				if(nombre3.isEmpty() || correo4.isEmpty() || cedula3.isEmpty() || contrasena3.isEmpty() ) {
+					 vf.getCon().mostrarMensajeEmergente("Todos los campos son obligatorios.");
+				        return;
+				}
+				mf.getEdao().add(new EspecialistaDTO(nombre3, cedula4, correo4, contrasena4 ));
+					vf.getCon().mostrarMensajeEmergente("se ha registrado exitosamente");
+			
+			}
+				
 			}catch(NameNotValidException e4) {
 				vf.getCon().mostrarAlerta(e4.getMessage());
 			}catch(InvalidEmailException e5) {
@@ -498,24 +534,61 @@ public class Controlador implements ActionListener {
 			break;
 
 		case "INICIARSESION":
-			try {
+		    try {
 		        if (paciente) {
-		           
 		            String documentoIngresado = vf.getPrincipal().getPanelInicioSesionP().getNumeroDocumento().getText();
-		            int documentoInt = Integer.parseInt(documentoIngresado); 
+		            int documentoInt = Integer.parseInt(documentoIngresado);
 
 		            String contrasenaIngresada = vf.getPrincipal().getPanelInicioSesionP().getContraseña().getText();
-		            int contrasenaInt = Integer.parseInt(contrasenaIngresada); 
+		            int contrasenaInt = Integer.parseInt(contrasenaIngresada);
+
 		            
-		            if (mf.getPdao().authenticatePatient(documentoInt, contrasenaInt)) {
+		            Paciente pacienteAutenticado = mf.getPdao().authenticatePatient(documentoInt, contrasenaInt);
+		            if (pacienteAutenticado != null) {
 		                vf.getCon().mostrarMensajeEmergente("Inicio de sesión exitoso");
 		                vf.getPrincipal().mostrarPanelMenuPrincipalPaciente();
-		                paciente = true; 
+		                pacienteActual = pacienteAutenticado; // Asigna el paciente autenticado
 		            } else {
 		                vf.getCon().mostrarMensajeEmergente("Documento o contraseña incorrectos");
 		            }
 		        }
-		    }  catch (NumberFormatException e1) {
+		   
+		    
+
+		        if (especialista) {
+		        	String tipoEspecialista=(String) vf.getPrincipal().getPanelInicioSesionE().getJcbTipoEspecialista().getSelectedItem();
+		        	String documentoIngresado1 = vf.getPrincipal().getPanelInicioSesionE().getNumeroDocumento().getText();
+		        	int documentoInt1 = Integer.parseInt(documentoIngresado1);
+		        	
+		        	String contrasenaIngresada1 = vf.getPrincipal().getPanelInicioSesionE().getContraseña().getText();
+		        	 int contrasenaInt1 = Integer.parseInt(contrasenaIngresada1);
+		        	 Especialista especialistaAutenticado =mf.getEdao().authenticateEspecialista(tipoEspecialista, documentoInt1, contrasenaInt1);
+		        	 if(especialistaAutenticado!=null) {
+		        		 vf.getCon().mostrarMensajeEmergente("Inicio de sesión exitoso");
+		        		 vf.getPrincipal().getPanelMenuPrincipalEspecialista();
+		        		 especialistaActual= especialistaAutenticado;
+		        	 }else {
+		        		 vf.getCon().mostrarMensajeEmergente("Documento o contraseña incorrectos");
+		        	 }
+		        	 
+		        }
+			if (directorMedico) {
+				String documentoIngresado2 = vf.getPrincipal().getPanelInicioSesionE().getNumeroDocumento().getText();
+	        	int documentoInt2 = Integer.parseInt(documentoIngresado2);
+	        	
+	        	String contrasenaIngresada2 = vf.getPrincipal().getPanelInicioSesionE().getContraseña().getText();
+	        	 int contrasenaInt2 = Integer.parseInt(contrasenaIngresada2);
+	        	 if(mf.getDmdao().authenticatedirectorMedico(documentoInt2, contrasenaInt2)) {
+	        		 vf.getCon().mostrarMensajeEmergente("Inicio de sesión exitoso");
+	        		 vf.getPrincipal().mostrarPanelMenuPrincipalDirectorMedico();
+	        		directorMedico = true;
+	        	 }else {
+	        		 vf.getCon().mostrarMensajeEmergente("Documento o contraseña incorrectos");
+	        	 }
+	        	 
+			}
+			
+			}  catch (NumberFormatException e1) {
 		    	vf.getCon().mostrarAlerta(e1.getMessage());
 		    }
 		    break;
@@ -540,47 +613,45 @@ public class Controlador implements ActionListener {
 
 			break;
 		case "agregar cita":
-		    vf.getPrincipal().getPanelAgendarCitaPaciente().getImagenAgendarCitaP().setVisible(true);
+		    // Verifica que el paciente actual esté autenticado
+		    if (pacienteActual == null) {
+		        vf.getCon().mostrarMensajeEmergente("Debe autenticarse primero.");
+		        return;
+		    }
 
-		    // Obtener la fecha seleccionada
+		    // Obtener los datos de la cita
 		    java.util.Date fechaSeleccionada = vf.getPrincipal().getPanelAgendarCitaPaciente().getFechaCita().getDate();
 		    SimpleDateFormat formatoFecha = new SimpleDateFormat("dd-MM-yyyy");
 		    String fecha = formatoFecha.format(fechaSeleccionada);
 
-		    // Obtener la hora y el tipo de especialista
 		    String hora = (String) vf.getPrincipal().getPanelAgendarCitaPaciente().getJcbHora().getSelectedItem();
 		    String tipoEspecialista = (String) vf.getPrincipal().getPanelAgendarCitaPaciente().getJcbtipoEspecialista().getSelectedItem();
 
-		    // Verificar si todos los campos están completos
 		    if (tipoEspecialista == null || fechaSeleccionada == null || hora == null) {
 		        vf.getCon().mostrarMensajeEmergente("Todos los campos son obligatorios.");
 		        return;
 		    }
 
-		    // Crear nueva cita con constructor sin ID
+		    // Crear nueva cita
 		    CitaDTO nuevaCita = new CitaDTO(fechaSeleccionada, hora, tipoEspecialista);
-		    int idGenerado = mf.getCdao().generateNewId(); // Obtener nuevo ID
+		    int idGenerado = mf.getCdao().generateNewId();
 		    nuevaCita.setId(idGenerado);
 
 		    if (mf.getCdao().add(nuevaCita)) {
-		        vf.getCon().mostrarMensajeEmergente("Cita agendada con éxito. ID de la cita: " + idGenerado);
-
 		        // Enviar correo de confirmación
-		        String emailDestino = "emmanuelpinzon16@gmail.com"; 
-		        String asunto = "Confirmación de Cita Médica";
-		        String contenido = "Estimado paciente, su cita ha sido agendada exitosamente.\n\n" +
-		                           "Detalles de la cita:\n" +
-		                           "Fecha: " + fecha + "\n" +
-		                           "Hora: " + hora + "\n" +
-		                           "Especialista: " + tipoEspecialista + "\n\n" +
-		                           "Gracias por confiar en nosotros.";
+		        String emailDestino = pacienteActual.getCorreo();
+		        String asunto = "Confirmación de Cita";
+		        String contenido = "Estimado " + pacienteActual.getNombre() + ", su cita ha sido agendada para el " + fecha + " a las " + hora + ".";
 
 		        MailController mailController = new MailController();
 		        mailController.programarRecordatorio(emailDestino, asunto, contenido, 0);
+
+		        vf.getCon().mostrarMensajeEmergente("Cita agendada con éxito. ID de la cita: " + idGenerado);
 		    } else {
 		        vf.getCon().mostrarMensajeEmergente("No se pudo agendar la cita");
 		    }
 		    break;
+
 
 		case "cancelar cita paciente":
 			vf.getPrincipal().setTitle("MENU PRINCIPAL");
@@ -594,73 +665,90 @@ public class Controlador implements ActionListener {
 			cancelarCitaP = true;
 			break;
 			
-		case "CANCELARCITA":
 			
-			// Mostrar todas las citas disponibles con sus detalles antes de pedir el ID
-			ArrayList<CitaDTO> todasLasCitas = mf.getCdao().getAll();
-			if (todasLasCitas.isEmpty()) {
-			    vf.getCon().mostrarAlerta("No hay citas disponibles para cancelar.");
-			    break;
-			}
+			
+		
+			
+		case "CANCELARCITA":
+		    // Mostrar todas las citas disponibles con sus detalles antes de pedir el número de cita
+		    ArrayList<CitaDTO> todasLasCitas = mf.getCdao().getAll();
+		    if (todasLasCitas.isEmpty()) {
+		        vf.getCon().mostrarAlerta("No hay citas disponibles para cancelar.");
+		        break;
+		    }
 
-			// Mostrar las citas disponibles
-			StringBuilder citasDisponibles = new StringBuilder("Citas disponibles para cancelar:\n");
-			for (CitaDTO cita : todasLasCitas) {
-			    citasDisponibles.append("ID: ").append(cita.getId())
-			                    .append(" | Fecha: ").append(cita.getFecha())
-			                    .append(" | Hora: ").append(cita.getHora())
-			                    .append(" | Especialista: ").append(cita.getTipoEspecialista())
-			                    .append("\n");
-			}
-			vf.getCon().mostrarMensajeEmergente(citasDisponibles.toString());
+		    // Mostrar las citas disponibles
+		    StringBuilder citasDisponibles = new StringBuilder("Citas disponibles para cancelar:\n");
+		    for (CitaDTO cita : todasLasCitas) {
+		        citasDisponibles.append("Número de Cita: ").append(MailController.numeroCita)  // Usar número de cita de MailController
+		                        .append(" | Fecha: ").append(cita.getFecha())
+		                        .append(" | Hora: ").append(cita.getHora())
+		                        .append(" | Especialista: ").append(cita.getTipoEspecialista())
+		                        .append("\n");
+		    }
+		    vf.getCon().mostrarMensajeEmergente(citasDisponibles.toString());
 
-			// Solicitar el ID de la cita a cancelar
-			String idStr = vf.getCon().leerInputEliminar("Ingrese el ID de la cita a cancelar:");
+		    // Solicitar el número de cita a cancelar
+		    String numeroCitaStr = vf.getCon().leerInputEliminar("Ingrese el número de cita a cancelar:");
 
-			if (idStr == null || idStr.trim().isEmpty()) {
-			    vf.getCon().mostrarError("Debe ingresar un ID válido");
-			    break;
-			}
+		    if (numeroCitaStr == null || numeroCitaStr.trim().isEmpty()) {
+		        vf.getCon().mostrarError("Debe ingresar un número de cita válido");
+		        break;
+		    }
 
-			try {
-			    int idCita = Integer.parseInt(idStr);
-			    CitaDTO citaAEliminar = null;
+		    try {
+		        int numeroCitaCancelar = Integer.parseInt(numeroCitaStr);
+		        CitaDTO citaAEliminar = null;
 
-			    for(CitaDTO cita : todasLasCitas) {
-			        if(cita.getId() == idCita) {
-			            citaAEliminar = cita;
-			            break;
-			        }
-			    }
+		        // Buscar la cita con el número de cita
+		        for (CitaDTO cita : todasLasCitas) {
+		            if (MailController.numeroCita == numeroCitaCancelar) {  // Comparar con número de cita en MailController
+		                citaAEliminar = cita;
+		                break;
+		            }
+		        }
 
-			    if(citaAEliminar != null) {
-			        // Mostrar mensaje de confirmación con los detalles de la cita seleccionada
-			        int confirmar = JOptionPane.showConfirmDialog(null, 
-			            "¿Está seguro que desea cancelar esta cita?\n" +
-			            "ID: " + citaAEliminar.getId() + "\n" +
-			            "Fecha: " + citaAEliminar.getFecha() + "\n" +
-			            "Hora: " + citaAEliminar.getHora() + "\n" +
-			            "Especialista: " + citaAEliminar.getTipoEspecialista(),
-			            "Confirmar cancelación",
-			            JOptionPane.YES_NO_OPTION,
-			            JOptionPane.WARNING_MESSAGE);
+		        if (citaAEliminar != null) {
+		            // Confirmar cancelación
+		            int confirmar = JOptionPane.showConfirmDialog(null, 
+		                "¿Está seguro que desea cancelar esta cita?\n" +
+		                "Número de Cita: " + MailController.numeroCita + "\n" +
+		                "Fecha: " + citaAEliminar.getFecha() + "\n" +
+		                "Hora: " + citaAEliminar.getHora() + "\n" +
+		                "Especialista: " + citaAEliminar.getTipoEspecialista(),
+		                "Confirmar cancelación",
+		                JOptionPane.YES_NO_OPTION,
+		                JOptionPane.WARNING_MESSAGE);
 
-			        if(confirmar == JOptionPane.YES_OPTION) {
-			            if(mf.getCdao().delete(citaAEliminar)) {
-			                vf.getCon().mostrarMensajeEmergente("La cita ha sido cancelada exitosamente");
-			            } else {
-			                vf.getCon().mostrarError("Hubo un error al intentar cancelar la cita");
-			            }
-			        }
-			    } else {
-			        vf.getCon().mostrarAlerta("No se encontró ninguna cita con el ID: " + idCita);
-			    }
+		            if (confirmar == JOptionPane.YES_OPTION) {
+		                if (mf.getCdao().delete(citaAEliminar)) {
+		                    vf.getCon().mostrarMensajeEmergente("La cita ha sido cancelada exitosamente");
 
-			} catch(NumberFormatException e1) {
-			    vf.getCon().mostrarError("El ID debe ser un número entero válido");
-			}
+		                    // Enviar correo de confirmación de cancelación
+		                    String emailDestino = pacienteActual.getCorreo();
+		                    String asunto = "Cancelación de Cita";
+		                    String contenido = "Estimado " + pacienteActual.getNombre() + 
+		                                       ", su cita para el " + citaAEliminar.getFecha() +
+		                                       " a las " + citaAEliminar.getHora() + 
+		                                       " ha sido cancelada exitosamente.";
+
+		                    MailController mailController = new MailController();
+		                    mailController.programarRecordatorio(emailDestino, asunto, contenido, 0);
+
+		                } else {
+		                    vf.getCon().mostrarError("Hubo un error al intentar cancelar la cita");
+		                }
+		            }
+		        } else {
+		            vf.getCon().mostrarAlerta("No se encontró ninguna cita con el número de cita: " + numeroCitaCancelar);
+		        }
+
+		    } catch (NumberFormatException e1) {
+		        vf.getCon().mostrarError("El número de cita debe ser un número entero válido");
+		    }
 
 		    break;
+
 		case "mostrar citas y examenes programados paciente":
 			
 			vf.getCon().mostrarMensajeEmergenteConScroll(mf.getCdao().ShowAll());

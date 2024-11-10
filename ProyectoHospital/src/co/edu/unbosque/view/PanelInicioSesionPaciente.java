@@ -19,6 +19,7 @@ import javax.swing.border.Border;
 		private JTextField numeroDocumento, contraseña;
 	    private JButton  btnIniciarSesion, btnVolverP;
 	    private JLabel imagenInicioSesionP;
+	    
 
 	    public PanelInicioSesionPaciente() {
 	    	

@@ -66,6 +66,7 @@ public class EspecialistaDAO implements CRUDOperation<EspecialistaDTO, Especiali
             return false;
         }
     }
+    
 
     @Override
     public boolean delete(EspecialistaDTO toDelete) {
@@ -79,7 +80,15 @@ public class EspecialistaDAO implements CRUDOperation<EspecialistaDTO, Especiali
             return false;
         }
     }
-
+    public Especialista authenticateEspecialista(String tipoEspecialista, int cedula, int contrasena) {
+        for (Especialista especialista : listaEspecialistas) {
+            if (especialista.getTipoEspecialista()==tipoEspecialista &&  especialista.getCedula() == cedula && especialista.getContraseña() == contrasena) {
+                return especialista; // Credenciales válidas
+            }
+        }
+        return null; // Credenciales inválidas
+    }
+    
 
 
     @Override

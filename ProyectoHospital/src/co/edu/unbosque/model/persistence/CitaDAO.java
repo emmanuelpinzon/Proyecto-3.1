@@ -16,8 +16,10 @@ public class CitaDAO implements CRUDOperation<CitaDTO, Cita> {
     private int currentMaxId = 0;
     public CitaDAO() {
         FileHandler.checkFolder();
+      
         readSerialized();
         updateMaxId();
+       
     }
     private void updateMaxId() {
         int maxId = 0;
@@ -87,20 +89,25 @@ public class CitaDAO implements CRUDOperation<CitaDTO, Cita> {
     public ArrayList<CitaDTO> getAll() {
         return DataMapper.listaCitaToCitaDTO(listaCitas);
     }
-
     @Override
     public boolean add(CitaDTO newData) {
+        // Convertir de CitaDTO a Cita
         Cita newCita = DataMapper.CitaDTOToCita(newData);
+        
+        // Generar y asignar un nuevo ID único a la cita
         newCita.setId(generateNewId());  // Asignamos un nuevo ID basado en currentMaxId
+        
+        // Verificar que no exista una cita igual antes de añadirla
         if (find(newCita) == null) {
-            listaCitas.add(newCita);
-            writeFile();
-            writeSerialized();
-            return true;
+            listaCitas.add(newCita);  // Agregar la cita a la lista
+            writeFile();              // Guardar la lista en el archivo
+            writeSerialized();        // Guardar la versión serializada
+            return true;              // Devolver true si la cita fue agregada correctamente
         } else {
-            return false;
+            return false;             // Si ya existe, no añadir la cita y devolver false
         }
     }
+
 
 
     @Override

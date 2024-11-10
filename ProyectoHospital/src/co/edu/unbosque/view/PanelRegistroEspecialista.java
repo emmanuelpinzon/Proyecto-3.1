@@ -15,6 +15,7 @@ public class PanelRegistroEspecialista extends JPanel {
     private JButton  btnRegistrarE, btnVolverEs;
     private JLabel imagenRegistroE;
     
+    
 
     public PanelRegistroEspecialista() {
     	

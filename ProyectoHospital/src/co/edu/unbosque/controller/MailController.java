@@ -22,8 +22,10 @@ public class MailController {
     private Properties mProperties;
     private Session mSession;
     private MimeMessage mCorreo;
-
-    public MailController() {
+    public static int numeroCita = 1;
+   
+    
+    MailController() {
         mProperties = new Properties();
         mProperties.put("mail.smtp.host", "smtp.gmail.com");
         mProperties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
@@ -37,9 +39,11 @@ public class MailController {
     }
 
     private void createEmail(String et, String s, String c) {
-        emailTo = et.trim();
-        subject = s.trim();
-        content = c.trim();
+        emailTo = et.trim();  
+        subject = s.trim() + " - Número de cita: " + numeroCita;   
+        content = c.trim() + "\n\nNúmero de Cita: " + numeroCita;  
+
+
         try {
             mCorreo = new MimeMessage(mSession);
             mCorreo.setFrom(new InternetAddress(EMAIL_FROM));
@@ -73,18 +77,10 @@ public class MailController {
             @Override
             public void run() {
                 sendEmail();
+                numeroCita++;
             }
         }, tiempoAntesCita);  
     }
 
-    public static void main(String[] args) {
-    	MailController recordatorio = new MailController();
 
-        String emailDestino = "emmanuelpinzon16@gmail.com";
-        String asunto = "Recordatorio de Cita";
-        String contenido = "Estimado usuario, le recordamos su cita agendada.";//puede modificar esto a su fusto 
-        long tiempoAntesCita = 5000;  // el tiempo que pa mandar el correo en milisegundos 5segundso =5000 
-      
-        recordatorio.programarRecordatorio(emailDestino, asunto, contenido, tiempoAntesCita);
-    }
 }

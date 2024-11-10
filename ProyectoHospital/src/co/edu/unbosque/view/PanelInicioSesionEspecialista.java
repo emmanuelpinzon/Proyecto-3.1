@@ -1,11 +1,14 @@
 package co.edu.unbosque.view;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.Image;
 
 import javax.swing.BorderFactory;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
@@ -16,7 +19,8 @@ import javax.swing.border.Border;
 	public class PanelInicioSesionEspecialista extends JPanel {
 
 		
-		private JTextField numeroDocumento, contraseña, tipoEspecialidad;
+		private JTextField numeroDocumento, contraseña;
+		private JComboBox<String> jcbTipoEspecialista;
 	    private JButton  btnIniciarSesionE, btnVolverE;
 	    private JLabel imagenInicioSesionE;
 
@@ -40,10 +44,14 @@ import javax.swing.border.Border;
 			contraseña.setBounds(840, 507, 300, 55);
 			contraseña.setOpaque(true);
 			
-			tipoEspecialidad = new JPasswordField();
-			tipoEspecialidad.setBounds(140, 520, 245, 55);
-			tipoEspecialidad.setOpaque(true);
+			
 
+			String[] especialista = {"Cirugía", "Oncología", "Dermatología", "Neumología", "Cardiología", "Medicina Interna" };
+			DefaultComboBoxModel<String> modelo = new DefaultComboBoxModel<>(especialista);
+
+			jcbTipoEspecialista = new JComboBox<>(modelo);
+			jcbTipoEspecialista.setBounds(140, 520, 245, 55);
+			jcbTipoEspecialista.setFont(new Font("Arial", Font.PLAIN, 16));
 	    
 
 	        // Botón "Registrarse"
@@ -51,7 +59,8 @@ import javax.swing.border.Border;
 	        btnIniciarSesionE = new JButton("Iniciar Sesion");
 	        btnIniciarSesionE.setBounds(720, 610, 140, 50); // Posición ajustada
 	        btnIniciarSesionE.setOpaque(true);
-	        btnIniciarSesionE.setActionCommand("INICIARSESIONE");
+	        btnIniciarSesionE.setActionCommand("INICIARSESION");
+	        
 
 	        // Botón "Volver"
 	        btnVolverE = new JButton("Volver");
@@ -72,7 +81,7 @@ import javax.swing.border.Border;
 	        
 	       	add(numeroDocumento);
 	        add(contraseña);
-	        add(tipoEspecialidad);
+	        add(jcbTipoEspecialista);
 	        add(btnIniciarSesionE);
 	        add(btnVolverE);
 	        
@@ -80,12 +89,7 @@ import javax.swing.border.Border;
 	        
 	       
 	        
-	        setComponentZOrder(numeroDocumento, 0);
-	        setComponentZOrder(contraseña, 1);
-	        setComponentZOrder(tipoEspecialidad, 2);
-	        setComponentZOrder(btnIniciarSesionE, 3);
-	        setComponentZOrder(btnVolverE, 4);
-	        setComponentZOrder(imagenInicioSesionE, 5);
+	 
 	          
 	    }
 	
@@ -109,13 +113,23 @@ import javax.swing.border.Border;
 			this.contraseña = contraseña;
 		}
 
-		public JTextField getTipoEspecialidad() {
-			return tipoEspecialidad;
+	
+
+		public JComboBox<String> getJcbTipoEspecialista() {
+			return jcbTipoEspecialista;
 		}
 
-		public void setTipoEspecialidad(JTextField tipoEspecialidad) {
-			this.tipoEspecialidad = tipoEspecialidad;
+
+
+
+
+		public void setJcbTipoEspecialista(JComboBox<String> jcbTipoEspecialista) {
+			this.jcbTipoEspecialista = jcbTipoEspecialista;
 		}
+
+
+
+
 
 		public JButton getBtnIniciarSesionE() {
 			return btnIniciarSesionE;

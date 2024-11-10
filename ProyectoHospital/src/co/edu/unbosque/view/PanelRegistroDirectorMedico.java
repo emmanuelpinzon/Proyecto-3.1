@@ -26,6 +26,7 @@ public class PanelRegistroDirectorMedico extends JPanel {
         setLayout(null);
         setVisible(true);
         setSize(1280, 720);
+        
     
         
        
@@ -57,7 +58,7 @@ public class PanelRegistroDirectorMedico extends JPanel {
         btnRegistrarDM = new JButton("Registrar");
         btnRegistrarDM.setBounds(640, 600, 200, 50); // Posición ajustada
         btnRegistrarDM.setOpaque(true);
-        btnRegistrarDM.setActionCommand("REGISTRAR");
+        btnRegistrarDM.setActionCommand("REGISTRARDM");
 
         // Botón "Volver"
         btnVolverDM = new JButton("Volver");

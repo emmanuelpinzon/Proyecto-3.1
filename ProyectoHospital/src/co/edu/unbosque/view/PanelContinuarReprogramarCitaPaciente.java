@@ -33,7 +33,7 @@ public class PanelContinuarReprogramarCitaPaciente extends JPanel {
         btnReprogramarCitaP = new JButton("Reprogramar cita");
         btnReprogramarCitaP.setBounds(950, 540, 180, 80); // Posición ajustada
         btnReprogramarCitaP.setOpaque(true);
-        btnReprogramarCitaP.setActionCommand("REGISTRAR");
+        btnReprogramarCitaP.setActionCommand("REPROGRAMAR");
 
        
         btnVolverCrp = new JButton("Volver");
