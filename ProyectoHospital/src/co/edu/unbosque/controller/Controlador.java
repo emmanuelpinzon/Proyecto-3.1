@@ -551,18 +551,16 @@ public class Controlador implements ActionListener {
 
 				if (especialista) {
 
-					String documentoIngresado1 = vf.getPrincipal().getPanelInicioSesionE().getNumeroDocumento()
-							.getText();
+					String documentoIngresado1 = vf.getPrincipal().getPanelInicioSesionE().getNumeroDocumento().getText();
 					int documentoInt1 = Integer.parseInt(documentoIngresado1);
 
 					String contrasenaIngresada1 = vf.getPrincipal().getPanelInicioSesionE().getContraseña().getText();
 					int contrasenaInt1 = Integer.parseInt(contrasenaIngresada1);
-					Especialista especialistaAutenticado = mf.getEdao().authenticateEspecialista(documentoInt1,
-							contrasenaInt1);
+					Especialista especialistaAutenticado = mf.getEdao().authenticateEspecialista(documentoInt1,contrasenaInt1);
 					if (especialistaAutenticado != null) {
 
 						vf.getCon().mostrarMensajeEmergente("Inicio de sesión exitoso");
-						vf.getPrincipal().getPanelMenuPrincipalEspecialista();
+						vf.getPrincipal().mostrarPanelMenuPrincipalEspecialista();
 						especialistaActual = especialistaAutenticado;
 					} else {
 						vf.getCon().mostrarMensajeEmergente("Documento o contraseña incorrectos");

@@ -8,21 +8,16 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.PrintWriter;
+import java.util.Properties;
 import java.util.Scanner;
 
-/**
- * Clase para manejar la lectura y escritura de archivos, incluyendo archivos de
- * texto y archivos serializados.
- * 
- * @author Emmanuel
- * @version 1.0
- */
 public class FileHandler {
 
 	private static Scanner sc;
 	private static PrintWriter pw;
 	private static File archivo;
 	private static final String FOLDER_NAME = "data";
+	private static final String CONFIG_FOLDER_NAME = "config";
 
 	// para archivos serializado
 	private static FileOutputStream fos;
@@ -30,12 +25,20 @@ public class FileHandler {
 	private static FileInputStream fis;
 	private static ObjectInputStream ois;
 
-	/**
-	 * Escribe un objeto en un archivo serializado.
-	 * 
-	 * @param url     el nombre del archivo
-	 * @param content el objeto a escribir
-	 */
+	public static void checkFolder() {
+		archivo = new File(FOLDER_NAME);
+		if (archivo.exists() & archivo.isDirectory()) {
+			return;
+		} else {
+			archivo.mkdir();
+		}
+		archivo = new File(CONFIG_FOLDER_NAME);
+		if (archivo.exists() & archivo.isDirectory()) {
+			return;
+		} else {
+			archivo.mkdir();
+		}
+	}
 	public static void writeSerialized(String url, Object content) {// este se va a utilizar para el taller
 		try {
 			archivo = new File(FOLDER_NAME + "/" + url);
@@ -56,12 +59,6 @@ public class FileHandler {
 		}
 	}
 
-	/**
-	 * Lee un objeto de un archivo serializado.
-	 * 
-	 * @param url el nombre del archivo
-	 * @return el objeto leído o null si ocurre un error
-	 */
 	public static Object readSerialized(String url) {// este se va a utilizar para el taller
 		try {
 			archivo = new File(FOLDER_NAME + "/" + url);
@@ -92,25 +89,7 @@ public class FileHandler {
 		return null;
 	}
 
-	/**
-	 * Verifica si el directorio para almacenar archivos existe, de lo contrario, lo
-	 * crea.
-	 */
-	public static void checkFolder() {
-		archivo = new File(FOLDER_NAME);
-		if (archivo.exists() && archivo.isDirectory()) {
-			return;
-		} else {
-			archivo.mkdir();
-		}
-	}
 
-	/**
-	 * Escribe contenido en un archivo de texto.
-	 * 
-	 * @param url     el nombre del archivo
-	 * @param content el contenido a escribir
-	 */
 	public static void writeFile(String url, String content) {
 		try {
 			archivo = new File(FOLDER_NAME + "/" + url);// no se pueden crear archivos en carpetas protegidas. url
@@ -136,12 +115,6 @@ public class FileHandler {
 
 	}
 
-	/**
-	 * Lee el contenido de un archivo de texto.
-	 * 
-	 * @param url el nombre del archivo
-	 * @return el contenido del archivo o null si ocurre un error
-	 */
 	public static String readFile(String url) {
 		try {
 			archivo = new File(FOLDER_NAME + "/" + url);
@@ -161,5 +134,22 @@ public class FileHandler {
 
 		return null;
 
+	}
+	public static Properties loadProperties(String url) {
+		Properties prop= null;
+		prop= new Properties();
+		try {
+			prop.load(new FileInputStream(CONFIG_FOLDER_NAME + "/"+ url));
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			System.out.println("ruta del archivo propiedades no encontrado. ");
+			System.out.println(CONFIG_FOLDER_NAME + "/"+ url);
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			System.out.println("error al leer el archivo de propiedades");
+			e.printStackTrace();
+		}
+		return prop;
 	}
 }
