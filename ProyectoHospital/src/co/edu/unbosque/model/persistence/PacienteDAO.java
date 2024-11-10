@@ -27,6 +27,7 @@ public class PacienteDAO implements CRUDOperation<PacienteDTO, Paciente> {
 	        }
 	        return null; // Retorna null si no encuentra al paciente
 	    }
+	    
 
 
 	    

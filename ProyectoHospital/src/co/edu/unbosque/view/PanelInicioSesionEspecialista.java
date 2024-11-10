@@ -8,150 +8,105 @@ import javax.swing.BorderFactory;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 import javax.swing.border.Border;
 
+public class PanelInicioSesionEspecialista extends JPanel {
 
-	public class PanelInicioSesionEspecialista extends JPanel {
+	private JTextField numeroDocumento, contraseña;
 
-		
-		private JTextField numeroDocumento, contraseña;
-		private JComboBox<String> jcbTipoEspecialista;
-	    private JButton  btnIniciarSesionE, btnVolverE;
-	    private JLabel imagenInicioSesionE;
+	private JButton btnIniciarSesionE, btnVolverE;
+	private JLabel imagenInicioSesionE;
 
-	    public PanelInicioSesionEspecialista() {
-	    	
-	    	Border border = BorderFactory.createLineBorder(Color.BLACK, 3);
-	    	
-	        setLayout(null);
-	        setVisible(true);
-	        setSize(1280, 720);
-	    
-	        
-	       
-			
-			
-			numeroDocumento = new JTextField();
-			numeroDocumento.setBounds(450, 507, 300, 55);
-			numeroDocumento.setOpaque(true);
+	public PanelInicioSesionEspecialista() {
 
-			contraseña = new JPasswordField();
-			contraseña.setBounds(840, 507, 300, 55);
-			contraseña.setOpaque(true);
-			
-			
+		Border border = BorderFactory.createLineBorder(Color.BLACK, 3);
 
-			String[] especialista = {"Cirugía", "Oncología", "Dermatología", "Neumología", "Cardiología", "Medicina Interna" };
-			DefaultComboBoxModel<String> modelo = new DefaultComboBoxModel<>(especialista);
+		setLayout(null);
+		setVisible(true);
+		setSize(1280, 720);
 
-			jcbTipoEspecialista = new JComboBox<>(modelo);
-			jcbTipoEspecialista.setBounds(140, 520, 245, 55);
-			jcbTipoEspecialista.setFont(new Font("Arial", Font.PLAIN, 16));
-	    
+		numeroDocumento = new JTextField();
+		numeroDocumento.setBounds(450, 507, 300, 55);
+		numeroDocumento.setOpaque(true);
 
-	        // Botón "Registrarse"
-			
-	        btnIniciarSesionE = new JButton("Iniciar Sesion");
-	        btnIniciarSesionE.setBounds(720, 610, 140, 50); // Posición ajustada
-	        btnIniciarSesionE.setOpaque(true);
-	        btnIniciarSesionE.setActionCommand("INICIARSESION");
-	        
+		contraseña = new JPasswordField();
+		contraseña.setBounds(840, 507, 300, 55);
+		contraseña.setOpaque(true);
 
-	        // Botón "Volver"
-	        btnVolverE = new JButton("Volver");
-	        btnVolverE.setBounds(450, 610, 150, 50); // Posición ajustada
-	        btnVolverE.setOpaque(true);
-	        btnVolverE.setActionCommand("VOLVER");
-	        
+		String[] especialista = { "Cirugía", "Oncología", "Dermatología", "Neumología", "Cardiología",
+				"Medicina Interna" };
+		DefaultComboBoxModel<String> modelo = new DefaultComboBoxModel<>(especialista);
 
-	        imagenInicioSesionE = new JLabel();
-	        ImageIcon imagen1 = new ImageIcon("src/media/InicioSesionEspecialista.png");
-	        Image redimensionado1 = imagen1.getImage().getScaledInstance(1280, 720, Image.SCALE_SMOOTH);
-	        imagenInicioSesionE.setIcon(new ImageIcon(redimensionado1));
-	        imagenInicioSesionE.setBounds(0, 0, 1280, 720);
+		// Botón "Registrarse"
 
+		btnIniciarSesionE = new JButton("Iniciar Sesion");
+		btnIniciarSesionE.setBounds(720, 610, 140, 50); // Posición ajustada
+		btnIniciarSesionE.setOpaque(true);
+		btnIniciarSesionE.setActionCommand("INICIARSESION");
 
-	        
-	        
-	        
-	       	add(numeroDocumento);
-	        add(contraseña);
-	        add(jcbTipoEspecialista);
-	        add(btnIniciarSesionE);
-	        add(btnVolverE);
-	        
-	        add(imagenInicioSesionE);
-	        
-	       
-	        
-	 
-	          
-	    }
-	
-		
+		// Botón "Volver"
+		btnVolverE = new JButton("Volver");
+		btnVolverE.setBounds(450, 610, 150, 50); // Posición ajustada
+		btnVolverE.setOpaque(true);
+		btnVolverE.setActionCommand("VOLVER");
 
-		
+		imagenInicioSesionE = new JLabel();
+		ImageIcon imagen1 = new ImageIcon("src/media/InicioSesionEspecialista.png");
+		Image redimensionado1 = imagen1.getImage().getScaledInstance(1280, 720, Image.SCALE_SMOOTH);
+		imagenInicioSesionE.setIcon(new ImageIcon(redimensionado1));
+		imagenInicioSesionE.setBounds(0, 0, 1280, 720);
 
-		public JTextField getNumeroDocumento() {
-			return numeroDocumento;
-		}
+		add(numeroDocumento);
+		add(contraseña);
 
-		public void setNumeroDocumento(JTextField numeroDocumento) {
-			this.numeroDocumento = numeroDocumento;
-		}
+		add(btnIniciarSesionE);
+		add(btnVolverE);
 
-		public JTextField getContraseña() {
-			return contraseña;
-		}
+		add(imagenInicioSesionE);
 
-		public void setContraseña(JTextField contraseña) {
-			this.contraseña = contraseña;
-		}
+	}
 
-	
+	public JTextField getNumeroDocumento() {
+		return numeroDocumento;
+	}
 
-		public JComboBox<String> getJcbTipoEspecialista() {
-			return jcbTipoEspecialista;
-		}
+	public void setNumeroDocumento(JTextField numeroDocumento) {
+		this.numeroDocumento = numeroDocumento;
+	}
 
+	public JTextField getContraseña() {
+		return contraseña;
+	}
 
+	public void setContraseña(JTextField contraseña) {
+		this.contraseña = contraseña;
+	}
 
+	public JButton getBtnIniciarSesionE() {
+		return btnIniciarSesionE;
+	}
 
+	public void setBtnIniciarSesionE(JButton btnIniciarSesionE) {
+		this.btnIniciarSesionE = btnIniciarSesionE;
+	}
 
-		public void setJcbTipoEspecialista(JComboBox<String> jcbTipoEspecialista) {
-			this.jcbTipoEspecialista = jcbTipoEspecialista;
-		}
+	public JButton getBtnVolverE() {
+		return btnVolverE;
+	}
 
+	public void setBtnVolverE(JButton btnVolverE) {
+		this.btnVolverE = btnVolverE;
+	}
 
+	public JLabel getImagenInicioSesionE() {
+		return imagenInicioSesionE;
+	}
 
-
-
-		public JButton getBtnIniciarSesionE() {
-			return btnIniciarSesionE;
-		}
-
-		public void setBtnIniciarSesionE(JButton btnIniciarSesionE) {
-			this.btnIniciarSesionE = btnIniciarSesionE;
-		}
-
-		public JButton getBtnVolverE() {
-			return btnVolverE;
-		}
-
-		public void setBtnVolverE(JButton btnVolverE) {
-			this.btnVolverE = btnVolverE;
-		}
-
-		public JLabel getImagenInicioSesionE() {
-			return imagenInicioSesionE;
-		}
-
-		public void setImagenInicioSesionE(JLabel imagenInicioSesionE) {
-			this.imagenInicioSesionE = imagenInicioSesionE;
-		}
-		}
+	public void setImagenInicioSesionE(JLabel imagenInicioSesionE) {
+		this.imagenInicioSesionE = imagenInicioSesionE;
+	}
+}

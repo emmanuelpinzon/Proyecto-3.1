@@ -80,11 +80,13 @@ public class EspecialistaDAO implements CRUDOperation<EspecialistaDTO, Especiali
             return false;
         }
     }
-    public Especialista authenticateEspecialista(String tipoEspecialista, int cedula, int contrasena) {
+    public Especialista authenticateEspecialista( int cedula, int contrasena) {
+    	readSerialized();
         for (Especialista especialista : listaEspecialistas) {
-            if (especialista.getTipoEspecialista()==tipoEspecialista &&  especialista.getCedula() == cedula && especialista.getContraseña() == contrasena) {
+            if (  especialista.getCedula()== cedula && especialista.getContraseña() == contrasena) {
                 return especialista; // Credenciales válidas
             }
+            
         }
         return null; // Credenciales inválidas
     }

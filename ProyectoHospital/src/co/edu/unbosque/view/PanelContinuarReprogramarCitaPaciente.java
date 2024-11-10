@@ -1,6 +1,9 @@
 package co.edu.unbosque.view;
 
 import javax.swing.border.Border;
+
+import com.toedter.calendar.JDateChooser;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -11,7 +14,9 @@ public class PanelContinuarReprogramarCitaPaciente extends JPanel {
 
 	
     private JButton  btnReprogramarCitaP, btnVolverCrp;
+    private JComboBox<String> jcbNewtipoEspecialista,jcbNewHora;
     private JLabel imagenReprogramarCita2;
+    private JDateChooser NewfechaCita;
     
 
     public PanelContinuarReprogramarCitaPaciente() {
@@ -25,10 +30,26 @@ public class PanelContinuarReprogramarCitaPaciente extends JPanel {
         
        
         
-		
+	       
+			String[] especialidad1 = { "Cirugía", "Oncología", "Dermatología", "Neumología", "Cardiología", "Medicina Interna" };
+			DefaultComboBoxModel<String> modelo = new DefaultComboBoxModel<>(especialidad1);
 
 
-   
+			jcbNewtipoEspecialista = new JComboBox<>(modelo);
+			jcbNewtipoEspecialista.setBounds(500, 550, 280, 50);
+			jcbNewtipoEspecialista.setFont(new Font("Arial", Font.PLAIN, 16));
+			
+	        String[] horas24 = new String[24];
+	        for (int i = 0; i < 24; i++) {
+	            horas24[i] = String.format("%02d:00", i); 
+	        }
+	        jcbNewHora = new JComboBox<>(new DefaultComboBoxModel<>(horas24));
+	        jcbNewHora.setBounds(750, 350, 280, 50);
+	        jcbNewHora.setFont(new Font("Arial", Font.PLAIN, 16));
+
+	        NewfechaCita = new JDateChooser();
+	        NewfechaCita.setBounds(300, 350, 280, 50);
+	        NewfechaCita.setDateFormatString("dd-MM-yyyy"); 
 		
         btnReprogramarCitaP = new JButton("Reprogramar cita");
         btnReprogramarCitaP.setBounds(950, 540, 180, 80); // Posición ajustada
@@ -54,12 +75,45 @@ public class PanelContinuarReprogramarCitaPaciente extends JPanel {
         
         add(btnReprogramarCitaP);
         add(btnVolverCrp);
+        add(jcbNewtipoEspecialista);
+        add(jcbNewHora);
+        add(NewfechaCita);
         add(imagenReprogramarCita2);
-        
+        setVisible(true);
         
        
         
            }
+
+
+	public JComboBox<String> getJcbNewtipoEspecialista() {
+		return jcbNewtipoEspecialista;
+	}
+
+
+	public void setJcbNewtipoEspecialista(JComboBox<String> jcbNewtipoEspecialista) {
+		this.jcbNewtipoEspecialista = jcbNewtipoEspecialista;
+	}
+
+
+	public JComboBox<String> getJcbNewHora() {
+		return jcbNewHora;
+	}
+
+
+	public void setJcbNewHora(JComboBox<String> jcbNewHora) {
+		this.jcbNewHora = jcbNewHora;
+	}
+
+
+	public JDateChooser getNewfechaCita() {
+		return NewfechaCita;
+	}
+
+
+	public void setNewfechaCita(JDateChooser newfechaCita) {
+		NewfechaCita = newfechaCita;
+	}
 
 
 	public JButton getBtnReprogramarCitaP() {

@@ -18,18 +18,10 @@ public class CitaDAO implements CRUDOperation<CitaDTO, Cita> {
         FileHandler.checkFolder();
       
         readSerialized();
-        updateMaxId();
+     
        
     }
-    private void updateMaxId() {
-        int maxId = 0;
-        for (Cita cita : listaCitas) {
-            if (cita.getId() > maxId) {
-                maxId = cita.getId();
-            }
-        }
-        currentMaxId = maxId;
-    }
+
 
     public int generateNewId() {
         currentMaxId++; // Incrementamos el valor del ID
@@ -59,17 +51,6 @@ public class CitaDAO implements CRUDOperation<CitaDTO, Cita> {
         return null;
     }
 
-    public boolean deleteById(int id) {
-        // Buscar la cita por su ID
-        Cita found = findById(id);
-        if (found != null) {  // Si la cita fue encontrada
-            listaCitas.remove(found);  // Eliminar la cita de la lista
-            writeFile();  // Actualizar el archivo con la lista de citas modificada
-            writeSerialized();  // Actualizar la versión serializada
-            return true;  // Devolver true si la cita fue eliminada correctamente
-        }
-        return false;  // Si no se encuentra la cita, devolver false
-    }
 
 
     @Override
@@ -177,6 +158,12 @@ public class CitaDAO implements CRUDOperation<CitaDTO, Cita> {
             listaCitas = (ArrayList<Cita>) content;
         }
     }
+
+
+	public CitaDTO findByNumeroCita(int numeroCita) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 
 
 }
