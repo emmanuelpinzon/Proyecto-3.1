@@ -51,7 +51,7 @@ import javax.swing.border.Border;
 	        btnIniciarSesionE = new JButton("Iniciar Sesion");
 	        btnIniciarSesionE.setBounds(720, 610, 140, 50); // Posición ajustada
 	        btnIniciarSesionE.setOpaque(true);
-	        btnIniciarSesionE.setActionCommand("INICIAR SESION");
+	        btnIniciarSesionE.setActionCommand("INICIARSESIONE");
 
 	        // Botón "Volver"
 	        btnVolverE = new JButton("Volver");

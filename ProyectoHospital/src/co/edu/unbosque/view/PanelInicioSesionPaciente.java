@@ -52,7 +52,7 @@ import javax.swing.border.Border;
 	        btnIniciarSesion.setContentAreaFilled(false);
 	        btnIniciarSesion.setBorderPainted(false);
 	        btnIniciarSesion.setOpaque(true);
-	        btnIniciarSesion.setActionCommand("INICIAR SESION");
+	        btnIniciarSesion.setActionCommand("INICIARSESION");
 
 	        // Botón "Volver"
 	        btnVolverP = new JButton("Volver");

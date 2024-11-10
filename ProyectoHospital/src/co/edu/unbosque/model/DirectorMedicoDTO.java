@@ -1,14 +1,12 @@
 package co.edu.unbosque.model;
 
-import java.io.Serializable;
+public class DirectorMedicoDTO extends PersonaDTO{
 
-public class DirectorMedico extends Persona implements Serializable{
-
-	public DirectorMedico() {
+	public DirectorMedicoDTO() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public DirectorMedico(String nombre, int cedula, String correo, int contraseña) {
+	public DirectorMedicoDTO(String nombre, int cedula, String correo, int contraseña) {
 		super(nombre, cedula, correo, contraseña);
 		// TODO Auto-generated constructor stub
 	}
@@ -17,5 +15,4 @@ public class DirectorMedico extends Persona implements Serializable{
 		// TODO Auto-generated method stub
 		return super.toString();
 	}
-	
 }

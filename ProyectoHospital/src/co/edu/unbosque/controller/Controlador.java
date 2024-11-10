@@ -75,6 +75,9 @@ public class Controlador implements ActionListener {
 
 		vf.getPrincipal().getPanelMenuPpal().getbtnIniciarSesion().addActionListener(this);
 		vf.getPrincipal().getPanelMenuPpal().getbtnIniciarSesion().setActionCommand("INICIAR SESION");
+		
+		vf.getPrincipal().getPanelInicioSesionP().getBtnIniciarSesion().addActionListener(this);
+		vf.getPrincipal().getPanelInicioSesionP().getBtnIniciarSesion().setActionCommand("INICIARSESION");
 
 		vf.getPrincipal().getPanelMenuE().getbtnIniciarSesionEs().addActionListener(this);
 		vf.getPrincipal().getPanelMenuE().getbtnIniciarSesionEs().setActionCommand("INICIAR SESION");
@@ -127,15 +130,11 @@ public class Controlador implements ActionListener {
 		vf.getPrincipal().getPanelRegistroPaciente().getBtnRegistrarP().setActionCommand("REGISTRAR");
 
 		vf.getPrincipal().getPanelInicioSesionP().getBtnIniciarSesion().addActionListener(this);
-		vf.getPrincipal().getPanelInicioSesionP().getBtnIniciarSesion().setActionCommand("menu principal de paciente");
-
-		vf.getPrincipal().getPanelRegistroEspecialista().getBtnRegistrarE().addActionListener(this);
-		vf.getPrincipal().getPanelRegistroEspecialista().getBtnRegistrarE()
-				.setActionCommand("menu principal de especialista");
+		vf.getPrincipal().getPanelInicioSesionP().getBtnIniciarSesion().setActionCommand("INICIARSESION");
 
 		vf.getPrincipal().getPanelInicioSesionE().getBtnIniciarSesionE().addActionListener(this);
 		vf.getPrincipal().getPanelInicioSesionE().getBtnIniciarSesionE()
-				.setActionCommand("menu principal de especialista");
+				.setActionCommand("INICIARSESIONE");
 
 		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnVolverPP().addActionListener(this);
 		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnVolverPP()
@@ -153,11 +152,12 @@ public class Controlador implements ActionListener {
 		;
 
 		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnCancelarCita().addActionListener(this);
-		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnCancelarCita().setActionCommand("cancelar cita paciente");
-		
+		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnCancelarCita()
+				.setActionCommand("cancelar cita paciente");
+
 		vf.getPrincipal().getPanelCancelarCitaPaciente().getBtnCancelarCita().addActionListener(this);
 		vf.getPrincipal().getPanelCancelarCitaPaciente().getBtnCancelarCita().setActionCommand("CANCELARCITA");
-		
+
 		vf.getPrincipal().getPanelAgendarCitaPaciente().getBtnVolverCc().addActionListener(this);
 		vf.getPrincipal().getPanelAgendarCitaPaciente().getBtnVolverCc()
 				.setActionCommand("volver de agendar cita paciente a menu principal paciente");
@@ -169,8 +169,6 @@ public class Controlador implements ActionListener {
 		vf.getPrincipal().getPanelReprogramarCitaPaciente().getBtnVolverRr().addActionListener(this);
 		vf.getPrincipal().getPanelReprogramarCitaPaciente().getBtnVolverRr()
 				.setActionCommand("volver de reprogramar cita paciente a menu principal paciente");
-
-
 
 		vf.getPrincipal().getPanelCancelarCitaPaciente().getBtnVolverCa().addActionListener(this);
 		vf.getPrincipal().getPanelCancelarCitaPaciente().getBtnVolverCa()
@@ -197,7 +195,8 @@ public class Controlador implements ActionListener {
 				.setActionCommand("volver de aceptar cambio de turno a menu principal");
 
 		vf.getPrincipal().getPanelMenuPrincipalEspecialista().getBtnMostrarCitasProgramadas().addActionListener(this);
-		vf.getPrincipal().getPanelMenuPrincipalEspecialista().getBtnMostrarCitasProgramadas().setActionCommand("mostrar citas programadas");
+		vf.getPrincipal().getPanelMenuPrincipalEspecialista().getBtnMostrarCitasProgramadas()
+				.setActionCommand("mostrar citas programadas");
 
 		vf.getPrincipal().getPanelMostrarCitasProgramadas().getBtnVolverMc().addActionListener(this);
 		vf.getPrincipal().getPanelMostrarCitasProgramadas().getBtnVolverMc()
@@ -233,7 +232,7 @@ public class Controlador implements ActionListener {
 
 		vf.getPrincipal().getPanelInicioSesionDirectorMedico().getBtnVolverD().addActionListener(this);
 		vf.getPrincipal().getPanelInicioSesionDirectorMedico().getBtnVolverD()
-				.setActionCommand("volver al menu director desde inicio sesion");
+				.setActionCommand("INICIAR SESION");
 
 		vf.getPrincipal().getPanelMenuDirectorMedico().getBtnVolverDE().addActionListener(this);
 		vf.getPrincipal().getPanelMenuDirectorMedico().getBtnVolverDE()
@@ -241,7 +240,7 @@ public class Controlador implements ActionListener {
 
 		vf.getPrincipal().getPanelRegistroDirectorMedico().getBtnVolverDM().addActionListener(this);
 		vf.getPrincipal().getPanelRegistroDirectorMedico().getBtnVolverDM()
-				.setActionCommand("volver al menu director desde registro");
+				.setActionCommand("REGISTRAR");
 
 		vf.getPrincipal().getPanelRegistroDirectorMedico().getBtnRegistrarDM().addActionListener(this);
 		vf.getPrincipal().getPanelRegistroDirectorMedico().getBtnRegistrarDM()
@@ -357,6 +356,12 @@ public class Controlador implements ActionListener {
 				vf.getPrincipal().mostrarPanelRegistroPaciente();
 
 				registroP = true;
+				vf.getPrincipal().getPanelRegistroPaciente().getNombre().setText("");
+	            vf.getPrincipal().getPanelRegistroPaciente().getCorreo().setText("");
+	            vf.getPrincipal().getPanelRegistroPaciente().getNumeroDocumento().setText("");
+	            vf.getPrincipal().getPanelRegistroPaciente().getContraseña().setText("");
+	            vf.getPrincipal().getPanelRegistroPaciente().getJcbGenero().setSelectedIndex(-1); 
+
 			}
 			if (especialista == true) {
 				vf.getPrincipal().setTitle("REGISTRAR ESPECIALISTA");
@@ -428,16 +433,16 @@ public class Controlador implements ActionListener {
 			break;
 		
 		case "REGISTRAR":
-			System.out.println("hola");
+		
 			try {
 			if(paciente==true) {
-				System.out.println("if");
+				
 				String nombre = vf.getPrincipal().getPanelRegistroPaciente().getNombre().getText();
 				ExceptionChecker.checkName(nombre);
 				String correo = vf.getPrincipal().getPanelRegistroPaciente().getCorreo().getText();
 				ExceptionChecker.checkEmail(correo);
 				String cedula1 = vf.getPrincipal().getPanelRegistroPaciente().getNumeroDocumento().getText();
-				System.out.println("exception checker");
+				
 				String contrasena1 = vf.getPrincipal().getPanelRegistroPaciente().getContraseña().getText();
 				String genero = (String) vf.getPrincipal().getPanelRegistroPaciente().getJcbGenero().getSelectedItem();
 				int contrasena =Integer.parseInt(contrasena1); 
@@ -449,45 +454,74 @@ public class Controlador implements ActionListener {
 					 vf.getCon().mostrarMensajeEmergente("Todos los campos son obligatorios.");
 				        return;
 				}
-				System.out.println("antes del dao");
-				if (mf.getPdao().add(new PacienteDTO(nombre, cedula,  correo, contrasena, genero))) {
-					System.out.println("despues del dao");
-					vf.getCon().mostrarMensajeEmergente("se ha registrado exitosamente");
-					vf.getPrincipal().getPanelRegistroPaciente().getNombre().setText("");
-		            vf.getPrincipal().getPanelRegistroPaciente().getCorreo().setText("");
-		            vf.getPrincipal().getPanelRegistroPaciente().getNumeroDocumento().setText("");
-		            vf.getPrincipal().getPanelRegistroPaciente().getContraseña().setText("");
-		            vf.getPrincipal().getPanelRegistroPaciente().getJcbGenero().setSelectedIndex(-1); 
-		            vf.getPrincipal().getPanelRegistroPaciente().getBtnRegistrarP().setVisible(true);
-		            vf.getPrincipal().getPanelRegistroPaciente().setVisible(true);
-				} else {
-					 vf.getCon().mostrarMensajeEmergente("Ya está registrado");
-				}
-			}
-			}catch(NameNotValidException e1) {
-				vf.getCon().mostrarAlerta(e1.getMessage());
-			}catch(InvalidEmailException e2) {
-				vf.getCon().mostrarAlerta(e2.getMessage());
-			}catch(NegativeNumberInvalidException e3) {
-				vf.getCon().mostrarAlerta(e3.getMessage());
-			}
-			break;
-		case "INICIARSESION":
-			if (paciente==true) {
-				String documentoIngresado = vf.getPrincipal().getPanelInicioSesionP().getNumeroDocumento().getText();
-				int documentoInt = Integer.parseInt(documentoIngresado);
-			    String contrasenaIngresada = vf.getPrincipal().getPanelInicioSesionP().getContraseña().getText();
-			    int contrasenaInt = Integer.parseInt(contrasenaIngresada);
-			    
-				if (mf.getPdao().authenticatePatient(documentoInt, contrasenaInt)) {
-			        vf.getCon().mostrarMensajeEmergente("Inicio de sesión exitoso");
-			        
-			    } else {
-			        vf.getCon().mostrarMensajeEmergente("Correo o contraseña incorrectos");
-			    }
-			}
-		
+				
+				mf.getPdao().add(new PacienteDTO(nombre, cedula,  correo, contrasena, genero));
+				vf.getCon().mostrarMensajeEmergente("registrado exitsamente");
 
+				
+
+			}
+			
+			if(especialista==true) {
+				System.out.println("hola");
+				String nombre1 = vf.getPrincipal().getPanelRegistroEspecialista().getNombre().getText();
+				ExceptionChecker.checkName(nombre1);
+				String correo2 = vf.getPrincipal().getPanelRegistroEspecialista().getCorreo().getText();
+				ExceptionChecker.checkEmail(correo2);
+				String cedula2 = vf.getPrincipal().getPanelRegistroEspecialista().getNumeroDocumento().getText();
+				System.out.println("exception checker");
+				String contrasena2 = vf.getPrincipal().getPanelRegistroEspecialista().getContraseña().getText();
+				String tipoEspecialista = (String) vf.getPrincipal().getPanelRegistroEspecialista().getJcbTipoEspecialidad().getSelectedItem();
+				int contrasena3 =Integer.parseInt(contrasena2); 
+				ExceptionChecker.checkNegativeNumber(contrasena3);
+				int cedula3 = Integer.parseInt(cedula2);
+				ExceptionChecker.checkNegativeNumber(cedula3);
+				
+				if(nombre1.isEmpty() || correo2.isEmpty() || cedula2.isEmpty() || contrasena2.isEmpty() || tipoEspecialista == null) {
+					 vf.getCon().mostrarMensajeEmergente("Todos los campos son obligatorios.");
+				        return;
+				}
+				mf.getEdao().add(new EspecialistaDTO(nombre1, cedula3, correo2, contrasena3, tipoEspecialista));
+					vf.getCon().mostrarMensajeEmergente("se ha registrado exitosamente");
+					
+
+			
+			}
+			}catch(NameNotValidException e4) {
+				vf.getCon().mostrarAlerta(e4.getMessage());
+			}catch(InvalidEmailException e5) {
+				vf.getCon().mostrarAlerta(e5.getMessage());
+			}catch(NegativeNumberInvalidException e6) {
+				vf.getCon().mostrarAlerta(e6.getMessage());
+			}
+	
+			break;
+
+		case "INICIARSESION":
+			try {
+		        if (paciente) {
+		           
+		            String documentoIngresado = vf.getPrincipal().getPanelInicioSesionP().getNumeroDocumento().getText();
+		            int documentoInt = Integer.parseInt(documentoIngresado); 
+
+		            String contrasenaIngresada = vf.getPrincipal().getPanelInicioSesionP().getContraseña().getText();
+		            int contrasenaInt = Integer.parseInt(contrasenaIngresada); 
+		            
+		            if (mf.getPdao().authenticatePatient(documentoInt, contrasenaInt)) {
+		                vf.getCon().mostrarMensajeEmergente("Inicio de sesión exitoso");
+		                vf.getPrincipal().mostrarPanelMenuPrincipalPaciente();
+		                paciente = true; 
+		            } else {
+		                vf.getCon().mostrarMensajeEmergente("Documento o contraseña incorrectos");
+		            }
+		        }
+		    }  catch (NumberFormatException e1) {
+		    	vf.getCon().mostrarAlerta(e1.getMessage());
+		    }
+		    break;
+			
+		
+	
 		case "agendar cita paciente":
 
 			vf.getPrincipal().setTitle("MENU PRINCIPAL");
@@ -681,5 +715,4 @@ public class Controlador implements ActionListener {
 			break;
 			
 		}
-	}
-}
+}}

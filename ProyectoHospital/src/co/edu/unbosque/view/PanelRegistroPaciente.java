@@ -41,7 +41,7 @@ public class PanelRegistroPaciente extends JPanel {
 		correo.setBounds(780, 345, 300, 62);
 		correo.setOpaque(true);
 		
-		contraseña = new JPasswordField("contraseña");
+		contraseña = new JPasswordField();
 		contraseña.setBounds(785, 507, 300, 55);
 		contraseña.setOpaque(true);
 		
@@ -58,7 +58,7 @@ public class PanelRegistroPaciente extends JPanel {
         btnRegistrarP = new JButton("Registrar");
         btnRegistrarP.setBounds(640, 600, 200, 50); // Posición ajustada
         btnRegistrarP.setOpaque(true);
-        btnRegistrarP.setActionCommand("REGISTRAR PACIENTE");
+        btnRegistrarP.setActionCommand("REGISTRAR");
 
         // Botón "Volver"
         btnVolverP1 = new JButton("Volver");
