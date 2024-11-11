@@ -118,6 +118,8 @@ public class Controlador implements ActionListener {
 
 		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnReprogramarCita().addActionListener(this);
 		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnReprogramarCita().setActionCommand("reprogramar cita paciente");
+		
+		
 
 		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnMostrarCitas().addActionListener(this);
 		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnMostrarCitas().setActionCommand("mostrar citas y examenes programados paciente");
@@ -782,15 +784,26 @@ public class Controlador implements ActionListener {
 			break;
 			
 		case "reprogramar cita paciente":
-			vf.getPrincipal().setTitle("MENU PRINCIPAL");
+			vf.getPrincipal().setTitle("REAGENDAR CITA");
 
 			vf.getPrincipal().getPanelMenuPrincipalPaciente().getImagenMenuPpalP().setVisible(false);
-			vf.getPrincipal().getPanelCancelarCitaPaciente().getImagenCancelarCitaP().setVisible(true);
+			vf.getPrincipal().getPanelReprogramarCitaPaciente().getImagenReprogramarCitaP().setVisible(true);
 
-			vf.getPrincipal().mostrarPanelCancelarCitaPaciente();
+			vf.getPrincipal().mostrarPanelReprogramarCitaPaciente();
 
 			menuPpalP = false;
 			reprogramarCitaP = true;
+			break;
+		case "continuar a reprogramar cita paciente":
+			vf.getPrincipal().setTitle("REAGENDAR CITA");
+			
+			vf.getPrincipal().getPanelReprogramarCitaPaciente().getImagenReprogramarCitaP().setVisible(false);
+			vf.getPrincipal().getPanelContinuarReprogramarCitaPaciente().getImagenReprogramarCita2().setVisible(true);
+			
+			vf.getPrincipal().mostrarPanelContinuarReprogramarCitaPaciente();
+			
+			reprogramarCitaP = false;
+			reprogramarCitaP2 = true;
 			break;
 
 		case "mostrar citas y examenes programados paciente":
@@ -979,7 +992,10 @@ public class Controlador implements ActionListener {
 	        vf.getPrincipal().mostrarPanelMenuPrincipalDirectorMedico();
 	        mostrarReporteMensualD = false;
 	        break;
-			
+	    case "volver de reprogramar cita 2 a reprogramar cita 1":
+	    	vf.getPrincipal().setTitle("REPROGRAMAR CITA PACIENTE");
+	    	vf.getPrincipal().mostrarPanelReprogramarCitaPaciente();
+	    	reprogramarCitaP2=false;
 		}
 		
 	}
