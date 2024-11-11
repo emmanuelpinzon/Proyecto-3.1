@@ -19,6 +19,7 @@ import co.edu.unbosque.util.exception.ExceptionChecker;
 import co.edu.unbosque.util.exception.InvalidEmailException;
 import co.edu.unbosque.util.exception.NameNotValidException;
 import co.edu.unbosque.util.exception.NegativeNumberInvalidException;
+import co.edu.unbosque.view.MenuPrincipal;
 import co.edu.unbosque.view.ViewFacade;
 
 public class Controlador implements ActionListener {
@@ -614,9 +615,10 @@ public class Controlador implements ActionListener {
 
 
 
-		case "CANCELARCITA":
-			// Mostrar todas las citas disponibles con sus detalles antes de pedir el número
-			// de cita
+
+		case "cancelar cita paciente":
+	
+			
 			ArrayList<CitaDTO> todasLasCitas = mf.getCdao().getAll();
 			if (todasLasCitas.isEmpty()) {
 				vf.getCon().mostrarAlerta("No hay citas disponibles para cancelar.");
@@ -689,18 +691,6 @@ public class Controlador implements ActionListener {
 			} catch (NumberFormatException e1) {
 				vf.getCon().mostrarError("El número de cita debe ser un número entero válido");
 			}
-
-			break;
-		case "cancelar cita paciente":
-			vf.getPrincipal().setTitle("MENU PRINCIPAL");
-
-			vf.getPrincipal().getPanelMenuPrincipalPaciente().getImagenMenuPpalP().setVisible(false);
-			vf.getPrincipal().getPanelCancelarCitaPaciente().getImagenCancelarCitaP().setVisible(true);
-
-			vf.getPrincipal().mostrarPanelCancelarCitaPaciente();
-
-			menuPpalP = false;
-			cancelarCitaP = true;
 			break;
 			
 		case "reprogramar cita paciente":
@@ -798,7 +788,7 @@ public class Controlador implements ActionListener {
 	        
 	    case "volver al menu principal desde director medico":
 	        vf.getPrincipal().setTitle("MENU PRINCIPAL");
-	        vf.getPrincipal().getPanelMenuDirectorMedico().getImagenMenuD().setVisible(true);
+	        vf.getPrincipal().getPanelMenuPrincipalDirectorMedico().getImagenMenuPpalD().setVisible(true);
 	        vf.getPrincipal().mostrarMenuPrincipal();
 	        directorMedico = false;
 	        break;
@@ -887,11 +877,7 @@ public class Controlador implements ActionListener {
 	        mostrarResultadosExamenesP = false;
 	        break;
 
-	    case "volver al menu desde menu principal director medico":
-	        vf.getPrincipal().setTitle("MENU PRINCIPAL DIRECTOR MEDICO");
-	        vf.getPrincipal().mostrarPanelMenuPrincipalDirectorMedico();
-	        menuPpalD = false;
-	        break;
+
 
 	    
 	    case "volver de confirmar cambio turno a menu principal director":

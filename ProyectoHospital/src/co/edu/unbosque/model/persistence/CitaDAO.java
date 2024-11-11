@@ -1,6 +1,9 @@
 package co.edu.unbosque.model.persistence;
 
+import java.sql.Date;
 import java.util.ArrayList;
+import java.util.List;
+
 import co.edu.unbosque.model.Cita;
 import co.edu.unbosque.model.CitaDTO;
 
@@ -132,6 +135,12 @@ public class CitaDAO implements CRUDOperation<CitaDTO, Cita> {
         } else {
             return false;
         }
+    }
+    public List<String> obtenerCitasPorFecha(java.util.Date fechaSeleccionada) {
+        // Código para consultar la base de datos y obtener las horas ocupadas en la fecha específica
+        List<String> horasOcupadas = new ArrayList<>();
+        // Consulta a la base de datos y llenado de horasOcupadas
+        return horasOcupadas;
     }
 
     public void writeFile() {

@@ -27,6 +27,7 @@ import com.toedter.calendar.JDateChooser;
 
 	    public PanelAgendarCitaPaciente() {
 	    	
+	    	
 	    	Border border = BorderFactory.createLineBorder(Color.BLACK, 3);
 	    	
 	        setLayout(null);
@@ -54,6 +55,7 @@ import com.toedter.calendar.JDateChooser;
 	        fechaCita.setBounds(300, 350, 280, 50);
 	        fechaCita.setDateFormatString("dd-MM-yyyy"); 
 	        
+	        
 
 
 	        
@@ -80,13 +82,18 @@ import com.toedter.calendar.JDateChooser;
 
 	        
 	        
-	       
+	        add(fechaCita);
+	    	add(jcbtipoEspecialista);
+			  add(jcbHora);
+	        add(imagenAgendarCitaP);
+	      
+		
+			  
 	        add(btnVolverCc);
 	        add(btnAgregarCita);
-			add(jcbtipoEspecialista);
-			  add(jcbHora);
-		        add(fechaCita);
-	        add(imagenAgendarCitaP);
+
+		     setVisible(true);
+	 
 	        
 	       
 	        

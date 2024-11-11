@@ -28,6 +28,7 @@ public class PanelMenuPaciente extends JPanel {
         imagenMenuP.setIcon(new ImageIcon(redimensionado1));
         imagenMenuP.setBounds(0, 0, 1280, 720);
 
+        
         // Botón "Iniciar sesión"
         btnIniciarSesion = new JButton("Iniciar Sesión");
         btnIniciarSesion.setBounds(205, 520, 310, 50); // Posición ajustada
@@ -50,12 +51,12 @@ public class PanelMenuPaciente extends JPanel {
       
 
         
-        
+        add(imagenMenuP);
        
         add(btnIniciarSesion);
         add(btnRegistrarse);
         add(btnVolver);
-        add(imagenMenuP);
+
         
         
            }

@@ -69,7 +69,7 @@ public class PanelMenuPrincipalPaciente extends JPanel {
       
 
         
-        
+        add(imagenMenuPpalP);
        
         add(btnAgendarCita);
         add(btnReprogramarCita);
@@ -78,7 +78,8 @@ public class PanelMenuPrincipalPaciente extends JPanel {
         add(btnMostrarResultados);
         add(btnCancelarCita);
         add(btnVolverPP);
-        add(imagenMenuPpalP);
+
+        
         
         
     }

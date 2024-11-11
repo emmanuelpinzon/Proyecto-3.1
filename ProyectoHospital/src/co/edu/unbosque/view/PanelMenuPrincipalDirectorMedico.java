@@ -59,14 +59,15 @@ public class PanelMenuPrincipalDirectorMedico extends JPanel {
       
 
         
-        
+        add(imagenMenuPpalD);
        
         add(btnConfirmarCambioTurno);
         add(btnMostrarReporteSemanal);
         add(btnMostrarReporteMensual);
         add(btnAsignarTurno);
         add(btnVolverDME);
-        add(imagenMenuPpalD);
+        
+  
         
         
         

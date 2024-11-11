@@ -55,12 +55,13 @@ public class PanelMenuPrincipalEspecialista extends JPanel {
 
         
         
-       
+        add(imagenMenuPpalE);
         add(btnRealizarCambioTurno);
         add(btnMostrarCitasProgramadas);
         add(btnAceptarCambioTurno);
         add(btnVolverEE);
-        add(imagenMenuPpalE);
+  
+        
         
         
         
