@@ -4,8 +4,7 @@ import java.util.ArrayList;
 
 import co.edu.unbosque.model.Cita;
 import co.edu.unbosque.model.CitaDTO;
-import co.edu.unbosque.model.DirectorMedico;
-import co.edu.unbosque.model.DirectorMedicoDTO;
+
 import co.edu.unbosque.model.Especialista;
 import co.edu.unbosque.model.EspecialistaDTO;
 import co.edu.unbosque.model.Paciente;
@@ -97,32 +96,6 @@ public static ArrayList<Cita>listaCitaDTOToCita(ArrayList<CitaDTO>dtoList){
 	}
 	return entityList;
 }
-public static DirectorMedico DirectorMedicoDTOToDirectorMedico(DirectorMedicoDTO dto) {
-	DirectorMedico entity;
-    entity = new DirectorMedico(dto.getNombre(), dto.getCedula(), dto.getCorreo(), dto.getContraseña());
-    return entity;
-}
 
-public static DirectorMedicoDTO DirectorMedicoToDirectorMedicoDTO(DirectorMedico entity) {
-	DirectorMedicoDTO dto;
-    dto = new DirectorMedicoDTO(entity.getNombre(), entity.getCedula(), entity.getCorreo(), entity.getContraseña());
-    return dto;
-}
-
-public static ArrayList<DirectorMedicoDTO> listaDirectorMedicoToDirectorMedicoDTO(ArrayList<DirectorMedico> listaEntity) {
-    ArrayList<DirectorMedicoDTO> dtoList = new ArrayList<>();
-    for (DirectorMedico d : listaEntity) {
-        dtoList.add(new DirectorMedicoDTO(d.getNombre(), d.getCedula(), d.getCorreo(), d.getContraseña()));
-    }
-    return dtoList;
-}
-
-public static ArrayList<DirectorMedico> listaDirectorMedicoDTOToDirectorMedico(ArrayList<DirectorMedicoDTO> dtoList) {
-    ArrayList<DirectorMedico> entityList = new ArrayList<>();
-    for (DirectorMedicoDTO dd : dtoList) {
-        entityList.add(new DirectorMedico(dd.getNombre(), dd.getCedula(), dd.getCorreo(), dd.getContraseña()));
-    }
-    return entityList;
-}
 
 }

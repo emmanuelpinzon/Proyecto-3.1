@@ -211,22 +211,9 @@ public class Controlador implements ActionListener {
 		vf.getPrincipal().getPanelMenuDirectorMedico().getBtnRegistrarseD().addActionListener(this);
 		vf.getPrincipal().getPanelMenuDirectorMedico().getBtnRegistrarseD().setActionCommand("REGISTRARSE");
 		
-		// BOTONES DE INICIO DE SESIÓN (DIRECTOR MEDICO)
-		vf.getPrincipal().getPanelInicioSesionDirectorMedico().getBtnIniciarSesionD().addActionListener(this);
-		vf.getPrincipal().getPanelInicioSesionDirectorMedico().getBtnIniciarSesionD().setActionCommand("INICIAR SESION");
 
-		vf.getPrincipal().getPanelInicioSesionDirectorMedico().getBtnVolverD().addActionListener(this);
-		vf.getPrincipal().getPanelInicioSesionDirectorMedico().getBtnVolverD()
-				.setActionCommand("volver al menu director medico desde inicio sesion");
 		
-		//// BOTONES DE REGISTRO (DIRECTOR MEDICO)
 
-		vf.getPrincipal().getPanelRegistroDirectorMedico().getBtnRegistrarDM().addActionListener(this);
-		vf.getPrincipal().getPanelRegistroDirectorMedico().getBtnRegistrarDM().setActionCommand("REGISTRARDM");
-		
-		vf.getPrincipal().getPanelRegistroDirectorMedico().getBtnVolverDM().addActionListener(this);
-		vf.getPrincipal().getPanelRegistroDirectorMedico().getBtnVolverDM()
-				.setActionCommand("volver al menu director medico desde registro");
 		
 		
 		
@@ -328,7 +315,6 @@ public class Controlador implements ActionListener {
 
 
 
-
 		vf.getPrincipal().getPanelRegistroPaciente().getNombre().setVisible(true);
 		vf.getPrincipal().getPanelRegistroPaciente().getNumeroDocumento().setVisible(true);
 		vf.getPrincipal().getPanelRegistroPaciente().getCorreo().setVisible(true);
@@ -376,9 +362,9 @@ public class Controlador implements ActionListener {
 		case "Director Medico":
 			vf.getPrincipal().setTitle("MENU DIRECTOR");
 
-			vf.getPrincipal().getPanelMenuDirectorMedico().getImagenMenuD().setVisible(true);
+			vf.getPrincipal().getPanelMenuPrincipalDirectorMedico().getImagenMenuPpalD().setVisible(true);
 
-			vf.getPrincipal().mostrarPanelMenuDirectorMedico();
+			vf.getPrincipal().mostrarPanelMenuPrincipalDirectorMedico();
 
 			directorMedico = true;
 
@@ -427,25 +413,7 @@ public class Controlador implements ActionListener {
 
 				registroE = true;
 			}
-			if (directorMedico == true) {
-				vf.getPrincipal().setTitle("REGISTRAR DIRECTOR MEDICO");
 
-				vf.getPrincipal().getPanelRegistroDirectorMedico().getNombreD().setVisible(true);
-				vf.getPrincipal().getPanelRegistroDirectorMedico().getNumeroDocumentoD().setVisible(true);
-				vf.getPrincipal().getPanelRegistroDirectorMedico().getCorreoD().setVisible(true);
-				vf.getPrincipal().getPanelRegistroDirectorMedico().getContraseñaD().setVisible(true);
-
-				vf.getPrincipal().getPanelRegistroDirectorMedico().getImagenRegistroDM().setVisible(true);
-
-				vf.getPrincipal().mostrarPanelRegistroDirectorMedico();
-
-				vf.getPrincipal().getPanelRegistroDirectorMedico().getNombreD().setText("");
-				vf.getPrincipal().getPanelRegistroDirectorMedico().getNumeroDocumentoD().setText("");
-				vf.getPrincipal().getPanelRegistroDirectorMedico().getCorreoD().setText("");
-				vf.getPrincipal().getPanelRegistroDirectorMedico().getContraseñaD().setText("");
-
-				registroD = true;
-			}
 			break;
 		case "INICIAR SESION":
 			if (paciente == true) {
@@ -470,17 +438,6 @@ public class Controlador implements ActionListener {
 				vf.getPrincipal().mostrarPanelInicioSesionEspecialista();
 
 				inicioSesionE = true;
-			} else if (directorMedico == true) {
-				vf.getPrincipal().setTitle("INICIAR SESION DIRECTOR");
-
-				vf.getPrincipal().getPanelInicioSesionDirectorMedico().getNumeroDocumentoD().setVisible(true);
-				vf.getPrincipal().getPanelInicioSesionDirectorMedico().getContraseñaD().setVisible(true);
-
-				vf.getPrincipal().getPanelInicioSesionDirectorMedico().getImagenInicioSesionD().setVisible(true);
-
-				vf.getPrincipal().mostrarPanelInicioSesionDirectorMedico();
-
-				inicioSesionD = true;
 			}
 			break;
 
@@ -539,28 +496,7 @@ public class Controlador implements ActionListener {
 
 				}
 
-				if (directorMedico == true) {
-
-					String nombre3 = vf.getPrincipal().getPanelRegistroDirectorMedico().getNombreD().getText();
-					ExceptionChecker.checkName(nombre3);
-					String correo4 = vf.getPrincipal().getPanelRegistroDirectorMedico().getCorreoD().getText();
-					ExceptionChecker.checkEmail(correo4);
-					String cedula3 = vf.getPrincipal().getPanelRegistroDirectorMedico().getNumeroDocumentoD().getText();
-					System.out.println("exception checker");
-					String contrasena3 = vf.getPrincipal().getPanelRegistroDirectorMedico().getContraseñaD().getText();
-					int contrasena4 = Integer.parseInt(contrasena3);
-					ExceptionChecker.checkNegativeNumber(contrasena4);
-					int cedula4 = Integer.parseInt(cedula3);
-					ExceptionChecker.checkNegativeNumber(cedula4);
-
-					if (nombre3.isEmpty() || correo4.isEmpty() || cedula3.isEmpty() || contrasena3.isEmpty()) {
-						vf.getCon().mostrarMensajeEmergente("Todos los campos son obligatorios.");
-						return;
-					}
-					mf.getEdao().add(new EspecialistaDTO(nombre3, cedula4, correo4, contrasena4));
-					vf.getCon().mostrarMensajeEmergente("se ha registrado exitosamente");
-
-				}
+			
 
 			} catch (NameNotValidException e4) {
 				vf.getCon().mostrarAlerta(e4.getMessage());
@@ -610,23 +546,7 @@ public class Controlador implements ActionListener {
 					}
 
 				}
-				if (directorMedico) {
 
-					String documentoIngresado2 = vf.getPrincipal().getPanelInicioSesionE().getNumeroDocumento()
-							.getText();
-					int documentoInt2 = Integer.parseInt(documentoIngresado2);
-
-					String contrasenaIngresada2 = vf.getPrincipal().getPanelInicioSesionE().getContraseña().getText();
-					int contrasenaInt2 = Integer.parseInt(contrasenaIngresada2);
-					if (mf.getDmdao().authenticatedirectorMedico(documentoInt2, contrasenaInt2)) {
-						vf.getCon().mostrarMensajeEmergente("Inicio de sesión exitoso");
-						vf.getPrincipal().mostrarPanelMenuPrincipalDirectorMedico();
-						directorMedico = true;
-					} else {
-						vf.getCon().mostrarMensajeEmergente("Documento o contraseña incorrectos");
-					}
-
-				}
 
 			} catch (NumberFormatException e1) {
 				vf.getCon().mostrarAlerta(e1.getMessage());

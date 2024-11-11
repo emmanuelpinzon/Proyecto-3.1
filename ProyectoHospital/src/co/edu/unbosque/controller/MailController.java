@@ -25,7 +25,7 @@ public class MailController {
     public static int numeroCita = 1;
    
     
-    MailController() {
+    public MailController() {
         mProperties = new Properties();
         mProperties.put("mail.smtp.host", "smtp.gmail.com");
         mProperties.put("mail.smtp.ssl.trust", "smtp.gmail.com");
@@ -38,7 +38,7 @@ public class MailController {
         
     }
 
-    private void createEmail(String et, String s, String c) {
+    public void createEmail(String et, String s, String c) {
         emailTo = et.trim();  
         subject = s.trim() + " - Número de cita: " + numeroCita;   
         content = c.trim() + "\n\nNúmero de Cita: " + numeroCita;  
@@ -57,7 +57,7 @@ public class MailController {
         }
     }
 
-    private void sendEmail() {
+    public void sendEmail() {
         try {
             Transport mTransport = mSession.getTransport("smtp");
             mTransport.connect(EMAIL_FROM, PASSWORD_FROM);
