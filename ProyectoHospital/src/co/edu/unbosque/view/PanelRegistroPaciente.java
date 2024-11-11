@@ -30,39 +30,44 @@ public class PanelRegistroPaciente extends JPanel {
         
        
 		nombre= new JTextField();
-		nombre.setBounds(155, 345, 300, 60);
+		nombre.setBounds(99, 348, 230, 60);
+		nombre.setBorder(null);
 		nombre.setOpaque(true);
 		
 		numeroDocumento = new JTextField();
-		numeroDocumento.setBounds(160, 507, 300, 55);
+		numeroDocumento.setBounds(130, 520, 230, 55);
+		numeroDocumento.setBorder(null);
 		numeroDocumento.setOpaque(true);
 
 		correo = new JTextField();
-		correo.setBounds(780, 345, 300, 62);
+		correo.setBounds(860, 344, 240, 34);
+		correo.setBorder(null);
 		correo.setOpaque(true);
 		
 		contraseña = new JPasswordField();
-		contraseña.setBounds(785, 507, 300, 55);
+		contraseña.setBounds(858, 515, 240, 45);
+		contraseña.setBorder(null);
 		contraseña.setOpaque(true);
 		
 		String[] genero = { "Femenino", "Masculino" };
 		DefaultComboBoxModel<String> modelo = new DefaultComboBoxModel<>(genero);
 
 		jcbGenero = new JComboBox<>(modelo);
-		jcbGenero.setBounds(500, 500, 280, 50);
+		jcbGenero.setBounds(500, 490, 280, 60);
+		jcbGenero.setBorder(null);
 		jcbGenero.setFont(new Font("Arial", Font.PLAIN, 16));
 
 	
         // Botón "Registrarse"
 		
         btnRegistrarP = new JButton("Registrar");
-        btnRegistrarP.setBounds(640, 600, 200, 50); // Posición ajustada
+        btnRegistrarP.setBounds(700, 600, 200, 65); // Posición ajustada
         btnRegistrarP.setOpaque(true);
         btnRegistrarP.setActionCommand("REGISTRAR");
 
         // Botón "Volver"
         btnVolverP1 = new JButton("Volver");
-        btnVolverP1.setBounds(490, 610, 150, 50); // Posición ajustada
+        btnVolverP1.setBounds(430, 600, 150, 65); // Posición ajustada
         btnVolverP1.setOpaque(true);
         btnVolverP1.setActionCommand("VOLVER");
         
@@ -75,16 +80,17 @@ public class PanelRegistroPaciente extends JPanel {
 
 
         
-        
+        add(imagenRegistroP);
+    	add(jcbGenero);
+        add(btnRegistrarP);
+        add(btnVolverP1);
         add(nombre);
        	add(numeroDocumento);
        	add(correo);
        	add(contraseña);
-       	add(jcbGenero);
-        add(btnRegistrarP);
-        add(btnVolverP1);
+       
         
-        add(imagenRegistroP);
+       
         setVisible(true);
 
            }

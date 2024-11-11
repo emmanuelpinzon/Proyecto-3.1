@@ -33,7 +33,7 @@ public class PanelRealizarCambioDeTurno extends JPanel {
         btnContinuarRc = new JButton("Continuar");
         btnContinuarRc.setBounds(950, 540, 180, 80); // Posición ajustada
         btnContinuarRc.setOpaque(true);
-        btnContinuarRc.setActionCommand("REGISTRAR");
+        btnContinuarRc.setActionCommand("CONTINUAR");
 
        
         btnVolverRc = new JButton("Volver");

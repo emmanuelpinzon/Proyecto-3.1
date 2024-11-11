@@ -34,7 +34,7 @@ import javax.swing.border.Border;
 			
 			
 			numeroDocumento = new JTextField();
-			numeroDocumento.setBounds(200, 507, 300, 55);
+			numeroDocumento.setBounds(210, 507, 300, 55);
 			numeroDocumento.setBorder(null);
 			numeroDocumento.setOpaque(true);
 
@@ -49,7 +49,7 @@ import javax.swing.border.Border;
 	        // Botón "Registrarse"
 			
 	        btnIniciarSesion = new JButton("Iniciar Sesion");
-	        btnIniciarSesion.setBounds(720, 610, 140, 50); // Posición ajustada
+	        btnIniciarSesion.setBounds(685, 600, 200, 65); // Posición ajustada
 	        btnIniciarSesion.setContentAreaFilled(false);
 	        btnIniciarSesion.setBorderPainted(false);
 	        btnIniciarSesion.setOpaque(true);
@@ -57,7 +57,7 @@ import javax.swing.border.Border;
 
 	        // Botón "Volver"
 	        btnVolverP = new JButton("Volver");
-	        btnVolverP.setBounds(450, 610, 150, 50); // Posición ajustada
+	        btnVolverP.setBounds(480, 600, 150, 65); // Posición ajustada
 	        btnVolverP.setOpaque(true);
 	        btnVolverP.setActionCommand("VOLVER");
 	        
@@ -70,22 +70,18 @@ import javax.swing.border.Border;
 
 
 	        
-	        
-	        
-	       	add(numeroDocumento);
-	        add(contraseña);
+	        add(imagenInicioSesionP);
 	        add(btnIniciarSesion);
 	        add(btnVolverP);
+	       	add(numeroDocumento);
+	        add(contraseña);
+
 	        
-	        add(imagenInicioSesionP);
+	   
 	        
 	       
 	        
-	        setComponentZOrder(numeroDocumento, 0);
-	        setComponentZOrder(contraseña, 1);
-	        setComponentZOrder(btnIniciarSesion, 2);
-	        setComponentZOrder(btnVolverP, 3);
-	        setComponentZOrder(imagenInicioSesionP, 4);
+	    
 	           }
 
 

@@ -1,4 +1,3 @@
-
 package co.edu.unbosque.view;
 
 import java.awt.Image;
@@ -26,25 +25,25 @@ public class MenuPrincipal extends JPanel {
 		imagenPpal.setBounds(0, 0, 1280, 720);
 
 		btnPaciente = new JButton("paciente");
-		btnPaciente.setBounds(100, 470, 300, 105);
-		btnPaciente.setOpaque(false);
+		btnPaciente.setBounds(70, 470, 325, 105);
+		btnPaciente.setOpaque(true);
 		btnPaciente.setActionCommand("PACIENTE");
 
 		btnEspecialista = new JButton("especialista ");
-		btnEspecialista.setBounds(900, 470, 320, 105);
-		btnEspecialista.setOpaque(false);
+		btnEspecialista.setBounds(880, 470, 335, 105);
+		btnEspecialista.setOpaque(true);
 		btnEspecialista.setActionCommand("ESPECIALISTA");
 		
 		btnDirectorM = new JButton("director medico ");
-		btnDirectorM.setBounds(450, 470, 370, 105);
-		btnDirectorM.setOpaque(false);
+		btnDirectorM.setBounds(440, 470, 400, 105);
+		btnDirectorM.setOpaque(true);
 		btnDirectorM.setActionCommand("DIRECTOR MEDICO");
 		
-		
+		add(imagenPpal);
 		add(btnPaciente);
 		add(btnEspecialista);
 		add(btnDirectorM);
-		add(imagenPpal);
+		
 	
 
 	}

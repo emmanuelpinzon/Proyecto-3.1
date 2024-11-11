@@ -68,6 +68,8 @@ public class Controlador implements ActionListener {
 	}
 
 	public void asignarLectores() {
+		
+		// BOTONES DEL MENÚ PRINCIPAL
 		vf.getPrincipal().getMenuPpal().getbtnPaciente().addActionListener(this);
 		vf.getPrincipal().getMenuPpal().getbtnPaciente().setActionCommand("Paciente");
 
@@ -77,109 +79,175 @@ public class Controlador implements ActionListener {
 		vf.getPrincipal().getMenuPpal().getbtnDirectorM().addActionListener(this);
 		vf.getPrincipal().getMenuPpal().getbtnDirectorM().setActionCommand("Director Medico");
 
+		// BOTONES DEL MENÚ PACIENTE
+		
 		vf.getPrincipal().getPanelMenuPpal().getbtnIniciarSesion().addActionListener(this);
 		vf.getPrincipal().getPanelMenuPpal().getbtnIniciarSesion().setActionCommand("INICIAR SESION");
-
-		vf.getPrincipal().getPanelInicioSesionP().getBtnIniciarSesion().addActionListener(this);
-		vf.getPrincipal().getPanelInicioSesionP().getBtnIniciarSesion().setActionCommand("INICIARSESION");
-
-		vf.getPrincipal().getPanelMenuE().getbtnIniciarSesionEs().addActionListener(this);
-		vf.getPrincipal().getPanelMenuE().getbtnIniciarSesionEs().setActionCommand("INICIAR SESION");
-
-		vf.getPrincipal().getPanelMenuDirectorMedico().getBtnIniciarSesionD().addActionListener(this);
-		vf.getPrincipal().getPanelMenuDirectorMedico().getBtnIniciarSesionD().setActionCommand("INICIAR SESION");
 
 		vf.getPrincipal().getPanelMenuPpal().getbtnRegistrarse().addActionListener(this);
 		vf.getPrincipal().getPanelMenuPpal().getbtnRegistrarse().setActionCommand("REGISTRARSE");
 
-		vf.getPrincipal().getPanelRegistroPaciente().getBtnRegistrarP().addActionListener(this);
-		vf.getPrincipal().getPanelRegistroPaciente().getBtnRegistrarP().setActionCommand("REGISTRAR PACIENTE");
-
-		vf.getPrincipal().getPanelMenuE().getbtnRegistrarseE().addActionListener(this);
-		vf.getPrincipal().getPanelMenuE().getbtnRegistrarseE().setActionCommand("REGISTRARSE");
-
-		vf.getPrincipal().getPanelRegistroEspecialista().getBtnRegistrarE().addActionListener(this);
-		vf.getPrincipal().getPanelRegistroEspecialista().getBtnRegistrarE().setActionCommand("REGISTRAR");
-
-		vf.getPrincipal().getPanelMenuDirectorMedico().getBtnRegistrarseD().addActionListener(this);
-		vf.getPrincipal().getPanelMenuDirectorMedico().getBtnRegistrarseD().setActionCommand("REGISTRARSE");
-
-		vf.getPrincipal().getPanelRegistroDirectorMedico().getBtnRegistrarDM().addActionListener(this);
-		vf.getPrincipal().getPanelRegistroDirectorMedico().getBtnRegistrarDM().setActionCommand("REGISTRARDM");
-
 		vf.getPrincipal().getPanelMenuPpal().getbtnVolver().addActionListener(this);
 		vf.getPrincipal().getPanelMenuPpal().getbtnVolver().setActionCommand("volver al menu principal desde paciente");
+		
+		// BOTONES DE INICIO DE SESIÓN (PACIENTE)
+		vf.getPrincipal().getPanelInicioSesionP().getBtnIniciarSesion().addActionListener(this);
+		vf.getPrincipal().getPanelInicioSesionP().getBtnIniciarSesion().setActionCommand("INICIARSESION");
+
+		vf.getPrincipal().getPanelInicioSesionP().getBtnVolverP().addActionListener(this);
+		vf.getPrincipal().getPanelInicioSesionP().getBtnVolverP().setActionCommand("volver al menu paciente desde inicio sesion");
+		
+		// BOTONES DE REGISTRO (PACIENTE)
+
+		vf.getPrincipal().getPanelRegistroPaciente().getBtnRegistrarP().addActionListener(this);
+		vf.getPrincipal().getPanelRegistroPaciente().getBtnRegistrarP().setActionCommand("REGISTRAR");
+
+		vf.getPrincipal().getPanelRegistroPaciente().getBtnVolverP1().addActionListener(this);
+		vf.getPrincipal().getPanelRegistroPaciente().getBtnVolverP1().setActionCommand("volver al menu paciente desde registro");
+		
+		
+		// BOTONES DE MENÚ PRINCIPAL PACIENTE
+		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnVolverPP().addActionListener(this);
+		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnVolverPP().setActionCommand("volver al inicio sesion desde menu principal paciente");
+
+		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnAgendarCita().addActionListener(this);
+		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnAgendarCita().setActionCommand("agendar cita paciente");
+
+		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnCancelarCita().addActionListener(this);
+		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnCancelarCita().setActionCommand("cancelar cita paciente");
+
+		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnReprogramarCita().addActionListener(this);
+		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnReprogramarCita().setActionCommand("reprogramar cita paciente");
+
+		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnMostrarCitas().addActionListener(this);
+		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnMostrarCitas().setActionCommand("mostrar citas y examenes programados paciente");
+
+		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnMostrarTratamiento().addActionListener(this);
+		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnMostrarTratamiento().setActionCommand("mostrar tratamiento paciente");
+
+		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnMostrarResultados().addActionListener(this);
+		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnMostrarResultados().setActionCommand("mostrar resultados paciente");
+		
+		
+		// BOTONES DE AGENDAR CITA (PACIENTE)
+		vf.getPrincipal().getPanelAgendarCitaPaciente().getBtnAgregarCita().addActionListener(this);
+		vf.getPrincipal().getPanelAgendarCitaPaciente().getBtnAgregarCita().setActionCommand("agregar cita");
+
+		vf.getPrincipal().getPanelAgendarCitaPaciente().getBtnVolverCc().addActionListener(this);
+		vf.getPrincipal().getPanelAgendarCitaPaciente().getBtnVolverCc().setActionCommand("volver de agendar cita paciente a menu principal paciente");
+		
+		// BOTONES DE CANCELAR CITA (PACIENTE)
+		vf.getPrincipal().getPanelCancelarCitaPaciente().getBtnCancelarCita().addActionListener(this);
+		vf.getPrincipal().getPanelCancelarCitaPaciente().getBtnCancelarCita().setActionCommand("CANCELARCITA");
+
+		vf.getPrincipal().getPanelCancelarCitaPaciente().getBtnVolverCa().addActionListener(this);
+		vf.getPrincipal().getPanelCancelarCitaPaciente().getBtnVolverCa().setActionCommand("volver de cancelar cita paciente a menu principal paciente");
+		
+		// BOTONES DE REPROGRAMAR CITA (PACIENTE)
+		vf.getPrincipal().getPanelReprogramarCitaPaciente().getBtnVolverRr().addActionListener(this);
+		vf.getPrincipal().getPanelReprogramarCitaPaciente().getBtnVolverRr().setActionCommand("volver de reprogramar cita paciente a menu principal paciente");
+
+		vf.getPrincipal().getPanelReprogramarCitaPaciente().getBtnContinuar().addActionListener(this);
+		vf.getPrincipal().getPanelReprogramarCitaPaciente().getBtnContinuar().setActionCommand("continuar a reprogramar cita paciente");
+
+		vf.getPrincipal().getPanelContinuarReprogramarCitaPaciente().getBtnVolverCrp().addActionListener(this);
+		vf.getPrincipal().getPanelContinuarReprogramarCitaPaciente().getBtnVolverCrp().setActionCommand("volver de reprogramar cita 2 a reprogramar cita 1");
+		
+		//BOTONES Menu especialista
+		vf.getPrincipal().getPanelMenuE().getbtnRegistrarseE().addActionListener(this);
+		vf.getPrincipal().getPanelMenuE().getbtnRegistrarseE().setActionCommand("REGISTRARSE");
+		
 
 		vf.getPrincipal().getPanelMenuE().getbtnVolver2().addActionListener(this);
 		vf.getPrincipal().getPanelMenuE().getbtnVolver2()
 				.setActionCommand("volver al menu principal desde especialista");
 
-		vf.getPrincipal().getPanelInicioSesionP().getBtnVolverP().addActionListener(this);
-		vf.getPrincipal().getPanelInicioSesionP().getBtnVolverP()
-				.setActionCommand("volver al menu paciente desde inicio sesion");
-
-		vf.getPrincipal().getPanelRegistroPaciente().getBtnVolverP1().addActionListener(this);
-		vf.getPrincipal().getPanelRegistroPaciente().getBtnVolverP1()
-				.setActionCommand("volver al menu paciente desde registro");
-
-		vf.getPrincipal().getPanelInicioSesionE().getBtnVolverE().addActionListener(this);
-		vf.getPrincipal().getPanelInicioSesionE().getBtnVolverE()
-				.setActionCommand("volver al menu especialista desde inicio sesion");
-
-		vf.getPrincipal().getPanelRegistroEspecialista().getBtnVolverEs().addActionListener(this);
-		vf.getPrincipal().getPanelRegistroEspecialista().getBtnVolverEs()
-				.setActionCommand("volver al menu especialista desde registro");
-
-		vf.getPrincipal().getPanelRegistroPaciente().getBtnRegistrarP().addActionListener(this);
-		vf.getPrincipal().getPanelRegistroPaciente().getBtnRegistrarP().setActionCommand("REGISTRAR");
-
-		vf.getPrincipal().getPanelInicioSesionP().getBtnIniciarSesion().addActionListener(this);
-		vf.getPrincipal().getPanelInicioSesionP().getBtnIniciarSesion().setActionCommand("INICIARSESION");
-
+		
+		
+		// BOTONES DE INICIO DE SESIÓN (ESPECIALISTA)
 		vf.getPrincipal().getPanelInicioSesionE().getBtnIniciarSesionE().addActionListener(this);
 		vf.getPrincipal().getPanelInicioSesionE().getBtnIniciarSesionE().setActionCommand("INICIARSESION");
 
-		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnVolverPP().addActionListener(this);
-		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnVolverPP()
-				.setActionCommand("volver al inicio sesion desde menu principal paciente");
+		vf.getPrincipal().getPanelInicioSesionE().getBtnVolverE().addActionListener(this);
+		vf.getPrincipal().getPanelInicioSesionE().getBtnVolverE().setActionCommand("volver al menu especialista desde inicio sesion");
+		
 
+		vf.getPrincipal().getPanelMenuE().getbtnIniciarSesionEs().addActionListener(this);
+		vf.getPrincipal().getPanelMenuE().getbtnIniciarSesionEs().setActionCommand("INICIAR SESION");
+		
+		// BOTONES DE REGISTRO (ESPECIALISTA)
+
+		vf.getPrincipal().getPanelRegistroEspecialista().getBtnRegistrarE().addActionListener(this);
+		vf.getPrincipal().getPanelRegistroEspecialista().getBtnRegistrarE().setActionCommand("REGISTRAR");
+
+		vf.getPrincipal().getPanelRegistroEspecialista().getBtnVolverEs().addActionListener(this);
+		vf.getPrincipal().getPanelRegistroEspecialista().getBtnVolverEs().setActionCommand("volver al menu especialista desde registro");
+		
+		// BOTONES DEL MENÚ PRINCIPAL ESPECIALISTA
 		vf.getPrincipal().getPanelMenuPrincipalEspecialista().getBtnVolverEE().addActionListener(this);
-		vf.getPrincipal().getPanelMenuPrincipalEspecialista().getBtnVolverEE()
-				.setActionCommand("volver al inicio sesion desde menu principal especialista");
-
-		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnAgendarCita().addActionListener(this);
-		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnAgendarCita().setActionCommand("agendar cita paciente");
-
-		vf.getPrincipal().getPanelAgendarCitaPaciente().getBtnAgregarCita().addActionListener(this);
-		vf.getPrincipal().getPanelAgendarCitaPaciente().getBtnAgregarCita().setActionCommand("agregar cita");
-		;
-
-		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnCancelarCita().addActionListener(this);
-		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnCancelarCita()
-				.setActionCommand("cancelar cita paciente");
-
-		vf.getPrincipal().getPanelCancelarCitaPaciente().getBtnCancelarCita().addActionListener(this);
-		vf.getPrincipal().getPanelCancelarCitaPaciente().getBtnCancelarCita().setActionCommand("CANCELARCITA");
-
-		vf.getPrincipal().getPanelAgendarCitaPaciente().getBtnVolverCc().addActionListener(this);
-		vf.getPrincipal().getPanelAgendarCitaPaciente().getBtnVolverCc()
-				.setActionCommand("volver de agendar cita paciente a menu principal paciente");
-
-		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnReprogramarCita().addActionListener(this);
-		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnReprogramarCita()
-				.setActionCommand("reprogramar cita paciente");
-
-		vf.getPrincipal().getPanelReprogramarCitaPaciente().getBtnVolverRr().addActionListener(this);
-		vf.getPrincipal().getPanelReprogramarCitaPaciente().getBtnVolverRr()
-				.setActionCommand("volver de reprogramar cita paciente a menu principal paciente");
-
-		vf.getPrincipal().getPanelCancelarCitaPaciente().getBtnVolverCa().addActionListener(this);
-		vf.getPrincipal().getPanelCancelarCitaPaciente().getBtnVolverCa()
-				.setActionCommand("volver de cancelar cita paciente a menu principal paciente");
+		vf.getPrincipal().getPanelMenuPrincipalEspecialista().getBtnVolverEE().setActionCommand("volver al inicio sesion desde menu principal especialista");
 
 		vf.getPrincipal().getPanelMenuPrincipalEspecialista().getBtnRealizarCambioTurno().addActionListener(this);
-		vf.getPrincipal().getPanelMenuPrincipalEspecialista().getBtnRealizarCambioTurno()
-				.setActionCommand("realizar cambio turno especialista");
+		vf.getPrincipal().getPanelMenuPrincipalEspecialista().getBtnRealizarCambioTurno().setActionCommand("realizar cambio turno especialista");
+
+		vf.getPrincipal().getPanelMenuPrincipalEspecialista().getBtnAceptarCambioTurno().addActionListener(this);
+		vf.getPrincipal().getPanelMenuPrincipalEspecialista().getBtnAceptarCambioTurno().setActionCommand("aceptar cambio turno");
+
+		vf.getPrincipal().getPanelMenuPrincipalEspecialista().getBtnMostrarCitasProgramadas().addActionListener(this);
+		vf.getPrincipal().getPanelMenuPrincipalEspecialista().getBtnMostrarCitasProgramadas().setActionCommand("mostrar citas programadas");
+		
+		
+		
+		
+		// BOTONES DE DIRECTOR MÉDICO
+		vf.getPrincipal().getPanelMenuDirectorMedico().getBtnIniciarSesionD().addActionListener(this);
+		vf.getPrincipal().getPanelMenuDirectorMedico().getBtnIniciarSesionD().setActionCommand("INICIAR SESION");
+
+		vf.getPrincipal().getPanelMenuDirectorMedico().getBtnVolverDE().addActionListener(this);
+		vf.getPrincipal().getPanelMenuDirectorMedico().getBtnVolverDE().setActionCommand("volver al menu principal desde director medico");
+		
+		vf.getPrincipal().getPanelMenuDirectorMedico().getBtnRegistrarseD().addActionListener(this);
+		vf.getPrincipal().getPanelMenuDirectorMedico().getBtnRegistrarseD().setActionCommand("REGISTRARSE");
+		
+		// BOTONES DE INICIO DE SESIÓN (DIRECTOR MEDICO)
+		vf.getPrincipal().getPanelInicioSesionDirectorMedico().getBtnIniciarSesionD().addActionListener(this);
+		vf.getPrincipal().getPanelInicioSesionDirectorMedico().getBtnIniciarSesionD().setActionCommand("INICIAR SESION");
+
+		vf.getPrincipal().getPanelInicioSesionDirectorMedico().getBtnVolverD().addActionListener(this);
+		vf.getPrincipal().getPanelInicioSesionDirectorMedico().getBtnVolverD()
+				.setActionCommand("volver al menu director medico desde inicio sesion");
+		
+		//// BOTONES DE REGISTRO (DIRECTOR MEDICO)
+
+		vf.getPrincipal().getPanelRegistroDirectorMedico().getBtnRegistrarDM().addActionListener(this);
+		vf.getPrincipal().getPanelRegistroDirectorMedico().getBtnRegistrarDM().setActionCommand("REGISTRARDM");
+		
+		vf.getPrincipal().getPanelRegistroDirectorMedico().getBtnVolverDM().addActionListener(this);
+		vf.getPrincipal().getPanelRegistroDirectorMedico().getBtnVolverDM()
+				.setActionCommand("volver al menu director medico desde registro");
+		
+		
+		
+
+		
+		// CONFIRMACIÓN DE CAMBIO DE TURNO
+		vf.getPrincipal().getPanelMenuPrincipalDirectorMedico().getBtnConfirmarCambioTurno().addActionListener(this);
+		vf.getPrincipal().getPanelMenuPrincipalDirectorMedico().getBtnConfirmarCambioTurno().setActionCommand("confirmar cambio turno");
+
+		vf.getPrincipal().getPanelConfirmarCambioTurnoDirector().getBtnVolverCtt().addActionListener(this);
+		vf.getPrincipal().getPanelConfirmarCambioTurnoDirector().getBtnVolverCtt().setActionCommand("volver de confirmar cambio turno a menu principal director");
+		
+		// BOTONES PARA MOSTRAR REPORTES
+		vf.getPrincipal().getPanelMostrarReporteSemanalDirector().getBtnVolverMsd().addActionListener(this);
+		vf.getPrincipal().getPanelMostrarReporteSemanalDirector().getBtnVolverMsd().setActionCommand("volver de mostrar reporte semanal a menu principal director");
+
+		vf.getPrincipal().getPanelMostrarReporteMensualDirector().getBtnVolverRmd().addActionListener(this);
+		vf.getPrincipal().getPanelMostrarReporteMensualDirector().getBtnVolverRmd().setActionCommand("volver de mostrar reporte mensual a menu principal director");
+		
+
+
+
+
 
 		vf.getPrincipal().getPanelRealizarCambioDeTurno().getBtnVolverRc().addActionListener(this);
 		vf.getPrincipal().getPanelRealizarCambioDeTurno().getBtnVolverRc()
@@ -189,41 +257,30 @@ public class Controlador implements ActionListener {
 		vf.getPrincipal().getPanelRealizarCambioDeTurno().getBtnContinuarRc()
 				.setActionCommand("continuar al cambio de turno");
 
-		vf.getPrincipal().getPanelMenuPrincipalEspecialista().getBtnAceptarCambioTurno().addActionListener(this);
-		vf.getPrincipal().getPanelMenuPrincipalEspecialista().getBtnAceptarCambioTurno()
-				.setActionCommand("aceptar cambio turno");
+
 
 		vf.getPrincipal().getPanelAceptarCambioTurno().getBtnVolverCt().addActionListener(this);
 		vf.getPrincipal().getPanelAceptarCambioTurno().getBtnVolverCt()
 				.setActionCommand("volver de aceptar cambio de turno a menu principal");
 
-		vf.getPrincipal().getPanelMenuPrincipalEspecialista().getBtnMostrarCitasProgramadas().addActionListener(this);
-		vf.getPrincipal().getPanelMenuPrincipalEspecialista().getBtnMostrarCitasProgramadas()
-				.setActionCommand("mostrar citas programadas");
 
 		vf.getPrincipal().getPanelMostrarCitasProgramadas().getBtnVolverMc().addActionListener(this);
 		vf.getPrincipal().getPanelMostrarCitasProgramadas().getBtnVolverMc()
 				.setActionCommand("volver de mostrar citas asignadas a menu principal especialista");
 
-		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnMostrarCitas().addActionListener(this);
-		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnMostrarCitas()
-				.setActionCommand("mostrar citas y examenes programados paciente");
+
 
 		vf.getPrincipal().getPanelMostrarCitasYExamenesP().getBtnVolverME().addActionListener(this);
 		vf.getPrincipal().getPanelMostrarCitasYExamenesP().getBtnVolverME()
 				.setActionCommand("volver de mostrar citas y examenes asignados a menu principal paciente");
 
-		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnMostrarTratamiento().addActionListener(this);
-		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnMostrarTratamiento()
-				.setActionCommand("mostrar tratamiento paciente");
+
 
 		vf.getPrincipal().getPanelMostrarTratamientoGeneradoP().getBtnVolverTP().addActionListener(this);
 		vf.getPrincipal().getPanelMostrarTratamientoGeneradoP().getBtnVolverTP()
 				.setActionCommand("volver de mostrar tratamiento a menu principal paciente");
 
-		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnMostrarResultados().addActionListener(this);
-		vf.getPrincipal().getPanelMenuPrincipalPaciente().getBtnMostrarResultados()
-				.setActionCommand("mostrar resultados paciente");
+
 
 		vf.getPrincipal().getPanelMostrarResultadosExamenesP().getBtnVolverRE().addActionListener(this);
 		vf.getPrincipal().getPanelMostrarResultadosExamenesP().getBtnVolverRE()
@@ -233,30 +290,23 @@ public class Controlador implements ActionListener {
 		vf.getPrincipal().getPanelCambioDeTurnoEspecialista().getBtnVolverRt()
 				.setActionCommand("volver de realizar cambio de turno 2 a cambio turno 1");
 
-		vf.getPrincipal().getPanelInicioSesionDirectorMedico().getBtnVolverD().addActionListener(this);
-		vf.getPrincipal().getPanelInicioSesionDirectorMedico().getBtnVolverD().setActionCommand("INICIAR SESION");
+
 
 		vf.getPrincipal().getPanelMenuDirectorMedico().getBtnVolverDE().addActionListener(this);
 		vf.getPrincipal().getPanelMenuDirectorMedico().getBtnVolverDE()
 				.setActionCommand("volver al menu principal desde director medico");
 
-		vf.getPrincipal().getPanelRegistroDirectorMedico().getBtnVolverDM().addActionListener(this);
-		vf.getPrincipal().getPanelRegistroDirectorMedico().getBtnVolverDM().setActionCommand("REGISTRAR");
 
-		vf.getPrincipal().getPanelRegistroDirectorMedico().getBtnRegistrarDM().addActionListener(this);
-		vf.getPrincipal().getPanelRegistroDirectorMedico().getBtnRegistrarDM().setActionCommand("REGISTRAR DIRECTOR");
 
-		vf.getPrincipal().getPanelInicioSesionDirectorMedico().getBtnIniciarSesionD().addActionListener(this);
-		vf.getPrincipal().getPanelInicioSesionDirectorMedico().getBtnIniciarSesionD()
-				.setActionCommand("menu principal de director medico");
+
+
+
 
 		vf.getPrincipal().getPanelMenuPrincipalDirectorMedico().getBtnVolverDME().addActionListener(this);
 		vf.getPrincipal().getPanelMenuPrincipalDirectorMedico().getBtnVolverDME()
 				.setActionCommand("volver al menu desde menu principal director medico");
 
-		vf.getPrincipal().getPanelMenuPrincipalDirectorMedico().getBtnConfirmarCambioTurno().addActionListener(this);
-		vf.getPrincipal().getPanelMenuPrincipalDirectorMedico().getBtnConfirmarCambioTurno()
-				.setActionCommand("confirmar cambio turno");
+
 
 		vf.getPrincipal().getPanelConfirmarCambioTurnoDirector().getBtnVolverCtt().addActionListener(this);
 		vf.getPrincipal().getPanelConfirmarCambioTurnoDirector().getBtnVolverCtt()
@@ -266,25 +316,16 @@ public class Controlador implements ActionListener {
 		vf.getPrincipal().getPanelMenuPrincipalDirectorMedico().getBtnMostrarReporteSemanal()
 				.setActionCommand("mostrar reporte semanal director");
 
-		vf.getPrincipal().getPanelMostrarReporteSemanalDirector().getBtnVolverMsd().addActionListener(this);
-		vf.getPrincipal().getPanelMostrarReporteSemanalDirector().getBtnVolverMsd()
-				.setActionCommand("volver de mostrar reporte semanal a menu principal director");
+
 
 		vf.getPrincipal().getPanelMenuPrincipalDirectorMedico().getBtnMostrarReporteMensual().addActionListener(this);
 		vf.getPrincipal().getPanelMenuPrincipalDirectorMedico().getBtnMostrarReporteMensual()
 				.setActionCommand("mostrar reporte mensual director");
 
-		vf.getPrincipal().getPanelMostrarReporteMensualDirector().getBtnVolverRmd().addActionListener(this);
-		vf.getPrincipal().getPanelMostrarReporteMensualDirector().getBtnVolverRmd()
-				.setActionCommand("volver de mostrar reporte mensual a menu principal director");
 
-		vf.getPrincipal().getPanelReprogramarCitaPaciente().getBtnContinuar().addActionListener(this);
-		vf.getPrincipal().getPanelReprogramarCitaPaciente().getBtnContinuar()
-				.setActionCommand("continuar a reprogramar cita paciente");
 
-		vf.getPrincipal().getPanelContinuarReprogramarCitaPaciente().getBtnVolverCrp().addActionListener(this);
-		vf.getPrincipal().getPanelContinuarReprogramarCitaPaciente().getBtnVolverCrp()
-				.setActionCommand("volver de reprogramar cita 2 a reprogramar cita 1");
+
+
 
 		vf.getPrincipal().getPanelRegistroPaciente().getNombre().setVisible(true);
 		vf.getPrincipal().getPanelRegistroPaciente().getNumeroDocumento().setVisible(true);
@@ -649,17 +690,7 @@ public class Controlador implements ActionListener {
 			}
 			break;
 
-		case "cancelar cita paciente":
-			vf.getPrincipal().setTitle("MENU PRINCIPAL");
 
-			vf.getPrincipal().getPanelMenuPrincipalPaciente().getImagenMenuPpalP().setVisible(false);
-			vf.getPrincipal().getPanelCancelarCitaPaciente().getImagenCancelarCitaP().setVisible(true);
-
-			vf.getPrincipal().mostrarPanelCancelarCitaPaciente();
-
-			menuPpalP = false;
-			cancelarCitaP = true;
-			break;
 
 		case "CANCELARCITA":
 			// Mostrar todas las citas disponibles con sus detalles antes de pedir el número
@@ -738,6 +769,29 @@ public class Controlador implements ActionListener {
 			}
 
 			break;
+		case "cancelar cita paciente":
+			vf.getPrincipal().setTitle("MENU PRINCIPAL");
+
+			vf.getPrincipal().getPanelMenuPrincipalPaciente().getImagenMenuPpalP().setVisible(false);
+			vf.getPrincipal().getPanelCancelarCitaPaciente().getImagenCancelarCitaP().setVisible(true);
+
+			vf.getPrincipal().mostrarPanelCancelarCitaPaciente();
+
+			menuPpalP = false;
+			cancelarCitaP = true;
+			break;
+			
+		case "reprogramar cita paciente":
+			vf.getPrincipal().setTitle("MENU PRINCIPAL");
+
+			vf.getPrincipal().getPanelMenuPrincipalPaciente().getImagenMenuPpalP().setVisible(false);
+			vf.getPrincipal().getPanelCancelarCitaPaciente().getImagenCancelarCitaP().setVisible(true);
+
+			vf.getPrincipal().mostrarPanelCancelarCitaPaciente();
+
+			menuPpalP = false;
+			reprogramarCitaP = true;
+			break;
 
 		case "mostrar citas y examenes programados paciente":
 
@@ -745,19 +799,7 @@ public class Controlador implements ActionListener {
 
 			break;
 
-		case "volver al menu paciente desde registro":
 
-			vf.getPrincipal().setTitle("MENU PRINCIPAL");
-
-			vf.getPrincipal().getPanelRegistroPaciente().getImagenRegistroP().setVisible(false);
-			vf.getPrincipal().getPanelMenuPpal().getImagenMenuP().setVisible(true);
-
-			vf.getPrincipal().mostrarPanelMenuPaciente();
-
-			registroP = false;
-			menuP = true;
-
-			break;
 
 		case "menu principal de paciente":
 
@@ -778,6 +820,21 @@ public class Controlador implements ActionListener {
 			menuPpalP = true;
 
 			break;
+			
+		case "volver al menu paciente desde registro":
+
+			vf.getPrincipal().setTitle("MENU PRINCIPAL");
+
+			vf.getPrincipal().getPanelRegistroPaciente().getImagenRegistroP().setVisible(false);
+			vf.getPrincipal().getPanelMenuPpal().getImagenMenuP().setVisible(true);
+
+			vf.getPrincipal().mostrarPanelMenuPaciente();
+
+			registroP = false;
+			menuP = true;
+
+			break;
+			
 		case "volver de agendar cita paciente a menu principal paciente":
 
 			vf.getPrincipal().setTitle("MENU PRINCIPAL");
@@ -791,7 +848,141 @@ public class Controlador implements ActionListener {
 			menuPpalP = true;
 
 			break;
+	    case "volver al menu principal desde paciente":
+	        vf.getPrincipal().setTitle("MENU PRINCIPAL");
+	        vf.getPrincipal().getPanelMenuPpal().getImagenMenuP().setVisible(true);
+	        vf.getPrincipal().mostrarMenuPrincipal();
+	        paciente = false; 
+	        break;
+	    case "volver al menu principal desde especialista":
+	        vf.getPrincipal().setTitle("MENU PRINCIPAL");
+	        vf.getPrincipal().getPanelMenuE().getImagenMenuE().setVisible(true);
+	        vf.getPrincipal().mostrarMenuPrincipal();
+	        especialista = false;
+	        menuPpal= true;
+	        
+	        break;
+	        
+	    case "volver al menu principal desde director medico":
+	        vf.getPrincipal().setTitle("MENU PRINCIPAL");
+	        vf.getPrincipal().getPanelMenuDirectorMedico().getImagenMenuD().setVisible(true);
+	        vf.getPrincipal().mostrarMenuPrincipal();
+	        directorMedico = false;
+	        break;
+	    
+	    case "volver al menu paciente desde inicio sesion":
+	        vf.getPrincipal().setTitle("MENU PACIENTE");
+	        vf.getPrincipal().mostrarPanelMenuPaciente();
+	        inicioSesionP = false;
+	        break;
+	   
+	    case "volver al menu especialista desde inicio sesion":
+	        vf.getPrincipal().setTitle("MENU ESPECIALISTA");
+	        vf.getPrincipal().mostrarPanelMenuEspecialista();
+	        inicioSesionE = false;
+	        break;
 
+	    
+	    case "volver al menu especialista desde registro":
+	        vf.getPrincipal().setTitle("MENU ESPECIALISTA");
+	        vf.getPrincipal().getPanelRegistroEspecialista().getImagenRegistroE().setVisible(false);
+	        vf.getPrincipal().mostrarPanelMenuEspecialista();
+	        registroE = false;
+	        break;
+
+	    
+	    case "volver al inicio sesion desde menu principal paciente":
+	        vf.getPrincipal().setTitle("INICIO SESION PACIENTE");
+	        vf.getPrincipal().mostrarPanelInicioSesionPaciente();
+	        menuPpalP = false;
+	        break;
+
+	   
+	    case "volver al inicio sesion desde menu principal especialista":
+	        vf.getPrincipal().setTitle("INICIO SESION ESPECIALISTA");
+	        vf.getPrincipal().mostrarPanelInicioSesionEspecialista();
+	        menuPpalE = false;
+	        break;
+
+	    
+	    case "volver de reprogramar cita paciente a menu principal paciente":
+	        vf.getPrincipal().setTitle("MENU PRINCIPAL PACIENTE");
+	        vf.getPrincipal().mostrarPanelMenuPrincipalPaciente();
+	        reprogramarCitaP = false;
+	        break;
+
+	    
+	    case "volver de cancelar cita paciente a menu principal paciente":
+	        vf.getPrincipal().setTitle("MENU PRINCIPAL PACIENTE");
+	        vf.getPrincipal().getPanelCancelarCitaPaciente().getImagenCancelarCitaP()
+	        .setVisible(false);
+			vf.getPrincipal().getPanelMenuPrincipalPaciente().getImagenMenuPpalP().setVisible(true);
+	        vf.getPrincipal().mostrarPanelMenuPrincipalPaciente();
+	        cancelarCitaP = false;
+	        menuPpalP = true;
+	        break;
+	  
+	    case "volver de realizar cambio de turno a menu principal":
+	        vf.getPrincipal().setTitle("MENU PRINCIPAL ESPECIALISTA");
+	        vf.getPrincipal().mostrarPanelMenuPrincipalEspecialista();
+	        cambioTurno = false;
+	        break;
+
+	    case "volver de mostrar citas asignadas a menu principal especialista":
+	        vf.getPrincipal().setTitle("MENU PRINCIPAL ESPECIALISTA");
+	        vf.getPrincipal().mostrarPanelMenuPrincipalEspecialista();
+	        mostrarCitasProgramadasE = false;
+	        break;
+
+	    case "volver de mostrar citas y examenes asignados a menu principal paciente":
+	        vf.getPrincipal().setTitle("MENU PRINCIPAL PACIENTE");
+	        vf.getPrincipal().mostrarPanelMenuPrincipalPaciente();
+	        mostrarCitasYExamenesP = false;
+	        break;
+
+	    
+	    case "volver de mostrar tratamiento a menu principal paciente":
+	        vf.getPrincipal().setTitle("MENU PRINCIPAL PACIENTE");
+	        vf.getPrincipal().mostrarPanelMenuPrincipalPaciente();
+	        mostrarTratamientoP = false;
+	        break;
+
+	    
+	    case "volver de mostrar resultados examenes a menu principal paciente":
+	        vf.getPrincipal().setTitle("MENU PRINCIPAL PACIENTE");
+	        vf.getPrincipal().mostrarPanelMenuPrincipalPaciente();
+	        mostrarResultadosExamenesP = false;
+	        break;
+
+	    case "volver al menu desde menu principal director medico":
+	        vf.getPrincipal().setTitle("MENU PRINCIPAL DIRECTOR MEDICO");
+	        vf.getPrincipal().mostrarPanelMenuPrincipalDirectorMedico();
+	        menuPpalD = false;
+	        break;
+
+	    
+	    case "volver de confirmar cambio turno a menu principal director":
+	        vf.getPrincipal().setTitle("MENU PRINCIPAL DIRECTOR MEDICO");
+	        vf.getPrincipal().mostrarPanelMenuPrincipalDirectorMedico();
+	        confirmarCambioTurno = false;
+	        break;
+	  
+	    case "volver de mostrar reporte semanal a menu principal director":
+	        vf.getPrincipal().setTitle("MENU PRINCIPAL DIRECTOR MEDICO");
+	        vf.getPrincipal().mostrarPanelMenuPrincipalDirectorMedico();
+	        mostrarReporteSemanalD = false;
+	        break;
+
+	    
+	    case "volver de mostrar reporte mensual a menu principal director":
+	        vf.getPrincipal().setTitle("MENU PRINCIPAL DIRECTOR MEDICO");
+	        vf.getPrincipal().mostrarPanelMenuPrincipalDirectorMedico();
+	        mostrarReporteMensualD = false;
+	        break;
+			
 		}
+		
 	}
-}
+		
+	}
+

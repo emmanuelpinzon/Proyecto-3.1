@@ -30,11 +30,13 @@ public class PanelInicioSesionEspecialista extends JPanel {
 		setSize(1280, 720);
 
 		numeroDocumento = new JTextField();
-		numeroDocumento.setBounds(450, 507, 300, 55);
+		numeroDocumento.setBounds(138, 512, 300, 55);
+		numeroDocumento.setBorder(null);
 		numeroDocumento.setOpaque(true);
 
 		contraseña = new JPasswordField();
 		contraseña.setBounds(840, 507, 300, 55);
+		contraseña.setBorder(null);
 		contraseña.setOpaque(true);
 
 		String[] especialista = { "Cirugía", "Oncología", "Dermatología", "Neumología", "Cardiología",
@@ -44,13 +46,13 @@ public class PanelInicioSesionEspecialista extends JPanel {
 		// Botón "Registrarse"
 
 		btnIniciarSesionE = new JButton("Iniciar Sesion");
-		btnIniciarSesionE.setBounds(720, 610, 140, 50); // Posición ajustada
+		btnIniciarSesionE.setBounds(685, 600, 200, 65); // Posición ajustada
 		btnIniciarSesionE.setOpaque(true);
 		btnIniciarSesionE.setActionCommand("INICIARSESION");
 
 		// Botón "Volver"
 		btnVolverE = new JButton("Volver");
-		btnVolverE.setBounds(450, 610, 150, 50); // Posición ajustada
+		btnVolverE.setBounds(470, 598, 140, 65); // Posición ajustada
 		btnVolverE.setOpaque(true);
 		btnVolverE.setActionCommand("VOLVER");
 
@@ -60,13 +62,13 @@ public class PanelInicioSesionEspecialista extends JPanel {
 		imagenInicioSesionE.setIcon(new ImageIcon(redimensionado1));
 		imagenInicioSesionE.setBounds(0, 0, 1280, 720);
 
+		add(imagenInicioSesionE);
 		add(numeroDocumento);
 		add(contraseña);
 
 		add(btnIniciarSesionE);
 		add(btnVolverE);
 
-		add(imagenInicioSesionE);
 
 	}
 
